@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M7 Dashboard v1｜GHP-17 Completion</title>
+<style>
+:root{--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#1d2f63 0,#0b1020 38%,#070a13 100%);line-height:1.7}.wrap{max-width:980px;margin:auto;padding:30px 18px 60px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:28px;background:linear-gradient(135deg,rgba(117,167,255,.18),rgba(53,208,127,.10)),rgba(17,24,44,.92)}.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.08em;text-transform:uppercase}h1{margin:8px 0;font-size:clamp(30px,5vw,48px);line-height:1.12}.sub,.muted{color:var(--muted)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:900;text-decoration:none;color:inherit}.primary{background:rgba(117,167,255,.22);border-color:rgba(117,167,255,.5)}.card{margin-top:16px;padding:18px}li{margin:8px 0}code,pre{background:rgba(255,255,255,.08);border-radius:8px}code{padding:2px 6px}pre{padding:12px;overflow:auto}.footer{margin-top:22px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow">M7 Dashboard v1</div>
+  <h1>GHP-17 Completion Note</h1>
+  <div class="sub">2026/06/25｜功能收斂，不再用無限 GHP 編號推進。</div>
+  <div class="actions"><a class="btn primary" href="../../../index.html">回最新 Dashboard</a><a class="btn" href="../../../archive.html">Archive</a><a class="btn" href="../../../inputs/2026-06-26-notes.example.json">notes example</a></div>
+</section>
+<section class="card"><h2>v1 完成範圍</h2><ul><li>GHP-13：notes input 產生 latest draft。</li><li>GHP-14：Archive 讀取 history.json 自動產生列表。</li><li>GHP-15：Dashboard 移除頂部 debug 連結，資料連結收進 Debug 區。</li><li>GHP-16：支援週/月排名 Delta 計算，資料不足時顯示 N/A。</li><li>GHP-17：支援紅燈連續天數計算。</li></ul></section>
+<section class="card"><h2>正式每日流程</h2><pre><code>node scripts/generate-draft.js inputs/YYYY-MM-DD-notes.json
+node scripts/update-latest.js drafts/YYYY-MM-DD-latest.json
+npm run validate</code></pre></section>
+<section class="card"><h2>收斂原則</h2><p>v1 到此視為完成版。後續不再追 GHP999；只針對真實使用痛點維護，例如資料欄位不足、Delta 計算需要新基準、或 UI 有誤導。</p></section>
+<div class="footer">Research notes only. Not personalized investment advice.</div>
+</main>
+</body>
+</html>
