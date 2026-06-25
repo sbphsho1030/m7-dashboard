@@ -1,12 +1,13 @@
 {
   "name": "m7-dashboard",
-  "version": "0.12.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Magnificent 7 decision-control dashboard data pipeline for GitHub Pages.",
   "scripts": {
     "validate": "node scripts/validate-data.js",
     "check": "npm run validate",
+    "draft": "node scripts/generate-draft.js",
     "update:latest": "node scripts/update-latest.js"
   },
   "engines": {
