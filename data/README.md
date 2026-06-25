@@ -1,18 +1,30 @@
-# M7 Dashboard Data Layer｜v1.1
+# M7 Dashboard Data Layer｜v1.2
 
-Data files:
+Active data files:
 
-- `latest.json`: latest dashboard snapshot.
-- `history.json`: historical records.
+- `latest.json`: latest dashboard snapshot; overwritten daily.
+- `recent.json`: rolling recent cache for Dashboard delta and red-streak calculation.
+- `history-index.json`: compact archive index.
+- `history/YYYY-MM.json`: monthly full daily records.
+- `history.json`: legacy compatibility file; no longer the main history database.
 - `schema.json`: schema reference.
 
-Dashboard reads latest/history and displays:
+Dashboard reads:
 
-- Action Score
-- M7 ranking
-- Weekly / monthly ranking delta
-- Red-light streak days
-- Data quality
+- `latest.json`
+- `recent.json`
+
+Archive reads:
+
+- `history-index.json`
+
+Daily flow:
+
+```bash
+node scripts/generate-draft.js inputs/YYYY-MM-DD-notes.json
+node scripts/update-latest.js drafts/YYYY-MM-DD-latest.json
+npm run validate
+```
 
 Required ranking fields:
 
@@ -27,13 +39,5 @@ Required ranking fields:
 - `riskLight`
 - `triggerStatus`
 
-Daily flow:
-
-```bash
-node scripts/generate-draft.js inputs/YYYY-MM-DD-notes.json
-node scripts/update-latest.js drafts/YYYY-MM-DD-latest.json
-npm run validate
-```
-
-Validation is implemented in `scripts/lib/m7-data.js`.
+Validation is implemented in `scripts/lib/m7-data.js` and `scripts/validate-data.js`.
 Analytics is implemented in `scripts/lib/m7-analytics.js`.
