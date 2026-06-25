@@ -25,17 +25,24 @@
     },
     "latestRankingItem": {
       "type": "object",
-      "required": ["rank", "ticker", "company", "rating", "newCapitalStance", "riskLight", "triggerStatus"],
+      "required": ["rank", "ticker", "company", "rating", "score", "scoreBand", "scoreReason", "newCapitalStance", "riskLight", "triggerStatus"],
       "properties": {
         "rank": { "type": "integer", "minimum": 1, "maximum": 7 },
         "ticker": { "type": "string", "enum": ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA"] },
         "company": { "type": "string" },
         "rating": { "type": "string" },
+        "score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "scoreBand": { "type": "string" },
+        "scoreReason": { "type": "string" },
+        "scoreBreakdown": { "type": ["object", "null"] },
         "newCapitalStance": { "type": "string" },
         "riskLight": { "$ref": "#/definitions/light" },
         "triggerStatus": { "type": "string" },
         "weeklyDelta": { "type": ["number", "string", "null"] },
         "monthlyDelta": { "type": ["number", "string", "null"] },
+        "rankChangeWeek": { "type": ["number", "null"] },
+        "rankChangeMonth": { "type": ["number", "null"] },
+        "redStreakDays": { "type": ["integer", "null"], "minimum": 0 },
         "deltaNote": { "type": "string" }
       },
       "additionalProperties": true
