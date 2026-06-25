@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M7 Report Archive｜v1</title>
+<title>M7 Report Archive｜v1.2</title>
 <style>
 :root{--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c;--purple:#c79bff}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#1d2f63 0,#0b1020 38%,#070a13 100%);line-height:1.6}a{color:inherit;text-decoration:none}.wrap{max-width:1100px;margin:0 auto;padding:30px 18px 60px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:28px;background:linear-gradient(135deg,rgba(117,167,255,.18),rgba(53,208,127,.10)),rgba(17,24,44,.92)}.eyebrow{color:var(--blue);font-weight:800;letter-spacing:.08em;text-transform:uppercase}h1{margin:8px 0;font-size:clamp(30px,5vw,50px);line-height:1.1}.sub,.desc{color:var(--muted)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.btn{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:800}.primary{background:rgba(117,167,255,.2);border-color:rgba(117,167,255,.5)}.grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:20px}.card{padding:18px}.report-list{display:grid;gap:12px}.report{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04)}.report:hover{background:rgba(117,167,255,.09);border-color:rgba(117,167,255,.45)}.date{font-size:20px;font-weight:900;color:var(--blue)}.pill{display:inline-flex;align-items:center;gap:8px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:800;background:rgba(255,255,255,.06);white-space:nowrap}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.yellow{background:var(--yellow)}.purple{background:var(--purple)}.timeline{list-style:none;padding:0;margin:0}.timeline li{padding:10px 0;border-bottom:1px solid var(--line);color:var(--muted)}.timeline li:last-child{border-bottom:0}.footer{margin-top:22px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}@media(max-width:760px){.grid{grid-template-columns:1fr}.report{grid-template-columns:1fr}.actions{flex-direction:column}.btn{width:100%}}
 </style>
@@ -11,16 +11,16 @@
 <body>
 <main class="wrap">
 <section class="hero">
-  <div class="eyebrow">M7 Archive v1</div>
+  <div class="eyebrow">M7 Archive v1.2</div>
   <h1>M7 Daily Dashboard 歷史報告</h1>
-  <div class="sub" id="archiveSub">Archive 會讀取 data/history.json 產生歷史列表。</div>
+  <div class="sub" id="archiveSub">Archive 會讀取 data/history-index.json 產生歷史列表。</div>
   <div class="actions"><a class="btn primary" href="index.html">最新 Dashboard</a><a class="btn" href="reports/2026/06/25-ghp17.html">v1 完成紀錄</a></div>
 </section>
 <section class="grid">
   <div class="card"><h2>歷史報告列表</h2><div class="report-list" id="reportList"></div></div>
-  <aside class="card"><h3>v1 完成定義</h3><ul class="timeline"><li>1. notes 產生 draft</li><li>2. draft 發布 latest/history</li><li>3. Dashboard 讀 latest/history</li><li>4. Archive 讀 history</li><li>5. 週/月 Delta 與紅燈連續天數</li></ul></aside>
+  <aside class="card"><h3>v1.2 資料分層</h3><ul class="timeline"><li>latest.json：只放最新快照</li><li>recent.json：最近 90 天快取</li><li>history-index.json：Archive 索引</li><li>history/YYYY-MM.json：月份完整紀錄</li><li>history.json：legacy 相容檔，不再長期累積</li></ul></aside>
 </section>
-<section class="grid"><div class="card"><h3>資料來源</h3><p class="desc">主要由 <code>data/history.json</code> 產生；若讀取失敗，會顯示內建 fallback 列表。</p></div><div class="card"><h3>下一步</h3><p class="desc">不再追 GHP999。v1 到此收斂；後續只針對真實使用痛點修正。</p></div></section>
+<section class="grid"><div class="card"><h3>資料來源</h3><p class="desc">Archive 主要讀 <code>data/history-index.json</code>。點進每日完整版報告時才看 HTML report。</p></div><div class="card"><h3>長期維護</h3><p class="desc">一年後不需要一次載入整包歷史資料；Dashboard 只讀 latest/recent，Archive 只讀 index。</p></div></section>
 <div class="footer">Repo: sbphsho1030/m7-dashboard</div>
 </main>
 <script>
@@ -30,9 +30,9 @@ const fallback=[
   {date:'GHP-10',title:'資料驅動版首頁',desc:'首頁讀取 data/latest.json 並保留 fallback。',href:'reports/2026/06/25-ghp10.html',tag:'首頁架構'},
   {date:'2026/06/25',title:'完整版觀察報告',desc:'主表、風險、個股分析、情境與資料限制。',href:'reports/2026/06/25-full.html',tag:'完整版'}
 ];
-function reportCard(item){const a=document.createElement('a');a.className='report';a.href=item.href||item.sourceReports?.fullReport||'index.html';a.innerHTML=`<div class="date">${item.date||''}</div><div><strong>${item.title||item.reportId||'M7 report'}</strong><div class="desc">${item.desc||item.headline||item.oneLineConclusion||''}</div></div><span class="pill"><span class="dot purple"></span>${item.tag||item.recommendedAction||'record'}</span>`;return a}
-function historyToItems(history){return (history.records||[]).map(r=>({date:r.date,title:r.reportId,desc:r.headline,href:r.sourceReports?.fullReport||r.sourceReports?.dashboard||'index.html',tag:r.recommendedAction}))}
-async function load(){const list=document.getElementById('reportList');try{const res=await fetch('data/history.json',{cache:'no-store'});if(!res.ok)throw new Error(`HTTP ${res.status}`);const history=await res.json();const items=[{date:'GHP-17',title:'M7 Dashboard v1 完成版',desc:'完成功能收斂，不再追無限 GHP 編號。',href:'reports/2026/06/25-ghp17.html',tag:'v1'},...historyToItems(history),...fallback.slice(1)];items.forEach(x=>list.appendChild(reportCard(x)));document.getElementById('archiveSub').textContent=`已讀取 data/history.json，共 ${history.records?.length||0} 筆歷史紀錄。`}catch(e){fallback.forEach(x=>list.appendChild(reportCard(x)));document.getElementById('archiveSub').textContent=`history.json 載入失敗，使用 fallback：${e.message}`}}
+function reportCard(item){const a=document.createElement('a');a.className='report';a.href=item.href||item.fullReport||'index.html';a.innerHTML=`<div class="date">${item.date||''}</div><div><strong>${item.title||item.reportId||'M7 report'}</strong><div class="desc">${item.desc||item.headline||''}</div></div><span class="pill"><span class="dot purple"></span>${item.tag||item.recommendedAction||'record'}</span>`;return a}
+function indexToItems(index){return (index.records||[]).map(r=>({date:r.date,title:r.reportId,desc:r.headline,href:r.fullReport||'index.html',tag:`${r.recommendedAction||''}${r.topScore?`｜Score ${r.topScore}`:''}`}))}
+async function load(){const list=document.getElementById('reportList');try{const res=await fetch('data/history-index.json',{cache:'no-store'});if(!res.ok)throw new Error(`HTTP ${res.status}`);const index=await res.json();const items=[{date:'v1.2',title:'History 分檔架構',desc:'latest / recent / history-index / monthly history，避免 history.json 無限成長。',href:'reports/2026/06/25-ghp17.html',tag:'v1.2'},...indexToItems(index),...fallback.slice(1)];items.forEach(x=>list.appendChild(reportCard(x)));document.getElementById('archiveSub').textContent=`已讀取 data/history-index.json，共 ${index.records?.length||0} 筆索引。`}catch(e){fallback.forEach(x=>list.appendChild(reportCard(x)));document.getElementById('archiveSub').textContent=`history-index.json 載入失敗，使用 fallback：${e.message}`}}
 load();
 </script>
 </body>
