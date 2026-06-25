@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-26",
+  "reportId": "M7-Daily-2026-06-26",
+  "headline": "範例資料：今天沒有觸發 Kill Switch，維持條件式觀察。",
+  "oneLineConclusion": "這是 generate-draft.js 的輸入範例，不代表真實市場結論。",
+  "recommendedAction": "觀察",
+  "directionality": "中性",
+  "killSwitchTriggered": false,
+  "nextActionMode": "條件式",
+  "marketDataRefreshed": false,
+  "dataStatus": "example_only",
+  "dataQualityNote": "這是範例輸入，不可作為正式研究資料。",
+  "riskLights": {
+    "aiCapex": { "light": "yellow", "label": "AI Capex", "summary": "範例：ROI 壓力待確認" },
+    "cloudGrowth": { "light": "green", "label": "Cloud Growth", "summary": "範例：仍有支撐" },
+    "semiVolatility": { "light": "red", "label": "Semi Volatility", "summary": "範例：高 beta 波動" }
+  },
+  "ranking": [
+    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A", "newCapitalStance": "可分批", "riskLight": "green", "triggerStatus": "未降級" },
+    { "rank": 2, "ticker": "MSFT", "company": "Microsoft", "rating": "A-", "newCapitalStance": "等回檔", "riskLight": "yellow", "triggerStatus": "觀察" },
+    { "rank": 3, "ticker": "AMZN", "company": "Amazon", "rating": "B+", "newCapitalStance": "少量", "riskLight": "yellow", "triggerStatus": "FCF 檢查" },
+    { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力" },
+    { "rank": 5, "ticker": "NVDA", "company": "Nvidia", "rating": "B", "newCapitalStance": "高風險", "riskLight": "red", "triggerStatus": "非防禦股" },
+    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "newCapitalStance": "等待催化劑", "riskLight": "yellow", "triggerStatus": "等待產品證據" },
+    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察" }
+  ],
+  "eventWatch": [
+    {
+      "date": "2026-06-29",
+      "ticker": "GOOGL",
+      "event": "Dow 納入事件觀察",
+      "rules": [
+        "若僅是事件消化且 thesis 未變，允許條件式觀察。",
+        "若同時 Nasdaq / M7 系統性走弱，轉黃燈。"
+      ]
+    }
+  ]
+}
