@@ -12,16 +12,20 @@
 
 ---
 
-## 目前定位
+## v1 完成定義
 
-這個專案已從「每日投資報告」升級為 **投資行為控制儀表板 + JSON 資料管線**。
+M7 Dashboard v1 到 GHP-17 收斂，不再用無限 GHP 編號推進。v1 完成範圍是：
 
-日更目的不是每天交易，而是每天確認：
+1. notes input 產生 latest draft。
+2. draft 發布到 `data/latest.json` 與 `data/history.json`。
+3. Dashboard 讀取 latest/history。
+4. Archive 自動讀取 history。
+5. Debug 連結移到 Debug 區，不放在 Dashboard 頂部。
+6. 支援週/月 ranking Delta。
+7. 支援紅燈連續天數。
+8. Validator 與 GitHub Actions 防止壞資料進入流程。
 
-1. 今天是否需要做事？
-2. 是否觸發降級 / 停止加碼 / 恐慌賣出禁止條件？
-3. 市場對新資訊的邊際定價是否改變？
-4. 量變是否正在累積成質變？
+後續只針對真實使用痛點維護，不追 GHP999。
 
 ---
 
@@ -34,6 +38,11 @@
 | GHP-10 | Done | `index.html` 改為讀取 `data/latest.json` 的資料驅動首頁 |
 | GHP-11 | Done | 新增 `scripts/update-latest.js`、`scripts/validate-data.js`、共用資料檢查函式 |
 | GHP-12 | Done | 新增 `data/schema.json`、GitHub Actions data validation workflow |
+| GHP-13 | Done | 新增 `scripts/generate-draft.js` 與 notes input 範例 |
+| GHP-14 | Done | `archive.html` 改為讀取 `data/history.json` 自動產生列表 |
+| GHP-15 | Done | Dashboard 頂部移除 raw data 連結，整理成正式 UI |
+| GHP-16 | Done | 支援週/月排名 Delta；資料不足時顯示 N/A |
+| GHP-17 | Done | 支援紅燈連續天數與 v1 完成頁 |
 
 ---
 
@@ -50,10 +59,14 @@ m7-dashboard/
 │   ├── history.json
 │   ├── schema.json
 │   └── README.md
+├── inputs/
+│   └── 2026-06-26-notes.example.json
 ├── scripts/
+│   ├── generate-draft.js
 │   ├── validate-data.js
 │   ├── update-latest.js
 │   └── lib/
+│       ├── m7-analytics.js
 │       └── m7-data.js
 ├── .github/
 │   └── workflows/
@@ -65,46 +78,39 @@ m7-dashboard/
             ├── 25-ghp06.html
             ├── 25-ghp10.html
             ├── 25-ghp11-12.html
+            ├── 25-ghp17.html
             └── 25-full.html
 ```
 
 ---
 
-## 每日更新流程
-
-GHP-10 之後，首頁不再需要每天重寫大量 HTML。每日只要更新 JSON：
+## 正式每日流程
 
 ```bash
-node scripts/update-latest.js drafts/2026-06-26-latest.json
+node scripts/generate-draft.js inputs/YYYY-MM-DD-notes.json
+node scripts/update-latest.js drafts/YYYY-MM-DD-latest.json
 npm run validate
 ```
 
-更新器會：
-
-1. 讀取新的 latest snapshot。
-2. 驗證 `latest.json` 必要欄位。
-3. 覆蓋 `data/latest.json`。
-4. 自動轉成 history record。
-5. upsert 到 `data/history.json`，同一天同 reportId 會取代舊資料。
-6. 再驗證 latest/history 一致性。
-
-Dry run：
+範例：
 
 ```bash
+node scripts/generate-draft.js inputs/2026-06-26-notes.example.json
 node scripts/update-latest.js drafts/2026-06-26-latest.json --dry-run
+npm run validate
 ```
 
-只更新 latest、不追加 history：
+流程說明：
 
-```bash
-node scripts/update-latest.js drafts/2026-06-26-latest.json --no-history
-```
+1. `generate-draft.js` 將每日 notes 轉成 `drafts/YYYY-MM-DD-latest.json`。
+2. `update-latest.js` 驗證 draft，覆蓋 `data/latest.json`，並 upsert 到 `data/history.json`。
+3. `update-latest.js` 會套用週/月 Delta 與紅燈連續天數計算。
+4. `validate-data.js` 檢查 latest/history 的結構與一致性。
+5. GitHub Actions 在 push / PR 時再次跑 `npm run validate`。
 
 ---
 
 ## 驗證流程
-
-本地驗證：
 
 ```bash
 npm run validate
@@ -119,27 +125,6 @@ npm run validate
 - `history.json` 是否包含 latest 對應紀錄。
 - history 是否有重複 date + reportId。
 
-GitHub Actions：
-
-- push / PR 修改 `data/**`、`scripts/**`、`package.json` 或 workflow 時會自動跑 `npm run validate`。
-- 也可以手動從 Actions 頁面執行 `Validate M7 data`。
-
----
-
-## 資料檔案
-
-### `data/latest.json`
-
-最新一日快照，首頁會直接讀取這個檔案。
-
-### `data/history.json`
-
-歷史紀錄集合，每日追加或 upsert 一筆 `records[]`。
-
-### `data/schema.json`
-
-JSON schema 文件。正式驗證目前使用 `scripts/lib/m7-data.js` 的無相依 custom validator，避免引入外部套件。
-
 ---
 
 ## Dashboard 行為原則
@@ -149,10 +134,11 @@ JSON schema 文件。正式驗證目前使用 `scripts/lib/m7-data.js` 的無相
 正式版不只看今天數值，而是看變化：
 
 ```text
-Forward PE：20.2x，較上週 -1.5x，較上月 -3.8x
 排名：GOOGL 第 1，較上週 +2
 紅燈：NVDA 紅燈連續 4 天
 ```
+
+若 history 還沒有足夠基準資料，Dashboard 會顯示 N/A，不會假裝已有週/月 Delta。
 
 ### Kill Switch / 不動作理由
 
@@ -172,18 +158,14 @@ Dashboard 應主動回答：
 全同向：可能是系統性撤資，停止加碼
 ```
 
-### 事件型規則
-
-例如 GOOGL 納入 Dow 後若 sell the news 回檔：
-
-```text
-若只是事件消化且 Cloud / backlog thesis 未變，可條件式分批。
-若同時 Nasdaq / M7 系統性走弱，轉黃燈觀察。
-若基本面負面新聞且跌幅大於同業，暫停加碼。
-```
-
 ---
 
-## 下一步
+## 後續維護原則
 
-GHP-13 可補「每日資料產生器」，把人工整理的市場資料、新聞摘要與估值資料轉成 `drafts/YYYY-MM-DD-latest.json`，再交給 `update-latest.js` 發布。
+v1 後不再追新 GHP 編號。只有出現真實使用問題才修，例如：
+
+- 每日 notes 欄位不夠。
+- Delta 計算邏輯需要改成價格 / PE / score。
+- Archive 顯示不清楚。
+- Dashboard UI 誤導一般使用者。
+- GitHub Actions 驗證結果失敗。
