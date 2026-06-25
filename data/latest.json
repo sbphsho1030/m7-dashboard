@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "GHP-09.1",
+  "schemaVersion": "M7-v1.1",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T00:00:00+08:00",
+  "updatedAt": "2026-06-26T01:13:00+08:00",
   "latestDate": "2026-06-25",
   "latestReportId": "M7-Test-GHP-08",
   "sourceReports": {
@@ -18,21 +18,9 @@
     "nextActionMode": "條件式"
   },
   "riskLights": {
-    "aiCapex": {
-      "light": "yellow",
-      "label": "AI Capex",
-      "summary": "ROI 壓力測試中"
-    },
-    "cloudGrowth": {
-      "light": "green",
-      "label": "Cloud Growth",
-      "summary": "仍有支撐"
-    },
-    "semiVolatility": {
-      "light": "red",
-      "label": "Semi Volatility",
-      "summary": "高 beta 波動"
-    }
+    "aiCapex": { "light": "yellow", "label": "AI Capex", "summary": "ROI 壓力測試中" },
+    "cloudGrowth": { "light": "green", "label": "Cloud Growth", "summary": "仍有支撐" },
+    "semiVolatility": { "light": "red", "label": "Semi Volatility", "summary": "高 beta 波動" }
   },
   "ranking": [
     {
@@ -40,6 +28,10 @@
       "ticker": "GOOGL",
       "company": "Alphabet",
       "rating": "A",
+      "score": 88,
+      "scoreBand": "高優先觀察",
+      "scoreReason": "Cloud / backlog thesis 較完整，且目前風險燈號為 green；允許條件式分批，但不追價。",
+      "scoreBreakdown": { "fundamental": 32, "valuation": 18, "momentum": 16, "risk": -3, "event": 5, "quality": 20 },
       "newCapitalStance": "可分批",
       "riskLight": "green",
       "triggerStatus": "未降級",
@@ -52,6 +44,10 @@
       "ticker": "MSFT",
       "company": "Microsoft",
       "rating": "A-",
+      "score": 82,
+      "scoreBand": "可觀察，等條件",
+      "scoreReason": "AI 軟體化與企業導入路徑完整，但 Azure margin 與 Capex 回收仍需追蹤。",
+      "scoreBreakdown": { "fundamental": 31, "valuation": 16, "momentum": 14, "risk": -5, "event": 0, "quality": 26 },
       "newCapitalStance": "等回檔",
       "riskLight": "yellow",
       "triggerStatus": "觀察",
@@ -64,6 +60,10 @@
       "ticker": "AMZN",
       "company": "Amazon",
       "rating": "B+",
+      "score": 76,
+      "scoreBand": "可觀察，等條件",
+      "scoreReason": "AWS 是 AI 基建變現場景，但 FCF / Capex 壓力仍需檢查。",
+      "scoreBreakdown": { "fundamental": 28, "valuation": 15, "momentum": 13, "risk": -6, "event": 0, "quality": 26 },
       "newCapitalStance": "少量",
       "riskLight": "yellow",
       "triggerStatus": "FCF 檢查",
@@ -76,6 +76,10 @@
       "ticker": "META",
       "company": "Meta Platforms",
       "rating": "B",
+      "score": 66,
+      "scoreBand": "中性，不急動",
+      "scoreReason": "廣告效率與 AI 投入並存，但 data center commitments 與 Capex 壓力讓新資金暫停。",
+      "scoreBreakdown": { "fundamental": 25, "valuation": 13, "momentum": 12, "risk": -10, "event": 0, "quality": 26 },
       "newCapitalStance": "暫停",
       "riskLight": "yellow",
       "triggerStatus": "Capex 壓力",
@@ -88,6 +92,10 @@
       "ticker": "NVDA",
       "company": "Nvidia",
       "rating": "B",
+      "score": 62,
+      "scoreBand": "中性偏高風險",
+      "scoreReason": "AI Capex 高 beta 受益者，但風險燈號為 red；不是防禦股，需避免追價。",
+      "scoreBreakdown": { "fundamental": 30, "valuation": 10, "momentum": 16, "risk": -18, "event": 0, "quality": 24 },
       "newCapitalStance": "高風險",
       "riskLight": "red",
       "triggerStatus": "非防禦股",
@@ -100,6 +108,10 @@
       "ticker": "AAPL",
       "company": "Apple",
       "rating": "C",
+      "score": 55,
+      "scoreBand": "中性，不急動",
+      "scoreReason": "高品質現金流仍在，但 AI 產品與換機週期證據不足。",
+      "scoreBreakdown": { "fundamental": 24, "valuation": 12, "momentum": 8, "risk": -5, "event": 0, "quality": 16 },
       "newCapitalStance": "等待催化劑",
       "riskLight": "yellow",
       "triggerStatus": "等待產品證據",
@@ -112,6 +124,10 @@
       "ticker": "TSLA",
       "company": "Tesla",
       "rating": "C-",
+      "score": 42,
+      "scoreBand": "暫停新資金",
+      "scoreReason": "估值高度依賴未來敘事，需求、監管、毛利率與 Robotaxi 證據仍不足。",
+      "scoreBreakdown": { "fundamental": 16, "valuation": 8, "momentum": 10, "risk": -18, "event": 0, "quality": 26 },
       "newCapitalStance": "不追價",
       "riskLight": "red",
       "triggerStatus": "高風險觀察",
@@ -133,20 +149,13 @@
     }
   ],
   "triggerRules": {
-    "downgrade": [
-      "Capex 上修",
-      "Cloud growth 放緩",
-      "FCF margin 下滑"
-    ],
-    "stopAdding": [
-      "M7 同向轉紅",
-      "QQQ / Nasdaq 破位"
-    ],
+    "downgrade": ["Capex 上修", "Cloud growth 放緩", "FCF margin 下滑"],
+    "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 破位"],
     "panicSellBan": "單日新聞或 index event 不得單獨觸發賣出。"
   },
   "dataQuality": {
     "marketDataRefreshed": false,
-    "status": "structured_from_GHP-08_existing_report",
-    "note": "此 latest.json 是 GHP-09 的結構化快照，尚未重新抓取 2026/06/26 最新市場資料。"
+    "status": "structured_from_GHP-08_existing_report_with_v1_initial_scores",
+    "note": "此 latest.json 是 GHP-09 的結構化快照，並補入 v1 initial action score；尚未重新抓取 2026/06/26 最新市場資料。"
   }
 }
