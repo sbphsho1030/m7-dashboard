@@ -22,7 +22,7 @@ const outputPath = outputPathArg || path.join('drafts', `${date}-latest.json`);
 const reportId = notes.reportId || `M7-Daily-${date}`;
 
 const latest = {
-  schemaVersion: notes.schemaVersion || 'M7-v1.0',
+  schemaVersion: notes.schemaVersion || 'M7-v1.2',
   project: 'm7-dashboard',
   updatedAt: notes.updatedAt || new Date().toISOString(),
   latestDate: date,
