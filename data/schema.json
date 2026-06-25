@@ -1,18 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://sbphsho1030.github.io/m7-dashboard/data/schema.json",
-  "title": "M7 Dashboard Data Schema",
-  "description": "Schema documentation for latest.json and history.json used by the M7 Decision Control Dashboard.",
+  "title": "M7 Dashboard Data Schema v1.2",
+  "description": "Schema documentation for latest.json, recent.json, history-index.json, monthly history files, and legacy history.json.",
   "type": "object",
   "definitions": {
-    "date": {
-      "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-    },
-    "light": {
-      "type": "string",
-      "enum": ["green", "yellow", "red", "blue", "purple"]
-    },
+    "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "month": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+    "light": { "type": "string", "enum": ["green", "yellow", "red", "blue", "purple"] },
     "sourceReports": {
       "type": "object",
       "required": ["dashboard", "fullReport", "archive"],
@@ -23,7 +18,7 @@
       },
       "additionalProperties": true
     },
-    "latestRankingItem": {
+    "rankingItem": {
       "type": "object",
       "required": ["rank", "ticker", "company", "rating", "score", "scoreBand", "scoreReason", "newCapitalStance", "riskLight", "triggerStatus"],
       "properties": {
@@ -46,6 +41,20 @@
         "deltaNote": { "type": "string" }
       },
       "additionalProperties": true
+    },
+    "dailyRecord": {
+      "type": "object",
+      "required": ["date", "reportId", "sourceReports", "headline", "oneLineConclusion", "recommendedAction", "marketRegime", "m7Ranking", "triggerRules", "dataQuality"],
+      "properties": {
+        "date": { "$ref": "#/definitions/date" },
+        "reportId": { "type": "string" },
+        "sourceReports": { "$ref": "#/definitions/sourceReports" },
+        "headline": { "type": "string" },
+        "oneLineConclusion": { "type": "string" },
+        "recommendedAction": { "type": "string" },
+        "m7Ranking": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "$ref": "#/definitions/rankingItem" } }
+      },
+      "additionalProperties": true
     }
   },
   "oneOf": [
@@ -54,39 +63,48 @@
       "type": "object",
       "required": ["schemaVersion", "project", "updatedAt", "latestDate", "latestReportId", "sourceReports", "summary", "riskLights", "ranking", "triggerRules", "dataQuality"],
       "properties": {
-        "schemaVersion": { "type": "string" },
         "project": { "const": "m7-dashboard" },
-        "updatedAt": { "type": "string" },
         "latestDate": { "$ref": "#/definitions/date" },
-        "latestReportId": { "type": "string" },
         "sourceReports": { "$ref": "#/definitions/sourceReports" },
-        "summary": {
-          "type": "object",
-          "required": ["headline", "oneLineConclusion", "recommendedAction", "directionality", "killSwitchTriggered", "nextActionMode"]
-        },
-        "riskLights": { "type": "object" },
-        "ranking": {
-          "type": "array",
-          "minItems": 7,
-          "maxItems": 7,
-          "items": { "$ref": "#/definitions/latestRankingItem" }
-        },
-        "triggerRules": { "type": "object" },
-        "dataQuality": { "type": "object" }
+        "ranking": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "$ref": "#/definitions/rankingItem" } }
       },
       "additionalProperties": true
     },
     {
-      "title": "history.json",
+      "title": "recent.json or monthly history file or legacy history.json",
       "type": "object",
       "required": ["schemaVersion", "project", "updatedAt", "records"],
       "properties": {
-        "schemaVersion": { "type": "string" },
         "project": { "const": "m7-dashboard" },
-        "updatedAt": { "type": "string" },
+        "month": { "$ref": "#/definitions/month" },
+        "records": { "type": "array", "items": { "$ref": "#/definitions/dailyRecord" } }
+      },
+      "additionalProperties": true
+    },
+    {
+      "title": "history-index.json",
+      "type": "object",
+      "required": ["schemaVersion", "project", "updatedAt", "records"],
+      "properties": {
+        "project": { "const": "m7-dashboard" },
         "records": {
           "type": "array",
-          "items": { "type": "object" }
+          "items": {
+            "type": "object",
+            "required": ["date", "reportId", "headline", "monthFile"],
+            "properties": {
+              "date": { "$ref": "#/definitions/date" },
+              "reportId": { "type": "string" },
+              "headline": { "type": "string" },
+              "recommendedAction": { "type": "string" },
+              "topTicker": { "type": "string" },
+              "topScore": { "type": ["number", "null"] },
+              "maxRedStreak": { "type": "integer", "minimum": 0 },
+              "monthFile": { "type": "string" },
+              "fullReport": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
         }
       },
       "additionalProperties": true
