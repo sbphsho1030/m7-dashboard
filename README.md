@@ -21,11 +21,36 @@ M7 Dashboard v1 到 GHP-17 收斂，不再用無限 GHP 編號推進。v1 完成
 3. Dashboard 讀取 latest/history。
 4. Archive 自動讀取 history。
 5. Debug 連結移到 Debug 區，不放在 Dashboard 頂部。
-6. 支援週/月 ranking Delta。
-7. 支援紅燈連續天數。
-8. Validator 與 GitHub Actions 防止壞資料進入流程。
+6. 支援 Action Score：0–100 行動參考分數、分數帶、分數原因。
+7. 支援週/月 ranking Delta。
+8. 支援紅燈連續天數。
+9. Validator 與 GitHub Actions 防止壞資料進入流程。
 
 後續只針對真實使用痛點維護，不追 GHP999。
+
+---
+
+## Score 定義
+
+Score 是「行動參考分數」，不是自動買賣指令。
+
+```text
+85–100：高優先觀察，可分批但不追價
+70–84：可觀察，等條件
+55–69：中性，不急動
+40–54：暫停新資金
+0–39：高風險，避免追價
+```
+
+每檔 ranking 必須包含：
+
+```json
+{
+  "score": 88,
+  "scoreBand": "高優先觀察",
+  "scoreReason": "Cloud / backlog thesis 較完整。"
+}
+```
 
 ---
 
@@ -43,6 +68,7 @@ M7 Dashboard v1 到 GHP-17 收斂，不再用無限 GHP 編號推進。v1 完成
 | GHP-15 | Done | Dashboard 頂部移除 raw data 連結，整理成正式 UI |
 | GHP-16 | Done | 支援週/月排名 Delta；資料不足時顯示 N/A |
 | GHP-17 | Done | 支援紅燈連續天數與 v1 完成頁 |
+| v1.1 | Done | 補回 Action Score，並納入 validator / schema / Dashboard |
 
 ---
 
@@ -105,7 +131,7 @@ npm run validate
 1. `generate-draft.js` 將每日 notes 轉成 `drafts/YYYY-MM-DD-latest.json`。
 2. `update-latest.js` 驗證 draft，覆蓋 `data/latest.json`，並 upsert 到 `data/history.json`。
 3. `update-latest.js` 會套用週/月 Delta 與紅燈連續天數計算。
-4. `validate-data.js` 檢查 latest/history 的結構與一致性。
+4. `validate-data.js` 檢查 latest/history 的結構與一致性，包括每檔 Action Score。
 5. GitHub Actions 在 push / PR 時再次跑 `npm run validate`。
 
 ---
@@ -121,6 +147,7 @@ npm run validate
 - `latest.json` 是否有 7 檔 M7 排名。
 - Rank 是否唯一且為 1–7。
 - Ticker 是否為 AAPL / MSFT / GOOGL / AMZN / NVDA / META / TSLA。
+- 每檔是否有 `score`、`scoreBand`、`scoreReason`。
 - Kill Switch、Data Quality、Trigger Rules 是否存在。
 - `history.json` 是否包含 latest 對應紀錄。
 - history 是否有重複 date + reportId。
@@ -129,11 +156,12 @@ npm run validate
 
 ## Dashboard 行為原則
 
-### Delta 變化率
+### Score + Delta
 
-正式版不只看今天數值，而是看變化：
+正式版不只看今天分數，也看變化：
 
 ```text
+GOOGL：Score 88，排名第 1
 排名：GOOGL 第 1，較上週 +2
 紅燈：NVDA 紅燈連續 4 天
 ```
@@ -165,6 +193,7 @@ Dashboard 應主動回答：
 v1 後不再追新 GHP 編號。只有出現真實使用問題才修，例如：
 
 - 每日 notes 欄位不夠。
+- Score 權重需要調整。
 - Delta 計算邏輯需要改成價格 / PE / score。
 - Archive 顯示不清楚。
 - Dashboard UI 誤導一般使用者。
