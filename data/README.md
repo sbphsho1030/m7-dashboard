@@ -1,11 +1,20 @@
-# M7 Dashboard Data Schema｜GHP-09
+# M7 Dashboard Data Schema｜GHP-09 → GHP-12
 
-GHP-09 將原本只存在於 HTML Dashboard 的每日判斷，整理成可被程式讀取的 JSON 資料層。
+GHP-09 將原本只存在於 HTML Dashboard 的每日判斷，整理成可被程式讀取的 JSON 資料層。GHP-10 讓首頁讀取 `latest.json`；GHP-11 / GHP-12 補上 updater、validator、schema 與 GitHub Actions。
 
 ## Files
 
-- `latest.json`：最新一日快照，供首頁或自動化流程快速讀取。
-- `history.json`：歷史紀錄集合，每日追加一筆 `records[]`。
+- `latest.json`：最新一日快照，供首頁與自動化流程快速讀取。
+- `history.json`：歷史紀錄集合，每日追加或 upsert 一筆 `records[]`。
+- `schema.json`：JSON schema 文件，描述 latest/history 的主要欄位。
+- `README.md`：本資料層說明。
+
+## Scripts
+
+- `npm run validate`：驗證 `data/latest.json` 與 `data/history.json`。
+- `node scripts/update-latest.js <new-latest.json>`：發布新的 latest snapshot，並自動更新 history。
+- `node scripts/update-latest.js <new-latest.json> --dry-run`：只檢查、不寫檔。
+- `node scripts/update-latest.js <new-latest.json> --no-history`：只更新 latest，不追加 history。
 
 ## Daily record fields
 
@@ -37,6 +46,23 @@ GHP-09 將原本只存在於 HTML Dashboard 的每日判斷，整理成可被程
 
 接入正式資料後，才填入數字，避免把示範欄位誤當真實訊號。
 
-## Next step
+## Validation rules
 
-GHP-10 可開始讓 `index.html` 讀取 `data/latest.json`，將靜態 HTML 逐步改成資料驅動 Dashboard。
+Validator 會檢查：
+
+- latest 必須有 `summary`、`riskLights`、`ranking`、`triggerRules`、`dataQuality`。
+- ranking 必須剛好 7 筆。
+- ticker 必須是 AAPL / MSFT / GOOGL / AMZN / NVDA / META / TSLA。
+- rank 必須唯一且為 1–7。
+- risk light 必須是 green / yellow / red / blue / purple。
+- history 不可有重複的 `date + reportId`。
+- history 必須包含 latest 對應的紀錄。
+
+## Publishing flow
+
+```bash
+node scripts/update-latest.js drafts/2026-06-26-latest.json
+npm run validate
+```
+
+首頁 `index.html` 會直接讀取 `data/latest.json`，因此每日更新資料後，GitHub Pages 固定網址會自動顯示最新 Dashboard。
