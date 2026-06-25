@@ -1,0 +1,46 @@
+{
+  "date": "2026-06-26",
+  "reportId": "M7-Daily-2026-06-26",
+  "headline": "0626 pre-run：美股收盤呈混合盤，Nasdaq 與大型科技承壓；先暫停追價，等待 08:00 正式版覆蓋。",
+  "oneLineConclusion": "M7 不是全面崩壞，但大型科技與 AI Capex 壓力升高，行動上應以防追價與等待確認為主。",
+  "recommendedAction": "暫停追價",
+  "directionality": "科技股承壓、半導體分化",
+  "killSwitchTriggered": false,
+  "nextActionMode": "等待正式版確認",
+  "marketDataRefreshed": false,
+  "dataStatus": "pre_run_web_refreshed_limited_quotes",
+  "dataQualityNote": "0626 pre-run 已使用最新可得公開新聞與收盤摘要，但未取得完整逐檔官方收盤價；08:00 正式日更會用同一 reportId 覆蓋。",
+  "fullReport": "reports/2026/06/26-full.html",
+  "riskLights": {
+    "techMegaCapPressure": { "light": "red", "label": "Tech Mega-cap Pressure", "summary": "大型科技股拖累 Nasdaq，短線不追價" },
+    "aiCapex": { "light": "yellow", "label": "AI Capex", "summary": "AI 基建支出仍需 ROI 證明" },
+    "semiMomentum": { "light": "green", "label": "Semi Momentum", "summary": "半導體情緒相對強，但不等於 M7 全體轉強" },
+    "marketBreadth": { "light": "yellow", "label": "Market Breadth", "summary": "Dow / Russell 較穩，Nasdaq 較弱，屬分化盤" }
+  },
+  "ranking": [
+    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A-", "score": 78, "scoreBand": "可觀察，等條件", "scoreReason": "仍是 M7 中相對適合觀察的 Cloud / AI 變現標的，但大型科技承壓下不宜追價。", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "未降級但不追價" },
+    { "rank": 2, "ticker": "NVDA", "company": "Nvidia", "rating": "B+", "score": 74, "scoreBand": "可觀察，等條件", "scoreReason": "半導體族群受 Micron / Qualcomm 氣氛支撐，但 NVDA 仍是 AI Capex 高 beta，不適合用防禦股邏輯追價。", "newCapitalStance": "小量觀察", "riskLight": "yellow", "triggerStatus": "高波動觀察" },
+    { "rank": 3, "ticker": "MSFT", "company": "Microsoft", "rating": "B+", "score": 72, "scoreBand": "可觀察，等條件", "scoreReason": "AI 軟體化與企業導入路徑仍完整，但當日大型科技承壓與 Azure / Capex 回收疑慮使新資金需放慢。", "newCapitalStance": "等回穩", "riskLight": "yellow", "triggerStatus": "技術面承壓" },
+    { "rank": 4, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 60, "scoreBand": "中性，不急動", "scoreReason": "AWS thesis 仍在，但技術面與 FCF / Capex 壓力使短線轉為保守。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "技術面檢查" },
+    { "rank": 5, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 58, "scoreBand": "中性，不急動", "scoreReason": "廣告 AI 效率仍有中期價值，但資料中心與 AI Capex 承諾增加，短線不急著加碼。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力" },
+    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 45, "scoreBand": "暫停新資金", "scoreReason": "Apple 當日大跌且價格調整引發成本與需求疑慮；短線需等待換機與 AI 產品證據。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "等待產品與需求證據" },
+    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 40, "scoreBand": "暫停新資金", "scoreReason": "估值仍高度依賴未來敘事；在科技股承壓時，TSLA 仍應列為高風險觀察而非加碼標的。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察" }
+  ],
+  "eventWatch": [
+    {
+      "date": "2026-06-26",
+      "ticker": "M7",
+      "event": "Nasdaq 連續承壓與大型科技拖累",
+      "rules": [
+        "若 08:00 正式版確認 Nasdaq / QQQ 仍低於關鍵均線，維持暫停追價。",
+        "若半導體強但 M7 本體弱，視為分化，不直接解讀為 M7 全面轉強。",
+        "若 AMZN / AAPL / TSLA 紅燈延續到 3 天以上，提高系統性風險檢查。"
+      ]
+    }
+  ],
+  "triggerRules": {
+    "downgrade": ["Nasdaq 續弱且 M7 多數同步下跌", "AI Capex news 轉為負面", "AAPL / AMZN 技術面進一步破位"],
+    "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 連續跌破關鍵均線", "紅燈個股增加到 4 檔以上"],
+    "panicSellBan": "0626 pre-run 不得因單日大型科技下跌直接恐慌賣出；需等待正式版與後續確認。"
+  }
+}
