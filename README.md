@@ -12,19 +12,17 @@
 
 ---
 
-## v1 完成定義
+## v1.2 完成定義
 
-M7 Dashboard v1 到 GHP-17 收斂，不再用無限 GHP 編號推進。v1 完成範圍是：
+M7 Dashboard v1 到 GHP-17 收斂，不再用無限 GHP 編號推進。v1.2 補上長期資料分層，避免 `history.json` 無限制變大。
 
-1. notes input 產生 latest draft。
-2. draft 發布到 `data/latest.json` 與 `data/history.json`。
-3. Dashboard 讀取 latest/history。
-4. Archive 自動讀取 history。
-5. Debug 連結移到 Debug 區，不放在 Dashboard 頂部。
-6. 支援 Action Score：0–100 行動參考分數、分數帶、分數原因。
-7. 支援週/月 ranking Delta。
-8. 支援紅燈連續天數。
-9. Validator 與 GitHub Actions 防止壞資料進入流程。
+v1.2 資料分層：
+
+1. `data/latest.json`：只放最新快照，會每日覆蓋。
+2. `data/recent.json`：只保留最近約 90 天，用於 Dashboard Delta 與紅燈連續天數。
+3. `data/history-index.json`：Archive 用的輕量索引，只放日期、headline、link、topScore 等摘要。
+4. `data/history/YYYY-MM.json`：月份完整 daily record。
+5. `data/history.json`：legacy compatibility file，不再作為主要歷史資料庫，也不再無限制累積。
 
 後續只針對真實使用痛點維護，不追 GHP999。
 
@@ -64,11 +62,12 @@ Score 是「行動參考分數」，不是自動買賣指令。
 | GHP-11 | Done | 新增 `scripts/update-latest.js`、`scripts/validate-data.js`、共用資料檢查函式 |
 | GHP-12 | Done | 新增 `data/schema.json`、GitHub Actions data validation workflow |
 | GHP-13 | Done | 新增 `scripts/generate-draft.js` 與 notes input 範例 |
-| GHP-14 | Done | `archive.html` 改為讀取 `data/history.json` 自動產生列表 |
+| GHP-14 | Done | `archive.html` 改為讀取歷史資料自動產生列表 |
 | GHP-15 | Done | Dashboard 頂部移除 raw data 連結，整理成正式 UI |
 | GHP-16 | Done | 支援週/月排名 Delta；資料不足時顯示 N/A |
 | GHP-17 | Done | 支援紅燈連續天數與 v1 完成頁 |
 | v1.1 | Done | 補回 Action Score，並納入 validator / schema / Dashboard |
+| v1.2 | Done | 拆分 history：latest / recent / index / monthly，避免 history.json 無限長大 |
 
 ---
 
@@ -82,9 +81,13 @@ m7-dashboard/
 ├── package.json
 ├── data/
 │   ├── latest.json
+│   ├── recent.json
+│   ├── history-index.json
 │   ├── history.json
 │   ├── schema.json
-│   └── README.md
+│   ├── README.md
+│   └── history/
+│       └── 2026-06.json
 ├── inputs/
 │   └── 2026-06-26-notes.example.json
 ├── scripts/
@@ -129,10 +132,11 @@ npm run validate
 流程說明：
 
 1. `generate-draft.js` 將每日 notes 轉成 `drafts/YYYY-MM-DD-latest.json`。
-2. `update-latest.js` 驗證 draft，覆蓋 `data/latest.json`，並 upsert 到 `data/history.json`。
-3. `update-latest.js` 會套用週/月 Delta 與紅燈連續天數計算。
-4. `validate-data.js` 檢查 latest/history 的結構與一致性，包括每檔 Action Score。
-5. GitHub Actions 在 push / PR 時再次跑 `npm run validate`。
+2. `update-latest.js` 驗證 draft，覆蓋 `data/latest.json`。
+3. `update-latest.js` 更新 `data/recent.json`、`data/history-index.json`、`data/history/YYYY-MM.json`。
+4. `update-latest.js` 會套用週/月 Delta 與紅燈連續天數計算。
+5. `validate-data.js` 檢查 latest/recent/index/monthly/legacy history 的結構與一致性。
+6. GitHub Actions 在 push / PR 時再次跑 `npm run validate`。
 
 ---
 
@@ -149,48 +153,40 @@ npm run validate
 - Ticker 是否為 AAPL / MSFT / GOOGL / AMZN / NVDA / META / TSLA。
 - 每檔是否有 `score`、`scoreBand`、`scoreReason`。
 - Kill Switch、Data Quality、Trigger Rules 是否存在。
-- `history.json` 是否包含 latest 對應紀錄。
+- `recent.json` 是否包含 latest 對應紀錄。
+- `history-index.json` 是否包含 latest 對應索引。
+- `data/history/YYYY-MM.json` 是否包含 latest 對應月份紀錄。
 - history 是否有重複 date + reportId。
 
 ---
 
 ## Dashboard 行為原則
 
-### Score + Delta
-
-正式版不只看今天分數，也看變化：
+Dashboard 只讀：
 
 ```text
-GOOGL：Score 88，排名第 1
-排名：GOOGL 第 1，較上週 +2
-紅燈：NVDA 紅燈連續 4 天
+latest.json + recent.json
 ```
 
-若 history 還沒有足夠基準資料，Dashboard 會顯示 N/A，不會假裝已有週/月 Delta。
-
-### Kill Switch / 不動作理由
-
-Dashboard 應主動回答：
+Archive 只讀：
 
 ```text
-今日是否需要交易？
-今天為什麼不需要恐慌賣出？
-今天為什麼不應該追價？
+history-index.json
 ```
 
-### 同向性判斷
+月份完整紀錄在需要時才讀：
 
 ```text
-分化：輪動，不是全面撤退
-半同向：降低新資金速度
-全同向：可能是系統性撤資，停止加碼
+data/history/YYYY-MM.json
 ```
+
+這樣一年後不需要每次載入整包歷史資料，也避免單一 `history.json` 變成大型檔案。
 
 ---
 
 ## 後續維護原則
 
-v1 後不再追新 GHP 編號。只有出現真實使用問題才修，例如：
+v1.2 後不再追新 GHP 編號。只有出現真實使用問題才修，例如：
 
 - 每日 notes 欄位不夠。
 - Score 權重需要調整。
