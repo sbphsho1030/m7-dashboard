@@ -4,12 +4,14 @@ on:
   push:
     paths:
       - 'data/**'
+      - 'inputs/**'
       - 'scripts/**'
       - 'package.json'
       - '.github/workflows/validate-data.yml'
   pull_request:
     paths:
       - 'data/**'
+      - 'inputs/**'
       - 'scripts/**'
       - 'package.json'
       - '.github/workflows/validate-data.yml'
