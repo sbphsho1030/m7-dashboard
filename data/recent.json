@@ -2,17 +2,53 @@
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
   "description": "Rolling recent cache for Dashboard delta and red-streak calculations. Keep about 90 days.",
-  "updatedAt": "2026-06-26T01:30:00+08:00",
+  "updatedAt": "2026-06-26T07:18:00+08:00",
   "retentionDays": 90,
   "records": [
     {
+      "date": "2026-06-26",
+      "reportId": "M7-Daily-2026-06-26",
+      "sourceReports": { "dashboard": "index.html", "fullReport": "reports/2026/06/26-full.html", "archive": "archive.html" },
+      "headline": "0626 pre-run：美股收盤呈混合盤，Nasdaq 與大型科技承壓；先暫停追價，等待 08:00 正式版覆蓋。",
+      "oneLineConclusion": "M7 不是全面崩壞，但大型科技與 AI Capex 壓力升高，行動上應以防追價與等待確認為主。",
+      "recommendedAction": "暫停追價",
+      "marketRegime": {
+        "directionality": { "status": "科技股承壓、半導體分化", "label": "分化偏弱", "interpretation": "Dow / Russell 相對穩，但 Nasdaq 與大型科技承壓，先視為分化偏弱盤。" },
+        "killSwitch": { "triggered": false, "label": "未觸發", "reason": "目前屬科技股壓力與分化盤，尚未構成全面恐慌賣出條件。" },
+        "riskLights": [
+          { "key": "techMegaCapPressure", "light": "red", "label": "Tech Mega-cap Pressure", "summary": "大型科技股拖累 Nasdaq" },
+          { "key": "aiCapex", "light": "yellow", "label": "AI Capex", "summary": "AI 基建支出仍需 ROI 證明" },
+          { "key": "semiMomentum", "light": "green", "label": "Semi Momentum", "summary": "半導體情緒相對強" },
+          { "key": "marketBreadth", "light": "yellow", "label": "Market Breadth", "summary": "市場分化" }
+        ]
+      },
+      "m7Ranking": [
+        { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A-", "score": 78, "scoreBand": "可觀察，等條件", "scoreReason": "相對適合觀察，但大型科技承壓下不宜追價。", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "未降級但不追價", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 0 },
+        { "rank": 2, "ticker": "NVDA", "company": "Nvidia", "rating": "B+", "score": 74, "scoreBand": "可觀察，等條件", "scoreReason": "半導體情緒支撐，但仍是 AI Capex 高 beta。", "newCapitalStance": "小量觀察", "riskLight": "yellow", "triggerStatus": "高波動觀察", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 0 },
+        { "rank": 3, "ticker": "MSFT", "company": "Microsoft", "rating": "B+", "score": 72, "scoreBand": "可觀察，等條件", "scoreReason": "AI 軟體化路徑完整，但短線技術與 Capex 壓力升高。", "newCapitalStance": "等回穩", "riskLight": "yellow", "triggerStatus": "技術面承壓", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 0 },
+        { "rank": 4, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 60, "scoreBand": "中性，不急動", "scoreReason": "AWS thesis 仍在，但技術面與 FCF / Capex 壓力使短線保守。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "技術面檢查", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 1 },
+        { "rank": 5, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 58, "scoreBand": "中性，不急動", "scoreReason": "AI Ads 中期價值仍在，但 Capex 承諾增加。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 0 },
+        { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 45, "scoreBand": "暫停新資金", "scoreReason": "大跌與價格調整引發成本與需求疑慮。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "等待產品與需求證據", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 1 },
+        { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 40, "scoreBand": "暫停新資金", "scoreReason": "估值高度依賴未來敘事，在科技股承壓時仍屬高風險觀察。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "weeklyDelta": null, "monthlyDelta": null, "redStreakDays": 2 }
+      ],
+      "eventWatch": [
+        { "date": "2026-06-26", "ticker": "M7", "event": "Nasdaq 承壓與大型科技拖累", "rules": ["08:00 正式版確認後覆蓋", "若紅燈個股增加到 4 檔以上，暫停新資金"] }
+      ],
+      "triggerRules": {
+        "downgrade": ["Nasdaq 續弱且 M7 多數同步下跌", "AI Capex news 轉為負面", "AAPL / AMZN 技術面進一步破位"],
+        "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 連續跌破關鍵均線", "紅燈個股增加到 4 檔以上"],
+        "panicSellBan": "0626 pre-run 不得因單日大型科技下跌直接恐慌賣出；需等待正式版與後續確認。"
+      },
+      "dataQuality": {
+        "marketDataRefreshed": false,
+        "status": "pre_run_web_refreshed_limited_quotes",
+        "note": "0626 pre-run 已使用最新可得公開新聞與收盤摘要，但未取得完整逐檔官方收盤價；08:00 正式日更會用同一 reportId 覆蓋。"
+      }
+    },
+    {
       "date": "2026-06-25",
       "reportId": "M7-Test-GHP-08",
-      "sourceReports": {
-        "dashboard": "index.html",
-        "fullReport": "reports/2026/06/25-full.html",
-        "archive": "archive.html"
-      },
+      "sourceReports": { "dashboard": "index.html", "fullReport": "reports/2026/06/25-full.html", "archive": "archive.html" },
       "headline": "沒有觸發降級或恐慌賣出條件；允許對 GOOGL / MSFT 做條件式分批觀察，但不追價。",
       "oneLineConclusion": "M7 不是全面轉弱，而是市場正在要求 AI Capex 提供更明確的現金流回收證據。",
       "recommendedAction": "不急動",
@@ -40,11 +76,7 @@
         "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 破位"],
         "panicSellBan": "單日新聞或 index event 不得單獨觸發賣出。"
       },
-      "dataQuality": {
-        "marketDataRefreshed": false,
-        "status": "seed_from_latest_v1_1",
-        "note": "v1.2 recent cache seed."
-      }
+      "dataQuality": { "marketDataRefreshed": false, "status": "seed_from_latest_v1_1", "note": "v1.2 recent cache seed." }
     }
   ]
 }
