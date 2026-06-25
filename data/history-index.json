@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "M7-v1.2",
+  "project": "m7-dashboard",
+  "description": "Compact index for archive navigation. Does not contain full daily records.",
+  "updatedAt": "2026-06-26T01:30:00+08:00",
+  "records": [
+    {
+      "date": "2026-06-25",
+      "reportId": "M7-Test-GHP-08",
+      "headline": "沒有觸發降級或恐慌賣出條件；允許對 GOOGL / MSFT 做條件式分批觀察，但不追價。",
+      "recommendedAction": "不急動",
+      "topTicker": "GOOGL",
+      "topScore": 88,
+      "maxRedStreak": 0,
+      "monthFile": "data/history/2026-06.json",
+      "fullReport": "reports/2026/06/25-full.html"
+    }
+  ]
+}
