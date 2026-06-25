@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "GHP-09.1",
+  "project": "m7-dashboard",
+  "updatedAt": "2026-06-26T00:00:00+08:00",
+  "latestDate": "2026-06-25",
+  "latestReportId": "M7-Test-GHP-08",
+  "sourceReports": {
+    "dashboard": "index.html",
+    "fullReport": "reports/2026/06/25-full.html",
+    "archive": "archive.html"
+  },
+  "summary": {
+    "headline": "沒有觸發降級或恐慌賣出條件；允許對 GOOGL / MSFT 做條件式分批觀察，但不追價。",
+    "oneLineConclusion": "M7 不是全面轉弱，而是市場正在要求 AI Capex 提供更明確的現金流回收證據。",
+    "recommendedAction": "不急動",
+    "directionality": "中性",
+    "killSwitchTriggered": false,
+    "nextActionMode": "條件式"
+  },
+  "riskLights": {
+    "aiCapex": {
+      "light": "yellow",
+      "label": "AI Capex",
+      "summary": "ROI 壓力測試中"
+    },
+    "cloudGrowth": {
+      "light": "green",
+      "label": "Cloud Growth",
+      "summary": "仍有支撐"
+    },
+    "semiVolatility": {
+      "light": "red",
+      "label": "Semi Volatility",
+      "summary": "高 beta 波動"
+    }
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "ticker": "GOOGL",
+      "company": "Alphabet",
+      "rating": "A",
+      "newCapitalStance": "可分批",
+      "riskLight": "green",
+      "triggerStatus": "未降級",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "正式週/月資料尚未接入。"
+    },
+    {
+      "rank": 2,
+      "ticker": "MSFT",
+      "company": "Microsoft",
+      "rating": "A-",
+      "newCapitalStance": "等回檔",
+      "riskLight": "yellow",
+      "triggerStatus": "觀察",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "估值壓縮與週/月變化待補。"
+    },
+    {
+      "rank": 3,
+      "ticker": "AMZN",
+      "company": "Amazon",
+      "rating": "B+",
+      "newCapitalStance": "少量",
+      "riskLight": "yellow",
+      "triggerStatus": "FCF 檢查",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "等待每日資料流程寫入。"
+    },
+    {
+      "rank": 4,
+      "ticker": "META",
+      "company": "Meta Platforms",
+      "rating": "B",
+      "newCapitalStance": "暫停",
+      "riskLight": "yellow",
+      "triggerStatus": "Capex 壓力",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "需補 Capex 與估值壓縮變化。"
+    },
+    {
+      "rank": 5,
+      "ticker": "NVDA",
+      "company": "Nvidia",
+      "rating": "B",
+      "newCapitalStance": "高風險",
+      "riskLight": "red",
+      "triggerStatus": "非防禦股",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "需追蹤紅燈連續 3–5 天。"
+    },
+    {
+      "rank": 6,
+      "ticker": "AAPL",
+      "company": "Apple",
+      "rating": "C",
+      "newCapitalStance": "等待催化劑",
+      "riskLight": "yellow",
+      "triggerStatus": "等待產品證據",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "需 AI 產品與換機週期證據。"
+    },
+    {
+      "rank": 7,
+      "ticker": "TSLA",
+      "company": "Tesla",
+      "rating": "C-",
+      "newCapitalStance": "不追價",
+      "riskLight": "red",
+      "triggerStatus": "高風險觀察",
+      "weeklyDelta": null,
+      "monthlyDelta": null,
+      "deltaNote": "需交車、毛利率、自駕或 Robotaxi 證據。"
+    }
+  ],
+  "eventWatch": [
+    {
+      "date": "2026-06-29",
+      "ticker": "GOOGL",
+      "event": "Dow 納入事件觀察",
+      "rules": [
+        "若僅是 sell the news 且 Cloud / backlog thesis 未變，允許條件式分批。",
+        "若同時 Nasdaq / M7 系統性走弱，轉黃燈。",
+        "若有基本面負面新聞且跌幅大於同業，暫停加碼。"
+      ]
+    }
+  ],
+  "triggerRules": {
+    "downgrade": [
+      "Capex 上修",
+      "Cloud growth 放緩",
+      "FCF margin 下滑"
+    ],
+    "stopAdding": [
+      "M7 同向轉紅",
+      "QQQ / Nasdaq 破位"
+    ],
+    "panicSellBan": "單日新聞或 index event 不得單獨觸發賣出。"
+  },
+  "dataQuality": {
+    "marketDataRefreshed": false,
+    "status": "structured_from_GHP-08_existing_report",
+    "note": "此 latest.json 是 GHP-09 的結構化快照，尚未重新抓取 2026/06/26 最新市場資料。"
+  }
+}
