@@ -5,142 +5,35 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>M7 Decision Control Dashboard｜v1</title>
 <style>
-:root{--bg:#0b1020;--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c;--red:#ff6b6b;--purple:#c79bff}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#20366f 0,#0b1020 38%,#070a13 100%);line-height:1.58}a{color:inherit;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:24px 18px 56px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.24)}.hero{padding:26px;background:linear-gradient(135deg,rgba(117,167,255,.19),rgba(53,208,127,.10)),rgba(17,24,44,.92)}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.08em;text-transform:uppercase}h1{font-size:clamp(28px,4.5vw,48px);line-height:1.08;margin:8px 0}h2{margin:0 0 12px}.sub,.muted{color:var(--muted)}.one{margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(242,201,76,.13);border:1px solid rgba(242,201,76,.32);font-weight:900}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:900}.primary{background:rgba(117,167,255,.22);border-color:rgba(117,167,255,.5)}.section{margin-top:16px}.grid{display:grid;gap:14px}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr 1fr}.card{padding:17px}.metric{font-size:30px;font-weight:950;line-height:1.15}.pill{display:inline-flex;gap:8px;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:13px;font-weight:900;white-space:nowrap}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.yellow{background:var(--yellow)}.red{background:var(--red)}.blue{background:var(--blue)}.purple{background:var(--purple)}.chg{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid var(--line);margin-top:9px}.up{color:var(--green);font-weight:950}.down{color:var(--red);font-weight:950}.flat{color:var(--yellow);font-weight:950}.safe{border-color:rgba(53,208,127,.35);background:rgba(53,208,127,.08)}.warn{border-color:rgba(242,201,76,.35);background:rgba(242,201,76,.08)}.danger{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.08)}table{width:100%;border-collapse:collapse}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:rgba(117,167,255,.13);font-size:13px}.ticker{font-weight:950;color:var(--blue)}.rank{font-weight:950}.delta{font-size:12px;color:var(--muted);display:block}.pos{color:#9effc8}.neg{color:#ffb4b4}.neu{color:#ffe08a}.debug{font-size:13px;color:var(--muted)}.debug a{text-decoration:underline;text-underline-offset:3px}.footer{margin-top:20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}@media(max-width:940px){.grid4,.grid3,.grid2{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}td:before{content:attr(data-label);display:block;color:var(--muted);font-size:12px}}
+:root{--bg:#0b1020;--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c;--red:#ff6b6b;--purple:#c79bff}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#20366f 0,#0b1020 38%,#070a13 100%);line-height:1.58}a{color:inherit;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:24px 18px 56px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.24)}.hero{padding:26px;background:linear-gradient(135deg,rgba(117,167,255,.19),rgba(53,208,127,.10)),rgba(17,24,44,.92)}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.08em;text-transform:uppercase}h1{font-size:clamp(28px,4.5vw,48px);line-height:1.08;margin:8px 0}h2{margin:0 0 12px}.sub,.muted{color:var(--muted)}.one{margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(242,201,76,.13);border:1px solid rgba(242,201,76,.32);font-weight:900}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:900}.primary{background:rgba(117,167,255,.22);border-color:rgba(117,167,255,.5)}.section{margin-top:16px}.grid{display:grid;gap:14px}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr 1fr}.card{padding:17px}.metric{font-size:30px;font-weight:950;line-height:1.15}.pill{display:inline-flex;gap:8px;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:13px;font-weight:900;white-space:nowrap}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.yellow{background:var(--yellow)}.red{background:var(--red)}.blue{background:var(--blue)}.purple{background:var(--purple)}.chg{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid var(--line);margin-top:9px}.up{color:var(--green);font-weight:950}.down{color:var(--red);font-weight:950}.flat{color:var(--yellow);font-weight:950}.safe{border-color:rgba(53,208,127,.35);background:rgba(53,208,127,.08)}.warn{border-color:rgba(242,201,76,.35);background:rgba(242,201,76,.08)}.danger{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.08)}table{width:100%;border-collapse:collapse}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:rgba(117,167,255,.13);font-size:13px}.ticker{font-weight:950;color:var(--blue)}.rank{font-weight:950}.debug{font-size:13px;color:var(--muted)}.debug a{text-decoration:underline;text-underline-offset:3px}.footer{margin-top:20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}@media(max-width:940px){.grid4,.grid3,.grid2{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}td:before{content:attr(data-label);display:block;color:var(--muted);font-size:12px}}
 </style>
 </head>
 <body>
 <main class="wrap">
-  <section class="hero">
-    <div class="top">
-      <div>
-        <div class="eyebrow" id="reportLabel">M7 Dashboard v1｜Decision Control System</div>
-        <h1>Magnificent 7 行為控制儀表板</h1>
-        <div class="sub" id="subline">載入資料中...</div>
-      </div>
-      <div class="actions">
-        <a class="btn primary" id="fullReportLink" href="reports/2026/06/25-full.html">完整版分析</a>
-        <a class="btn" href="archive.html">Archive</a>
-      </div>
-    </div>
-    <div class="one" id="headline">今日結論載入中...</div>
-  </section>
-
-  <section class="section grid grid4">
-    <div class="card"><div class="muted">今日動作</div><div class="metric" id="recommendedAction">-</div><span class="pill"><span class="dot green"></span><span id="killSwitchText">Kill Switch</span></span></div>
-    <div class="card"><div class="muted">同向性</div><div class="metric" id="directionality">-</div><span class="pill"><span class="dot yellow"></span>不是看單一天新聞</span></div>
-    <div class="card"><div class="muted">最大紅燈連續</div><div class="metric" id="maxRedStreak">-</div><span class="pill"><span class="dot red"></span>GHP-17</span></div>
-    <div class="card"><div class="muted">下一次拔劍</div><div class="metric" id="nextActionMode">-</div><span class="pill"><span class="dot blue"></span>只在觸發時動作</span></div>
-  </section>
-
-  <section class="section grid grid3">
-    <div class="card safe"><h2>今日不動作理由</h2><div id="noActionReasons"></div></div>
-    <div class="card warn"><h2>週/月 Delta</h2><div id="deltaNotes"></div></div>
-    <div class="card danger"><h2>觸發條件</h2><div id="triggerRules"></div></div>
-  </section>
-
-  <section class="section grid grid2">
-    <div class="card"><h2>共通風險燈號</h2><div id="riskLights"></div></div>
-    <div class="card"><h2>事件觀察</h2><div id="eventWatch"></div></div>
-  </section>
-
-  <section class="section card">
-    <h2>今日動作表</h2>
-    <table>
-      <thead><tr><th>Rank</th><th>Ticker</th><th>評等</th><th>新資金</th><th>週排名</th><th>月排名</th><th>紅燈連續</th><th>觸發狀態</th></tr></thead>
-      <tbody id="rankingBody"></tbody>
-    </table>
-  </section>
-
-  <section class="section grid grid2">
-    <div class="card"><h2>資料品質</h2><div id="dataQuality"></div></div>
-    <div class="card"><h2>資料來源 / Debug</h2><div class="debug" id="sourceBox"></div></div>
-  </section>
-
+  <section class="hero"><div class="top"><div><div class="eyebrow" id="reportLabel">M7 Dashboard v1｜Decision Control System</div><h1>Magnificent 7 行為控制儀表板</h1><div class="sub" id="subline">載入資料中...</div></div><div class="actions"><a class="btn primary" id="fullReportLink" href="reports/2026/06/25-full.html">完整版分析</a><a class="btn" href="archive.html">Archive</a></div></div><div class="one" id="headline">今日結論載入中...</div></section>
+  <section class="section grid grid4"><div class="card"><div class="muted">今日動作</div><div class="metric" id="recommendedAction">-</div><span class="pill"><span class="dot green"></span><span id="killSwitchText">Kill Switch</span></span></div><div class="card"><div class="muted">同向性</div><div class="metric" id="directionality">-</div><span class="pill"><span class="dot yellow"></span>不是看單一天新聞</span></div><div class="card"><div class="muted">最大紅燈連續</div><div class="metric" id="maxRedStreak">-</div><span class="pill"><span class="dot red"></span>GHP-17</span></div><div class="card"><div class="muted">下一次拔劍</div><div class="metric" id="nextActionMode">-</div><span class="pill"><span class="dot blue"></span>只在觸發時動作</span></div></section>
+  <section class="section grid grid3"><div class="card safe"><h2>今日不動作理由</h2><div id="noActionReasons"></div></div><div class="card warn"><h2>週/月 Delta</h2><div id="deltaNotes"></div></div><div class="card danger"><h2>觸發條件</h2><div id="triggerRules"></div></div></section>
+  <section class="section grid grid2"><div class="card"><h2>共通風險燈號</h2><div id="riskLights"></div></div><div class="card"><h2>事件觀察</h2><div id="eventWatch"></div></div></section>
+  <section class="section card"><h2>今日動作表</h2><table><thead><tr><th>Rank</th><th>Ticker</th><th>評等</th><th>新資金</th><th>週排名</th><th>月排名</th><th>紅燈連續</th><th>觸發狀態</th></tr></thead><tbody id="rankingBody"></tbody></table></section>
+  <section class="section grid grid2"><div class="card"><h2>資料品質</h2><div id="dataQuality"></div></div><div class="card"><h2>資料來源 / Debug</h2><div class="debug" id="sourceBox"></div></div></section>
   <div class="footer">M7 Dashboard v1. Research notes only, not personalized investment advice.</div>
 </main>
 <script>
-const M7=['AAPL','MSFT','GOOGL','AMZN','NVDA','META','TSLA'];
 const $=id=>document.getElementById(id);
 function setText(id,value){$(id).textContent=value??'-'}
-function dot(light){const span=document.createElement('span');span.className='dot '+(light||'blue');return span}
 function chg(icon,cls,title,desc){const box=document.createElement('div');box.className='chg';const s=document.createElement('span');s.className=cls;s.textContent=icon;const d=document.createElement('div');const b=document.createElement('b');b.textContent=title;const m=document.createElement('div');m.className='muted';m.textContent=desc||'';d.append(b,m);box.append(s,d);return box}
 function format(value,fallback='N/A'){return value===null||value===undefined||value===''?fallback:String(value)}
-function dayMs(){return 24*60*60*1000}
-function dateAdd(date,days){const d=new Date(date+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10)}
+function dateAdd(date,days){const d=new Date(`${date}T00:00:00Z`);if(Number.isNaN(d.getTime()))return null;d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10)}
 function recordDate(r){return r?.date||r?.latestDate}
 function rankingOf(r){return r?.m7Ranking||r?.ranking||[]}
-function nearest(records,target,exclude){return records.filter(r=>recordDate(r)&&recordDate(r)!==exclude&&recordDate(r)<=target).sort((a,b)=>String(recordDate(b)).localeCompare(String(recordDate(a))))[0]||null}
+function nearest(records,target,exclude){if(!target)return null;return records.filter(r=>recordDate(r)&&recordDate(r)!==exclude&&recordDate(r)<=target).sort((a,b)=>String(recordDate(b)).localeCompare(String(recordDate(a))))[0]||null}
 function rankMap(record){const map=new Map();rankingOf(record).forEach(x=>{if(x?.ticker&&Number.isInteger(x.rank))map.set(x.ticker,x.rank)});return map}
 function redStreak(records,latestDate,ticker){let streak=0;const sorted=records.filter(r=>recordDate(r)&&recordDate(r)<=latestDate).sort((a,b)=>String(recordDate(b)).localeCompare(String(recordDate(a))));for(const r of sorted){const item=rankingOf(r).find(x=>x.ticker===ticker);if(!item||item.riskLight!=='red')break;streak++}return streak}
-function computeAnalytics(latest,history){
-  const records=Array.isArray(history?.records)?history.records:[];
-  const latestRecord={date:latest.latestDate,reportId:latest.latestReportId,ranking:latest.ranking};
-  const all=[latestRecord,...records.filter(r=>`${recordDate(r)}__${r.reportId}`!==`${latest.latestDate}__${latest.latestReportId}`)];
-  const weekRecord=nearest(records,dateAdd(latest.latestDate,-7),latest.latestDate);
-  const monthRecord=nearest(records,dateAdd(latest.latestDate,-30),latest.latestDate);
-  const wr=weekRecord?rankMap(weekRecord):null;const mr=monthRecord?rankMap(monthRecord):null;
-  latest.ranking=(latest.ranking||[]).map(item=>{
-    const weekBase=wr?.get(item.ticker);const monthBase=mr?.get(item.ticker);
-    const rankChangeWeek=Number.isInteger(weekBase)?weekBase-item.rank:item.rankChangeWeek??null;
-    const rankChangeMonth=Number.isInteger(monthBase)?monthBase-item.rank:item.rankChangeMonth??null;
-    const streak=item.redStreakDays??redStreak(all,latest.latestDate,item.ticker);
-    return {...item,rankChangeWeek,rankChangeMonth,weeklyDelta:item.weeklyDelta??(rankChangeWeek===null?null:(rankChangeWeek>0?`+${rankChangeWeek}`:`${rankChangeWeek}`)),monthlyDelta:item.monthlyDelta??(rankChangeMonth===null?null:(rankChangeMonth>0?`+${rankChangeMonth}`:`${rankChangeMonth}`)),redStreakDays:streak,deltaNote:item.deltaNote||'Delta 已由 history 計算'};
-  });
-  latest.analytics=latest.analytics||{};
-  latest.analytics.maxRedStreak=Math.max(0,...latest.ranking.map(x=>x.redStreakDays||0));
-  latest.analytics.notes=latest.analytics.notes||[weekRecord?'週 Delta 已有基準資料':'週 Delta 尚無 7 日前基準資料',monthRecord?'月 Delta 已有基準資料':'月 Delta 尚無 30 日前基準資料'];
-  return latest;
-}
+function computeAnalytics(latest,history){const records=Array.isArray(history?.records)?history.records:[];latest.ranking=latest.ranking||[];const latestRecord={date:latest.latestDate,reportId:latest.latestReportId,ranking:latest.ranking};const all=[latestRecord,...records.filter(r=>`${recordDate(r)}__${r.reportId}`!==`${latest.latestDate}__${latest.latestReportId}`)];const weekRecord=nearest(records,dateAdd(latest.latestDate,-7),latest.latestDate);const monthRecord=nearest(records,dateAdd(latest.latestDate,-30),latest.latestDate);const wr=weekRecord?rankMap(weekRecord):null;const mr=monthRecord?rankMap(monthRecord):null;latest.ranking=latest.ranking.map(item=>{const weekBase=wr?.get(item.ticker);const monthBase=mr?.get(item.ticker);const rankChangeWeek=Number.isInteger(weekBase)?weekBase-item.rank:item.rankChangeWeek??null;const rankChangeMonth=Number.isInteger(monthBase)?monthBase-item.rank:item.rankChangeMonth??null;const streak=item.redStreakDays??redStreak(all,latest.latestDate,item.ticker);return {...item,rankChangeWeek,rankChangeMonth,weeklyDelta:item.weeklyDelta??(rankChangeWeek===null?null:(rankChangeWeek>0?`+${rankChangeWeek}`:`${rankChangeWeek}`)),monthlyDelta:item.monthlyDelta??(rankChangeMonth===null?null:(rankChangeMonth>0?`+${rankChangeMonth}`:`${rankChangeMonth}`)),redStreakDays:streak,deltaNote:item.deltaNote||'Delta 已由 history 計算'}});latest.analytics=latest.analytics||{};latest.analytics.maxRedStreak=Math.max(0,...latest.ranking.map(x=>x.redStreakDays||0));latest.analytics.notes=latest.analytics.notes||[weekRecord?'週 Delta 已有基準資料':'週 Delta 尚無 7 日前基準資料',monthRecord?'月 Delta 已有基準資料':'月 Delta 尚無 30 日前基準資料'];return latest}
 function addList(container,items,icon,cls){items.forEach(x=>container.appendChild(chg(icon,cls,x,'觸發時才動作，不用每日主觀猜測。')))}
-function render(data,history,loadedFromJson){
-  const latest=computeAnalytics(data,history);
-  setText('reportLabel',`M7 Dashboard v1｜${latest.latestReportId||'latest'}`);
-  setText('subline',`${latest.latestDate||'-'}｜${loadedFromJson?'已讀取 data/latest.json':'使用 fallback'}｜首頁已隱藏 raw data 連結，只保留 Debug 區。`);
-  setText('headline',`今日結論：${latest.summary?.headline||latest.summary?.oneLineConclusion||'-'}`);
-  setText('recommendedAction',latest.summary?.recommendedAction);
-  setText('directionality',latest.summary?.directionality);
-  setText('nextActionMode',latest.summary?.nextActionMode);
-  setText('killSwitchText',latest.summary?.killSwitchTriggered?'Kill Switch 已觸發':'Kill Switch 未觸發');
-  setText('maxRedStreak',`${latest.analytics?.maxRedStreak||0} 天`);
-  if(latest.sourceReports?.fullReport)$('fullReportLink').href=latest.sourceReports.fullReport;
-
-  const noAction=$('noActionReasons');noAction.textContent='';
-  noAction.appendChild(chg('✓','up','Kill Switch 狀態',latest.summary?.killSwitchTriggered?'已觸發，停止加碼並檢查風險。':'未觸發，避免因單日新聞做情緒性交易。'));
-  noAction.appendChild(chg('✓','up','同向性判斷',`目前：${latest.summary?.directionality||'-'}。`));
-  noAction.appendChild(chg('✓','up','行為模式',`下一步：${latest.summary?.nextActionMode||'等待觸發'}。`));
-
-  const delta=$('deltaNotes');delta.textContent='';
-  (latest.analytics?.notes||[]).forEach(note=>delta.appendChild(chg('●','flat','基準資料',note)));
-  latest.ranking.slice(0,3).forEach(r=>delta.appendChild(chg('●','flat',r.ticker,`週：${format(r.weeklyDelta)}；月：${format(r.monthlyDelta)}；${r.deltaNote||''}`)));
-
-  const trigger=$('triggerRules');trigger.textContent='';
-  addList(trigger,latest.triggerRules?.downgrade||[],'!','down');
-  addList(trigger,latest.triggerRules?.stopAdding||[],'!','down');
-  if(latest.triggerRules?.panicSellBan)trigger.appendChild(chg('!','down','恐慌賣出禁止',latest.triggerRules.panicSellBan));
-
-  const risks=$('riskLights');risks.textContent='';
-  Object.values(latest.riskLights||{}).forEach(r=>risks.appendChild(chg('●',r.light==='green'?'up':r.light==='red'?'down':'flat',r.label,`${r.summary}｜${r.light}`)));
-
-  const events=$('eventWatch');events.textContent='';
-  (latest.eventWatch||[]).forEach(e=>events.appendChild(chg('●','flat',`${e.date||''} ${e.ticker||''} ${e.event||''}`.trim(),(e.rules||[]).join(' / '))));
-  if(!(latest.eventWatch||[]).length)events.appendChild(chg('●','flat','暫無事件','等待下一筆 eventWatch。'));
-
-  const body=$('rankingBody');body.textContent='';
-  latest.ranking.forEach(r=>{
-    const tr=document.createElement('tr');
-    [['Rank',r.rank,'rank'],['Ticker',r.ticker,'ticker'],['評等',r.rating,''],['新資金',r.newCapitalStance,''],['週排名',format(r.weeklyDelta),''],['月排名',format(r.monthlyDelta),''],['紅燈連續',`${r.redStreakDays||0} 天`,''],['觸發',r.triggerStatus,'']].forEach(([label,value,cls])=>{const td=document.createElement('td');td.dataset.label=label;if(cls)td.className=cls;td.textContent=value??'-';tr.appendChild(td)});
-    body.appendChild(tr);
-  });
-
-  const dq=$('dataQuality');dq.textContent='';
-  const q=latest.dataQuality||{};dq.appendChild(chg(q.marketDataRefreshed?'✓':'! ',q.marketDataRefreshed?'up':'flat',q.status||'data quality',q.note||'-'));
-  $('sourceBox').innerHTML=`資料來源：<a href="data/latest.json">latest.json</a> / <a href="data/history.json">history.json</a><br>Schema：${latest.schemaVersion||'-'}<br>History records：${history?.records?.length||0}`;
-}
+function render(data,history,loadedFromJson){const latest=computeAnalytics(data,history);setText('reportLabel',`M7 Dashboard v1｜${latest.latestReportId||'latest'}`);setText('subline',`${latest.latestDate||'-'}｜${loadedFromJson?'已讀取 data/latest.json':'使用 fallback'}｜首頁已隱藏 raw data 連結，只保留 Debug 區。`);setText('headline',`今日結論：${latest.summary?.headline||latest.summary?.oneLineConclusion||'-'}`);setText('recommendedAction',latest.summary?.recommendedAction);setText('directionality',latest.summary?.directionality);setText('nextActionMode',latest.summary?.nextActionMode);setText('killSwitchText',latest.summary?.killSwitchTriggered?'Kill Switch 已觸發':'Kill Switch 未觸發');setText('maxRedStreak',`${latest.analytics?.maxRedStreak||0} 天`);if(latest.sourceReports?.fullReport)$('fullReportLink').href=latest.sourceReports.fullReport;const noAction=$('noActionReasons');noAction.textContent='';noAction.appendChild(chg('✓','up','Kill Switch 狀態',latest.summary?.killSwitchTriggered?'已觸發，停止加碼並檢查風險。':'未觸發，避免因單日新聞做情緒性交易。'));noAction.appendChild(chg('✓','up','同向性判斷',`目前：${latest.summary?.directionality||'-'}。`));noAction.appendChild(chg('✓','up','行為模式',`下一步：${latest.summary?.nextActionMode||'等待觸發'}。`));const delta=$('deltaNotes');delta.textContent='';(latest.analytics?.notes||[]).forEach(note=>delta.appendChild(chg('●','flat','基準資料',note)));latest.ranking.slice(0,3).forEach(r=>delta.appendChild(chg('●','flat',r.ticker,`週：${format(r.weeklyDelta)}；月：${format(r.monthlyDelta)}；${r.deltaNote||''}`)));const trigger=$('triggerRules');trigger.textContent='';addList(trigger,latest.triggerRules?.downgrade||[],'!','down');addList(trigger,latest.triggerRules?.stopAdding||[],'!','down');if(latest.triggerRules?.panicSellBan)trigger.appendChild(chg('!','down','恐慌賣出禁止',latest.triggerRules.panicSellBan));const risks=$('riskLights');risks.textContent='';Object.values(latest.riskLights||{}).forEach(r=>risks.appendChild(chg('●',r.light==='green'?'up':r.light==='red'?'down':'flat',r.label,`${r.summary}｜${r.light}`)));const events=$('eventWatch');events.textContent='';(latest.eventWatch||[]).forEach(e=>events.appendChild(chg('●','flat',`${e.date||''} ${e.ticker||''} ${e.event||''}`.trim(),(e.rules||[]).join(' / '))));if(!(latest.eventWatch||[]).length)events.appendChild(chg('●','flat','暫無事件','等待下一筆 eventWatch。'));const body=$('rankingBody');body.textContent='';latest.ranking.forEach(r=>{const tr=document.createElement('tr');[['Rank',r.rank,'rank'],['Ticker',r.ticker,'ticker'],['評等',r.rating,''],['新資金',r.newCapitalStance,''],['週排名',format(r.weeklyDelta),''],['月排名',format(r.monthlyDelta),''],['紅燈連續',`${r.redStreakDays||0} 天`,''],['觸發',r.triggerStatus,'']].forEach(([label,value,cls])=>{const td=document.createElement('td');td.dataset.label=label;if(cls)td.className=cls;td.textContent=value??'-';tr.appendChild(td)});body.appendChild(tr)});const dq=$('dataQuality');dq.textContent='';const q=latest.dataQuality||{};dq.appendChild(chg(q.marketDataRefreshed?'✓':'!',q.marketDataRefreshed?'up':'flat',q.status||'data quality',q.note||'-'));$('sourceBox').innerHTML=`資料來源：<a href="data/latest.json">latest.json</a> / <a href="data/history.json">history.json</a><br>Schema：${latest.schemaVersion||'-'}<br>History records：${history?.records?.length||0}`}
 async function getJson(path){const res=await fetch(path,{cache:'no-store'});if(!res.ok)throw new Error(`${path} HTTP ${res.status}`);return res.json()}
-async function loadDashboard(){
-  try{const [latest,history]=await Promise.all([getJson('data/latest.json'),getJson('data/history.json').catch(()=>({records:[]}))]);render(latest,history,true)}
-  catch(err){render({schemaVersion:'fallback',latestDate:'-',latestReportId:'fallback',summary:{headline:'資料載入失敗，請檢查 latest.json。',recommendedAction:'暫停',directionality:'未知',killSwitchTriggered:false,nextActionMode:'檢查資料'},riskLights:{},ranking:[],eventWatch:[],triggerRules:{downgrade:[],stopAdding:[],panicSellBan:'資料失敗時不得交易。'},dataQuality:{marketDataRefreshed:false,status:'fallback_error',note:err.message}}, {records:[]}, false)}
-}
+async function loadDashboard(){try{const [latest,history]=await Promise.all([getJson('data/latest.json'),getJson('data/history.json').catch(()=>({records:[]}))]);render(latest,history,true)}catch(err){render({schemaVersion:'fallback',latestDate:null,latestReportId:'fallback',summary:{headline:'資料載入失敗，請檢查 latest.json。',recommendedAction:'暫停',directionality:'未知',killSwitchTriggered:false,nextActionMode:'檢查資料'},riskLights:{},ranking:[],eventWatch:[],triggerRules:{downgrade:[],stopAdding:[],panicSellBan:'資料失敗時不得交易。'},dataQuality:{marketDataRefreshed:false,status:'fallback_error',note:err.message}}, {records:[]}, false)}}
 loadDashboard();
 </script>
 </body>
