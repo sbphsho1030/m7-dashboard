@@ -2,8 +2,19 @@
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
   "description": "Compact index for archive navigation. Does not contain full daily records.",
-  "updatedAt": "2026-06-26T01:30:00+08:00",
+  "updatedAt": "2026-06-26T07:18:00+08:00",
   "records": [
+    {
+      "date": "2026-06-26",
+      "reportId": "M7-Daily-2026-06-26",
+      "headline": "0626 pre-run：美股收盤呈混合盤，Nasdaq 與大型科技承壓；先暫停追價，等待 08:00 正式版覆蓋。",
+      "recommendedAction": "暫停追價",
+      "topTicker": "GOOGL",
+      "topScore": 78,
+      "maxRedStreak": 2,
+      "monthFile": "data/history/2026-06.json",
+      "fullReport": "reports/2026/06/26-full.html"
+    },
     {
       "date": "2026-06-25",
       "reportId": "M7-Test-GHP-08",
