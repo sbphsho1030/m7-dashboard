@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "GHP-09.1",
+  "project": "m7-dashboard",
+  "description": "Structured daily M7 decision records for GitHub Pages dashboard. Records are research notes, not personalized investment advice.",
+  "updatedAt": "2026-06-26T00:00:00+08:00",
+  "records": [
+    {
+      "date": "2026-06-25",
+      "reportId": "M7-Test-GHP-08",
+      "sourceReports": {
+        "dashboard": "index.html",
+        "fullReport": "reports/2026/06/25-full.html",
+        "archive": "archive.html"
+      },
+      "headline": "沒有觸發降級或恐慌賣出條件；允許對 GOOGL / MSFT 做條件式分批觀察，但不追價。",
+      "oneLineConclusion": "M7 不是全面轉弱，而是市場正在要求 AI Capex 提供更明確的現金流回收證據。",
+      "recommendedAction": "不急動",
+      "marketRegime": {
+        "directionality": {
+          "status": "neutral",
+          "label": "中性",
+          "interpretation": "分化大於全面撤退；GOOGL 強、NVDA 震、AAPL 穩，暫不視為 M7 系統性撤資。"
+        },
+        "killSwitch": {
+          "triggered": false,
+          "label": "未觸發",
+          "reason": "基本面 thesis 未破壞，且單日新聞或 index event 不得單獨觸發賣出。"
+        },
+        "riskLights": [
+          {
+            "key": "aiCapex",
+            "label": "AI Capex",
+            "light": "yellow",
+            "summary": "ROI 壓力測試中"
+          },
+          {
+            "key": "cloudGrowth",
+            "label": "Cloud Growth",
+            "light": "green",
+            "summary": "仍有支撐"
+          },
+          {
+            "key": "semiVolatility",
+            "label": "Semi Volatility",
+            "light": "red",
+            "summary": "高 beta 波動"
+          }
+        ]
+      },
+      "m7Ranking": [
+        {
+          "rank": 1,
+          "ticker": "GOOGL",
+          "company": "Alphabet",
+          "rating": "A",
+          "role": "AI / Cloud 回收",
+          "newCapitalStance": "可分批",
+          "researchAction": "優先追蹤",
+          "riskLight": "green",
+          "mainRisk": "Capex、監管、Search AI",
+          "signal": "Cloud / backlog 證據較完整，且將納入 Dow。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "GHP-08 首頁有示範 Delta 欄位；正式週/月資料尚未接入。"
+          },
+          "triggerStatus": "未降級",
+          "eventNotes": [
+            {
+              "date": "2026-06-29",
+              "event": "GOOGL Dow 納入事件觀察",
+              "rule": "若僅是 sell the news 且 Cloud / backlog thesis 未變，允許條件式分批；若同時 Nasdaq / M7 系統性走弱，轉黃燈。"
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "ticker": "MSFT",
+          "company": "Microsoft",
+          "rating": "A-",
+          "role": "Cloud / Copilot",
+          "newCapitalStance": "等回檔",
+          "researchAction": "分批觀察",
+          "riskLight": "yellow",
+          "mainRisk": "Azure margin、Capex",
+          "signal": "AI 軟體化路徑完整。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "估值壓縮與週/月變化待正式資料源補齊。"
+          },
+          "triggerStatus": "觀察",
+          "eventNotes": []
+        },
+        {
+          "rank": 3,
+          "ticker": "AMZN",
+          "company": "Amazon",
+          "rating": "B+",
+          "role": "AWS",
+          "newCapitalStance": "少量",
+          "researchAction": "分批觀察",
+          "riskLight": "yellow",
+          "mainRisk": "FCF / Capex",
+          "signal": "AWS 是 AI 基建變現場景。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "GHP-09 先保留欄位，等待每日資料流程寫入。"
+          },
+          "triggerStatus": "FCF 檢查",
+          "eventNotes": []
+        },
+        {
+          "rank": 4,
+          "ticker": "META",
+          "company": "Meta Platforms",
+          "rating": "B",
+          "role": "AI Ads",
+          "newCapitalStance": "暫停",
+          "researchAction": "風險升高",
+          "riskLight": "yellow",
+          "mainRisk": "Data center commitments",
+          "signal": "廣告效率與 AI 投入並存。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "Capex 壓力升高，但尚未有正式連續紅燈天數。"
+          },
+          "triggerStatus": "Capex 壓力",
+          "eventNotes": []
+        },
+        {
+          "rank": 5,
+          "ticker": "NVDA",
+          "company": "Nvidia",
+          "rating": "B",
+          "role": "AI 供應鏈",
+          "newCapitalStance": "高風險",
+          "researchAction": "高波動觀察",
+          "riskLight": "red",
+          "mainRisk": "估值、客戶 Capex",
+          "signal": "AI Capex 高 beta 受益者，不是防禦股。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "需追蹤紅燈連續 3–5 天是否轉為系統性風險。"
+          },
+          "triggerStatus": "非防禦股",
+          "eventNotes": []
+        },
+        {
+          "rank": 6,
+          "ticker": "AAPL",
+          "company": "Apple",
+          "rating": "C",
+          "role": "終端 AI",
+          "newCapitalStance": "等待催化劑",
+          "researchAction": "等待催化劑",
+          "riskLight": "yellow",
+          "mainRisk": "AI 落地慢",
+          "signal": "需產品與換機週期證據。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "短線缺少明確 AI 產品催化。"
+          },
+          "triggerStatus": "等待產品證據",
+          "eventNotes": []
+        },
+        {
+          "rank": 7,
+          "ticker": "TSLA",
+          "company": "Tesla",
+          "rating": "C-",
+          "role": "實體 AI",
+          "newCapitalStance": "不追價",
+          "researchAction": "高風險觀察",
+          "riskLight": "red",
+          "mainRisk": "需求、監管、估值",
+          "signal": "自駕 / Robotaxi 選擇權仍高度依賴未來敘事。",
+          "delta": {
+            "week": null,
+            "month": null,
+            "rankChangeWeek": null,
+            "rankChangeMonth": null,
+            "note": "需交車、毛利率、自駕或 Robotaxi 證據。"
+          },
+          "triggerStatus": "高風險觀察",
+          "eventNotes": []
+        }
+      ],
+      "triggerRules": {
+        "downgrade": [
+          "Capex 上修",
+          "Cloud growth 放緩",
+          "FCF margin 下滑"
+        ],
+        "stopAdding": [
+          "M7 同向轉紅",
+          "QQQ / Nasdaq 破位"
+        ],
+        "panicSellBan": "單日新聞或 index event 不得單獨觸發賣出。"
+      },
+      "nextDataTasks": [
+        "接入週 Delta / 月 Delta",
+        "接入 Forward PE / 估值壓縮變化",
+        "接入紅燈連續天數",
+        "每日覆蓋 latest.json 並追加 history.json"
+      ],
+      "dataQuality": {
+        "marketDataRefreshed": false,
+        "status": "structured_from_GHP-08_existing_report",
+        "note": "此筆資料由 2026/06/25 GHP-08 現有 HTML 報告結構化而來，尚未重新抓取 2026/06/26 最新市場資料。"
+      }
+    }
+  ]
+}
