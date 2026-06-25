@@ -29,6 +29,12 @@ function requireBoolean(errors, value, label) {
   if (typeof value !== 'boolean') errors.push(`${label} must be boolean.`);
 }
 
+function requireScore(errors, value, label) {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 100) {
+    errors.push(`${label} must be a finite number from 0 to 100.`);
+  }
+}
+
 function validateSourceReports(errors, sourceReports, label) {
   if (!isObject(sourceReports)) {
     errors.push(`${label} must be an object.`);
@@ -110,6 +116,9 @@ export function validateLatest(latest) {
       tickers.add(item.ticker);
       requireString(errors, item.company, `${label}.company`);
       requireString(errors, item.rating, `${label}.rating`);
+      requireScore(errors, item.score, `${label}.score`);
+      requireString(errors, item.scoreBand, `${label}.scoreBand`);
+      requireString(errors, item.scoreReason, `${label}.scoreReason`);
       requireString(errors, item.newCapitalStance, `${label}.newCapitalStance`);
       requireString(errors, item.triggerStatus, `${label}.triggerStatus`);
       if (!VALID_LIGHTS.includes(item.riskLight)) errors.push(`${label}.riskLight must be one of ${VALID_LIGHTS.join(', ')}.`);
@@ -207,6 +216,10 @@ export function latestToHistoryRecord(latest) {
       ticker: item.ticker,
       company: item.company,
       rating: item.rating,
+      score: item.score,
+      scoreBand: item.scoreBand,
+      scoreReason: item.scoreReason,
+      scoreBreakdown: item.scoreBreakdown || null,
       role: item.role || '',
       newCapitalStance: item.newCapitalStance,
       researchAction: item.researchAction || item.triggerStatus,
@@ -220,6 +233,7 @@ export function latestToHistoryRecord(latest) {
         rankChangeMonth: item.rankChangeMonth ?? null,
         note: item.deltaNote || 'Delta 尚未接入。'
       },
+      redStreakDays: item.redStreakDays || 0,
       triggerStatus: item.triggerStatus,
       eventNotes: item.eventNotes || []
     })),
