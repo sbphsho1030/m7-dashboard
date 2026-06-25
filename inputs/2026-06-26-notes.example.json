@@ -16,13 +16,13 @@
     "semiVolatility": { "light": "red", "label": "Semi Volatility", "summary": "範例：高 beta 波動" }
   },
   "ranking": [
-    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A", "newCapitalStance": "可分批", "riskLight": "green", "triggerStatus": "未降級" },
-    { "rank": 2, "ticker": "MSFT", "company": "Microsoft", "rating": "A-", "newCapitalStance": "等回檔", "riskLight": "yellow", "triggerStatus": "觀察" },
-    { "rank": 3, "ticker": "AMZN", "company": "Amazon", "rating": "B+", "newCapitalStance": "少量", "riskLight": "yellow", "triggerStatus": "FCF 檢查" },
-    { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力" },
-    { "rank": 5, "ticker": "NVDA", "company": "Nvidia", "rating": "B", "newCapitalStance": "高風險", "riskLight": "red", "triggerStatus": "非防禦股" },
-    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "newCapitalStance": "等待催化劑", "riskLight": "yellow", "triggerStatus": "等待產品證據" },
-    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察" }
+    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A", "score": 88, "scoreBand": "高優先觀察", "scoreReason": "範例：Cloud / backlog thesis 較完整。", "newCapitalStance": "可分批", "riskLight": "green", "triggerStatus": "未降級" },
+    { "rank": 2, "ticker": "MSFT", "company": "Microsoft", "rating": "A-", "score": 82, "scoreBand": "可觀察，等條件", "scoreReason": "範例：AI 軟體化路徑完整。", "newCapitalStance": "等回檔", "riskLight": "yellow", "triggerStatus": "觀察" },
+    { "rank": 3, "ticker": "AMZN", "company": "Amazon", "rating": "B+", "score": 76, "scoreBand": "可觀察，等條件", "scoreReason": "範例：AWS 是 AI 基建變現場景。", "newCapitalStance": "少量", "riskLight": "yellow", "triggerStatus": "FCF 檢查" },
+    { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B", "score": 66, "scoreBand": "中性，不急動", "scoreReason": "範例：Capex 壓力需追蹤。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力" },
+    { "rank": 5, "ticker": "NVDA", "company": "Nvidia", "rating": "B", "score": 62, "scoreBand": "中性偏高風險", "scoreReason": "範例：高 beta 且紅燈。", "newCapitalStance": "高風險", "riskLight": "red", "triggerStatus": "非防禦股" },
+    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 55, "scoreBand": "中性，不急動", "scoreReason": "範例：等待 AI 產品證據。", "newCapitalStance": "等待催化劑", "riskLight": "yellow", "triggerStatus": "等待產品證據" },
+    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 42, "scoreBand": "暫停新資金", "scoreReason": "範例：高風險觀察。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察" }
   ],
   "eventWatch": [
     {
