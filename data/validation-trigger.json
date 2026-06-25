@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "M7-v1.2",
+  "project": "m7-dashboard",
+  "updatedAt": "2026-06-26T07:31:00+08:00",
+  "date": "2026-06-26",
+  "reportId": "M7-Daily-2026-06-26",
+  "purpose": "Trigger validation after all v1.2 data files are written.",
+  "filesExpected": [
+    "data/latest.json",
+    "data/recent.json",
+    "data/history-index.json",
+    "data/history/2026-06.json",
+    "data/history.json"
+  ]
+}
