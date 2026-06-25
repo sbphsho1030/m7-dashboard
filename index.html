@@ -1,165 +1,24 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>M7 Daily Dashboard｜2026/06/25</title>
-  <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #11182c;
-      --panel-2: #17213a;
-      --text: #edf2ff;
-      --muted: #aab4d4;
-      --line: rgba(255,255,255,.12);
-      --green: #35d07f;
-      --yellow: #f2c94c;
-      --red: #ff6b6b;
-      --blue: #75a7ff;
-      --purple: #c79bff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at top left, #1d2f63 0, #0b1020 38%, #070a13 100%);
-      line-height: 1.6;
-    }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 18px 60px; }
-    .hero {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 28px;
-      background: linear-gradient(135deg, rgba(117,167,255,.18), rgba(199,155,255,.12)), rgba(17,24,44,.92);
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-    }
-    .eyebrow { color: var(--blue); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    h1 { margin: 8px 0 8px; font-size: clamp(28px, 5vw, 48px); line-height: 1.1; }
-    .sub { color: var(--muted); font-size: 15px; }
-    .one-line {
-      margin-top: 22px;
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(242,201,76,.13);
-      border: 1px solid rgba(242,201,76,.32);
-      font-weight: 700;
-    }
-    .grid { display: grid; gap: 16px; }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .section { margin-top: 20px; }
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(17,24,44,.9);
-      padding: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.2);
-    }
-    .card h2, .card h3 { margin: 0 0 12px; }
-    .metric { font-size: 28px; font-weight: 800; line-height: 1.2; }
-    .muted { color: var(--muted); }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
-    }
-    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .green { background: var(--green); }
-    .yellow { background: var(--yellow); }
-    .red { background: var(--red); }
-    .blue { background: var(--blue); }
-    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; }
-    th, td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
-    th { color: #dfe8ff; background: rgba(117,167,255,.13); font-size: 13px; }
-    tr:last-child td { border-bottom: 0; }
-    .rank { width: 48px; font-weight: 900; color: var(--blue); }
-    .ticker { font-weight: 900; font-size: 16px; }
-    .status { white-space: nowrap; }
-    .news li, .notes li { margin: 7px 0; }
-    .footer {
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-      padding-top: 16px;
-    }
-    @media (max-width: 900px) {
-      .grid-4, .grid-3 { grid-template-columns: 1fr; }
-      table, thead, tbody, th, td, tr { display: block; }
-      thead { display: none; }
-      tr { margin-bottom: 12px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.03); }
-      td { border-bottom: 1px solid var(--line); }
-      td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 12px; margin-bottom: 2px; }
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M7 Daily Dashboard｜GHP-06｜2026/06/25</title>
+<style>
+:root{--bg:#0b1020;--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c;--red:#ff6b6b}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#1d2f63 0,#0b1020 38%,#070a13 100%);line-height:1.6}a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:28px 18px 60px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:28px;background:linear-gradient(135deg,rgba(117,167,255,.18),rgba(242,201,76,.10)),rgba(17,24,44,.92)}.eyebrow{color:var(--blue);font-weight:800;letter-spacing:.08em;text-transform:uppercase}h1{font-size:clamp(28px,5vw,46px);line-height:1.1;margin:8px 0}.sub,.muted{color:var(--muted)}.one{margin-top:18px;padding:16px 18px;border-radius:18px;background:rgba(242,201,76,.13);border:1px solid rgba(242,201,76,.32);font-weight:800}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:800;text-decoration:none}.primary{background:rgba(117,167,255,.22);border-color:rgba(117,167,255,.5)}.section{margin-top:18px}.grid{display:grid;gap:16px}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.card{padding:18px}.metric{font-size:28px;font-weight:900}.pill{display:inline-flex;gap:8px;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:13px;font-weight:800}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.yellow{background:var(--yellow)}.red{background:var(--red)}table{width:100%;border-collapse:collapse}th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:rgba(117,167,255,.13)}.rank{color:var(--blue);font-weight:900}.ticker{font-weight:900}.footer{margin-top:22px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}@media(max-width:850px){.grid4{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}td:before{content:attr(data-label);display:block;color:var(--muted);font-size:12px}}
+</style>
 </head>
-<body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="eyebrow">M7-Test-GHP-01</div>
-      <h1>Magnificent 7 Daily Dashboard</h1>
-      <div class="sub">日期：2026/06/25｜資料基準：測試版版面資料｜用途：驗證 GitHub Pages HTML 顯示</div>
-      <div class="one-line">今日一句話：固定 HTML Dashboard 比 Google Doc 長文更適合每天快速閱讀；正式版可每日覆蓋這個 index.html，再用 Gmail 寄出固定連結。</div>
-    </section>
-
-    <section class="section grid grid-4">
-      <div class="card"><div class="muted">今日排序第一</div><div class="metric">GOOGL</div><span class="pill"><span class="dot green"></span>優先追蹤</span></div>
-      <div class="card"><div class="muted">AI Capex</div><div class="metric">黃燈</div><span class="pill"><span class="dot yellow"></span>ROI 壓力</span></div>
-      <div class="card"><div class="muted">Cloud Growth</div><div class="metric">綠燈</div><span class="pill"><span class="dot green"></span>仍有支撐</span></div>
-      <div class="card"><div class="muted">Semi Volatility</div><div class="metric">紅燈</div><span class="pill"><span class="dot red"></span>高 beta</span></div>
-    </section>
-
-    <section class="section card">
-      <h2>今日 M7 快速決策表</h2>
-      <table>
-        <thead>
-          <tr><th>Rank</th><th>Ticker</th><th>分類</th><th>今日訊號</th><th>主要風險</th><th>研究動作</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="rank" data-label="Rank">1</td><td class="ticker" data-label="Ticker">GOOGL</td><td data-label="分類">AI / Cloud 回收</td><td data-label="今日訊號">Cloud / backlog 證據較完整</td><td data-label="主要風險">Capex、監管、Search AI</td><td data-label="研究動作"><span class="pill"><span class="dot green"></span>優先追蹤</span></td></tr>
-          <tr><td class="rank" data-label="Rank">2</td><td class="ticker" data-label="Ticker">MSFT</td><td data-label="分類">Cloud / Copilot</td><td data-label="今日訊號">AI 軟體化路徑完整</td><td data-label="主要風險">Azure margin、Capex</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>分批觀察</span></td></tr>
-          <tr><td class="rank" data-label="Rank">3</td><td class="ticker" data-label="Ticker">AMZN</td><td data-label="分類">AWS</td><td data-label="今日訊號">AWS 是 AI 基建變現場景</td><td data-label="主要風險">FCF / Capex 壓力</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>分批觀察</span></td></tr>
-          <tr><td class="rank" data-label="Rank">4</td><td class="ticker" data-label="Ticker">META</td><td data-label="分類">AI Ads</td><td data-label="今日訊號">廣告效率與 AI 投入並存</td><td data-label="主要風險">Data center commitments</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>風險升高</span></td></tr>
-          <tr><td class="rank" data-label="Rank">5</td><td class="ticker" data-label="Ticker">NVDA</td><td data-label="分類">AI 供應鏈</td><td data-label="今日訊號">AI Capex 高 beta 受益者</td><td data-label="主要風險">估值、客戶 Capex</td><td data-label="研究動作"><span class="pill"><span class="dot red"></span>高波動觀察</span></td></tr>
-          <tr><td class="rank" data-label="Rank">6</td><td class="ticker" data-label="Ticker">AAPL</td><td data-label="分類">終端 AI</td><td data-label="今日訊號">需產品與換機週期證據</td><td data-label="主要風險">AI 落地慢</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>等待催化劑</span></td></tr>
-          <tr><td class="rank" data-label="Rank">7</td><td class="ticker" data-label="Ticker">TSLA</td><td data-label="分類">實體 AI</td><td data-label="今日訊號">自駕 / Robotaxi 選擇權</td><td data-label="主要風險">需求、監管、估值</td><td data-label="研究動作"><span class="pill"><span class="dot red"></span>高風險觀察</span></td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="section grid grid-3">
-      <div class="card notes">
-        <h3>今日追蹤任務</h3>
-        <ul>
-          <li>追蹤 GOOGL Cloud / backlog 是否能支撐 AI Capex。</li>
-          <li>觀察 MSFT Azure growth 與 Copilot 變現。</li>
-          <li>NVDA 不當防禦股，只當 AI Capex 高 beta 受益鏈。</li>
-        </ul>
-      </div>
-      <div class="card news">
-        <h3>風險燈號</h3>
-        <ul>
-          <li><span class="pill"><span class="dot yellow"></span>AI Capex：黃燈</span></li>
-          <li><span class="pill"><span class="dot green"></span>Cloud Growth：綠燈</span></li>
-          <li><span class="pill"><span class="dot red"></span>Semi Volatility：紅燈</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>資料限制</h3>
-        <p class="muted">本頁是 GHP-01 顯示測試，不是正式投資建議。正式版需每日重新抓資料、標示來源、更新日期，並保留 N/A 欄位。</p>
-      </div>
-    </section>
-
-    <div class="footer">
-      Generated for M7-Test-GHP-01. GitHub repo: sbphsho1030/m7-dashboard. 這是 HTML Dashboard 發布測試頁。
-    </div>
-  </main>
-</body>
-</html>
+<body><main class="wrap">
+<section class="hero"><div class="eyebrow">M7-Test-GHP-06｜Latest Dashboard</div><h1>Magnificent 7 Daily Dashboard</h1><div class="sub">日期：2026/06/25｜測試目標：更新首頁 + 建立歷史頁 + 更新 Archive + Gmail 寄連結。</div><div class="one">今日一句話：GHP-06 驗證正式每日流程可用；首頁永遠顯示最新報告，歷史版本保存於 reports/YYYY/MM/DD.html。</div><div class="actions"><a class="btn primary" href="archive.html">查看歷史 Archive</a><a class="btn" href="reports/2026/06/25-ghp06.html">查看本次歷史頁</a></div></section>
+<section class="section grid grid4"><div class="card"><div class="muted">今日排序第一</div><div class="metric">GOOGL</div><span class="pill"><span class="dot green"></span>優先追蹤</span></div><div class="card"><div class="muted">AI Capex</div><div class="metric">黃燈</div><span class="pill"><span class="dot yellow"></span>ROI 壓力</span></div><div class="card"><div class="muted">Cloud Growth</div><div class="metric">綠燈</div><span class="pill"><span class="dot green"></span>仍有支撐</span></div><div class="card"><div class="muted">Semi Volatility</div><div class="metric">紅燈</div><span class="pill"><span class="dot red"></span>高 beta</span></div></section>
+<section class="section card"><h2>今日 M7 快速決策表</h2><table><thead><tr><th>Rank</th><th>Ticker</th><th>分類</th><th>今日訊號</th><th>主要風險</th><th>研究動作</th></tr></thead><tbody>
+<tr><td class="rank" data-label="Rank">1</td><td class="ticker" data-label="Ticker">GOOGL</td><td data-label="分類">AI / Cloud 回收</td><td data-label="今日訊號">Cloud / backlog 是 AI ROI 驗證主線</td><td data-label="主要風險">Capex、監管、Search AI</td><td data-label="研究動作"><span class="pill"><span class="dot green"></span>優先追蹤</span></td></tr>
+<tr><td class="rank" data-label="Rank">2</td><td class="ticker" data-label="Ticker">MSFT</td><td data-label="分類">Cloud / Copilot</td><td data-label="今日訊號">AI 軟體化路徑完整</td><td data-label="主要風險">Azure margin、Capex</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>分批觀察</span></td></tr>
+<tr><td class="rank" data-label="Rank">3</td><td class="ticker" data-label="Ticker">AMZN</td><td data-label="分類">AWS</td><td data-label="今日訊號">AWS 是 AI 基建變現場景</td><td data-label="主要風險">FCF / Capex</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>分批觀察</span></td></tr>
+<tr><td class="rank" data-label="Rank">4</td><td class="ticker" data-label="Ticker">META</td><td data-label="分類">AI Ads</td><td data-label="今日訊號">廣告效率與 AI 投入並存</td><td data-label="主要風險">Data center commitments</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>風險升高</span></td></tr>
+<tr><td class="rank" data-label="Rank">5</td><td class="ticker" data-label="Ticker">NVDA</td><td data-label="分類">AI 供應鏈</td><td data-label="今日訊號">AI Capex 高 beta 受益者</td><td data-label="主要風險">估值、客戶 Capex</td><td data-label="研究動作"><span class="pill"><span class="dot red"></span>高波動觀察</span></td></tr>
+<tr><td class="rank" data-label="Rank">6</td><td class="ticker" data-label="Ticker">AAPL</td><td data-label="分類">終端 AI</td><td data-label="今日訊號">需產品與換機週期證據</td><td data-label="主要風險">AI 落地慢</td><td data-label="研究動作"><span class="pill"><span class="dot yellow"></span>等待催化劑</span></td></tr>
+<tr><td class="rank" data-label="Rank">7</td><td class="ticker" data-label="Ticker">TSLA</td><td data-label="分類">實體 AI</td><td data-label="今日訊號">自駕 / Robotaxi 選擇權</td><td data-label="主要風險">需求、監管、估值</td><td data-label="研究動作"><span class="pill"><span class="dot red"></span>高風險觀察</span></td></tr>
+</tbody></table></section>
+<section class="section card"><h2>GHP-06 結論</h2><p>正式每日流程可設計為：產生 HTML → 覆蓋 index.html → 新增 reports/YYYY/MM/DD.html → 更新 archive.html → Gmail 寄摘要與固定網址。</p><p class="muted">本頁為流程測試，不是個人化投資建議。</p></section>
+<div class="footer">Generated by M7-Test-GHP-06. Latest URL remains stable.</div>
+</main></body></html>
