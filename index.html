@@ -1,1 +1,151 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M7 Decision Control Dashboard｜GHP-08</title><style>:root{--bg:#0b1020;--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c;--red:#ff6b6b;--purple:#c79bff}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#20366f 0,#0b1020 38%,#070a13 100%);line-height:1.55}a{color:inherit;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:24px 18px 56px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.24)}.hero{padding:26px;background:linear-gradient(135deg,rgba(117,167,255,.19),rgba(53,208,127,.10)),rgba(17,24,44,.92)}.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.08em;text-transform:uppercase}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}h1{font-size:clamp(28px,4.5vw,48px);line-height:1.08;margin:8px 0}.sub,.muted{color:var(--muted)}.one{margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(242,201,76,.13);border:1px solid rgba(242,201,76,.32);font-weight:900}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:900}.primary{background:rgba(117,167,255,.22);border-color:rgba(117,167,255,.5)}.section{margin-top:16px}.grid{display:grid;gap:14px}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr 1fr}.card{padding:17px}.metric{font-size:30px;font-weight:950;line-height:1.15}.pill{display:inline-flex;gap:8px;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:13px;font-weight:900;white-space:nowrap}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.yellow{background:var(--yellow)}.red{background:var(--red)}.blue{background:var(--blue)}.chg{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid var(--line);margin-top:9px}.up{color:var(--green);font-weight:950}.down{color:var(--red);font-weight:950}.flat{color:var(--yellow);font-weight:950}.safe{border-color:rgba(53,208,127,.35);background:rgba(53,208,127,.08)}.warn{border-color:rgba(242,201,76,.35);background:rgba(242,201,76,.08)}.danger{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.08)}table{width:100%;border-collapse:collapse}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:rgba(117,167,255,.13);font-size:13px}.ticker{font-weight:950;color:var(--blue)}.rank{font-weight:950}.delta{font-size:12px;color:var(--muted);display:block}.pos{color:#9effc8}.neg{color:#ffb4b4}.neu{color:#ffe08a}.score{font-weight:950;border-radius:10px;padding:4px 8px;display:inline-block;min-width:34px}.s9,.s8{background:rgba(53,208,127,.18);color:#9effc8}.s7,.s6{background:rgba(242,201,76,.17);color:#ffe08a}.s5,.s4{background:rgba(255,255,255,.08);color:#dce5ff}.s3,.s2{background:rgba(255,107,107,.16);color:#ffb4b4}.footer{margin-top:20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}@media(max-width:940px){.grid4,.grid3,.grid2{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}td:before{content:attr(data-label);display:block;color:var(--muted);font-size:12px}}</style></head><body><main class="wrap"><section class="hero"><div class="top"><div><div class="eyebrow">M7-Test-GHP-08｜Decision Control System</div><h1>Magnificent 7 行為控制儀表板</h1><div class="sub">2026/06/25｜日更不是叫你天天交易，而是確認今天是否需要做事。</div></div><div class="actions"><a class="btn primary" href="reports/2026/06/25-full.html">完整版分析</a><a class="btn" href="archive.html">Archive</a><a class="btn" href="https://github.com/sbphsho1030/m7-dashboard">GitHub Repo</a></div></div><div class="one">今日結論：沒有觸發降級或恐慌賣出條件。允許對 GOOGL / MSFT 做條件式分批觀察，但不追價；NVDA 維持高 beta，不作為防禦配置。</div></section><section class="section grid grid4"><div class="card"><div class="muted">今日動作</div><div class="metric">不急動</div><span class="pill"><span class="dot green"></span>Kill Switch 未觸發</span></div><div class="card"><div class="muted">Delta 優先</div><div class="metric">週/月</div><span class="pill"><span class="dot blue"></span>看變化不是死數字</span></div><div class="card"><div class="muted">同向性</div><div class="metric">中性</div><span class="pill"><span class="dot yellow"></span>非全面撤退</span></div><div class="card"><div class="muted">下一次拔劍</div><div class="metric">條件式</div><span class="pill"><span class="dot yellow"></span>只在觸發時動作</span></div></section><section class="section grid grid3"><div class="card safe"><h2>今日不動作理由</h2><div class="chg"><span class="up">✓</span><div><b>基本面 thesis 未破壞</b><div class="muted">AI Capex 壓力存在，但 Cloud / Ads / Software 回收邏輯尚未失效。</div></div></div><div class="chg"><span class="up">✓</span><div><b>下跌仍偏事件與估值消化</b><div class="muted">尚未確認為 M7 系統性基本面惡化。</div></div></div><div class="chg"><span class="up">✓</span><div><b>現金流強者未失控</b><div class="muted">GOOGL / MSFT / AAPL 仍具防守性，只是催化不同。</div></div></div></div><div class="card warn"><h2>Delta 觀察</h2><div class="chg"><span class="flat">●</span><div><b>Forward PE / 估值壓縮</b><div class="muted">下一版需加入：較上週、較上月變化。</div></div></div><div class="chg"><span class="flat">●</span><div><b>排名變化</b><div class="muted">GOOGL 若連續上升，代表市場重新定價 Cloud ROI。</div></div></div><div class="chg"><span class="flat">●</span><div><b>紅燈連續天數</b><div class="muted">NVDA 若紅燈連續 3–5 天，才檢查是否變成系統性風險。</div></div></div></div><div class="card danger"><h2>觸發條件</h2><div class="chg"><span class="down">!</span><div><b>降級條件</b><div class="muted">Capex 上修 + Cloud growth 放緩 + FCF margin 下滑。</div></div></div><div class="chg"><span class="down">!</span><div><b>停止加碼條件</b><div class="muted">M7 同向轉紅，且 QQQ / Nasdaq 破位。</div></div></div><div class="chg"><span class="down">!</span><div><b>恐慌賣出禁止</b><div class="muted">單日新聞或 index event 不得單獨觸發賣出。</div></div></div></div></section><section class="section grid grid2"><div class="card"><h2>同向性判讀</h2><table><thead><tr><th>狀態</th><th>判讀</th><th>動作</th></tr></thead><tbody><tr><td data-label="狀態"><span class="pill"><span class="dot green"></span>分化</span></td><td data-label="判讀">GOOGL 強、NVDA 震、AAPL 穩，代表輪動而非全撤退。</td><td data-label="動作">保留核心觀察，避免追高高 beta。</td></tr><tr><td data-label="狀態"><span class="pill"><span class="dot yellow"></span>半同向</span></td><td data-label="判讀">平台股弱、供應鏈弱，但防禦型科技仍穩。</td><td data-label="動作">降低新資金速度。</td></tr><tr><td data-label="狀態"><span class="pill"><span class="dot red"></span>全同向</span></td><td data-label="判讀">M7 全部轉弱且指數破位，可能是系統性撤資。</td><td data-label="動作">停止加碼，等待風險解除。</td></tr></tbody></table></div><div class="card"><h2>GOOGL 6/29 事件規則</h2><p><b>若納入 Dow 後 sell the news 回檔：</b></p><ul><li>若僅是事件消化，Cloud / backlog thesis 未變，允許條件式分批。</li><li>若同時出現 Nasdaq / M7 系統性走弱，轉黃燈觀察。</li><li>若有基本面負面新聞且跌幅大於同業，暫停加碼。</li></ul></div></section><section class="section card"><h2>今日動作表 + Delta 欄位</h2><table><thead><tr><th>Rank</th><th>Ticker</th><th>評等</th><th>新資金</th><th>週 Delta</th><th>月 Delta</th><th>觸發狀態</th></tr></thead><tbody><tr><td class="rank" data-label="Rank">1</td><td class="ticker" data-label="Ticker">GOOGL</td><td data-label="評等">A</td><td data-label="新資金">可分批</td><td data-label="週 Delta"><span class="pos">+2 排名</span><span class="delta">示範：正式版接資料</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot green"></span>未降級</span></td></tr><tr><td class="rank" data-label="Rank">2</td><td class="ticker" data-label="Ticker">MSFT</td><td data-label="評等">A-</td><td data-label="新資金">等回檔</td><td data-label="週 Delta"><span class="neu">估值壓縮待補</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot yellow"></span>觀察</span></td></tr><tr><td class="rank" data-label="Rank">3</td><td class="ticker" data-label="Ticker">AMZN</td><td data-label="評等">B+</td><td data-label="新資金">少量</td><td data-label="週 Delta"><span class="neu">N/A</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot yellow"></span>FCF 檢查</span></td></tr><tr><td class="rank" data-label="Rank">4</td><td class="ticker" data-label="Ticker">META</td><td data-label="評等">B</td><td data-label="新資金">暫停</td><td data-label="週 Delta"><span class="neg">風險升</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot yellow"></span>Capex 壓力</span></td></tr><tr><td class="rank" data-label="Rank">5</td><td class="ticker" data-label="Ticker">NVDA</td><td data-label="評等">B</td><td data-label="新資金">高風險</td><td data-label="週 Delta"><span class="neg">波動升</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot red"></span>非防禦股</span></td></tr><tr><td class="rank" data-label="Rank">6</td><td class="ticker" data-label="Ticker">AAPL</td><td data-label="評等">C</td><td data-label="新資金">不加碼</td><td data-label="週 Delta"><span class="neu">催化不足</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot yellow"></span>等待</span></td></tr><tr><td class="rank" data-label="Rank">7</td><td class="ticker" data-label="Ticker">TSLA</td><td data-label="評等">D</td><td data-label="新資金">不買</td><td data-label="週 Delta"><span class="neg">高風險</span></td><td data-label="月 Delta"><span class="neu">N/A</span></td><td data-label="觸發"><span class="pill"><span class="dot red"></span>禁止追敘事</span></td></tr></tbody></table></section><section class="section card"><h2>日更的真正用途</h2><p>日更不是為了天天交易，而是為了每天檢查三件事：市場如何在邊際上定價新資訊、是否有必要啟動 Kill Switch、以及量變是否正在累積成質變。</p><p class="muted">下一步正式資料管線應優先接入週/月 Delta，而不是先做 Earnings Whisper。</p></section><div class="footer">Repo: <a href="https://github.com/sbphsho1030/m7-dashboard">https://github.com/sbphsho1030/m7-dashboard</a></div></main></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M7 Decision Control Dashboard｜GHP-10</title>
+<style>
+:root{--bg:#0b1020;--panel:#11182c;--text:#edf2ff;--muted:#aab4d4;--line:rgba(255,255,255,.12);--blue:#75a7ff;--green:#35d07f;--yellow:#f2c94c;--red:#ff6b6b;--purple:#c79bff}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);background:radial-gradient(circle at top left,#20366f 0,#0b1020 38%,#070a13 100%);line-height:1.58}a{color:inherit;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:24px 18px 56px}.hero,.card{border:1px solid var(--line);border-radius:24px;background:rgba(17,24,44,.92);box-shadow:0 18px 50px rgba(0,0,0,.24)}.hero{padding:26px;background:linear-gradient(135deg,rgba(117,167,255,.19),rgba(53,208,127,.10)),rgba(17,24,44,.92)}.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.08em;text-transform:uppercase}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}h1{font-size:clamp(28px,4.5vw,48px);line-height:1.08;margin:8px 0}h2{margin:0 0 12px}.sub,.muted{color:var(--muted)}.one{margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(242,201,76,.13);border:1px solid rgba(242,201,76,.32);font-weight:900}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:900}.primary{background:rgba(117,167,255,.22);border-color:rgba(117,167,255,.5)}.section{margin-top:16px}.grid{display:grid;gap:14px}.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr 1fr}.card{padding:17px}.metric{font-size:30px;font-weight:950;line-height:1.15}.pill{display:inline-flex;gap:8px;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:13px;font-weight:900;white-space:nowrap}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.yellow{background:var(--yellow)}.red{background:var(--red)}.blue{background:var(--blue)}.purple{background:var(--purple)}.chg{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid var(--line);margin-top:9px}.up{color:var(--green);font-weight:950}.down{color:var(--red);font-weight:950}.flat{color:var(--yellow);font-weight:950}.safe{border-color:rgba(53,208,127,.35);background:rgba(53,208,127,.08)}.warn{border-color:rgba(242,201,76,.35);background:rgba(242,201,76,.08)}.danger{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.08)}table{width:100%;border-collapse:collapse}th,td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:rgba(117,167,255,.13);font-size:13px}.ticker{font-weight:950;color:var(--blue)}.rank{font-weight:950}.delta{font-size:12px;color:var(--muted);display:block}.pos{color:#9effc8}.neg{color:#ffb4b4}.neu{color:#ffe08a}.jsonbox{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#dce5ff;background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:14px;padding:12px;overflow:auto}.footer{margin-top:20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}@media(max-width:940px){.grid4,.grid3,.grid2{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}td:before{content:attr(data-label);display:block;color:var(--muted);font-size:12px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="top">
+      <div>
+        <div class="eyebrow" id="reportLabel">M7-Test-GHP-10｜Data Driven Dashboard</div>
+        <h1>Magnificent 7 行為控制儀表板</h1>
+        <div class="sub" id="subline">載入 data/latest.json 中...</div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" id="fullReportLink" href="reports/2026/06/25-full.html">完整版分析</a>
+        <a class="btn" href="archive.html">Archive</a>
+        <a class="btn" href="data/latest.json">latest.json</a>
+        <a class="btn" href="data/history.json">history.json</a>
+      </div>
+    </div>
+    <div class="one" id="headline">今日結論載入中...</div>
+  </section>
+
+  <section class="section grid grid4">
+    <div class="card"><div class="muted">今日動作</div><div class="metric" id="recommendedAction">-</div><span class="pill"><span class="dot green"></span><span id="killSwitchText">Kill Switch</span></span></div>
+    <div class="card"><div class="muted">資料模式</div><div class="metric">JSON</div><span class="pill"><span class="dot blue"></span>GHP-10 資料驅動</span></div>
+    <div class="card"><div class="muted">同向性</div><div class="metric" id="directionality">-</div><span class="pill"><span class="dot yellow"></span>看群體行為</span></div>
+    <div class="card"><div class="muted">下一次拔劍</div><div class="metric" id="nextActionMode">-</div><span class="pill"><span class="dot yellow"></span>只在觸發時動作</span></div>
+  </section>
+
+  <section class="section grid grid3">
+    <div class="card safe"><h2>今日不動作理由</h2><div id="noActionReasons"></div></div>
+    <div class="card warn"><h2>Delta / Data 待補</h2><div id="deltaNotes"></div></div>
+    <div class="card danger"><h2>觸發條件</h2><div id="triggerRules"></div></div>
+  </section>
+
+  <section class="section grid grid2">
+    <div class="card"><h2>共通風險燈號</h2><div id="riskLights"></div></div>
+    <div class="card"><h2>事件觀察</h2><div id="eventWatch"></div></div>
+  </section>
+
+  <section class="section card">
+    <h2>今日動作表 + Delta 欄位</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Ticker</th><th>評等</th><th>新資金</th><th>週 Delta</th><th>月 Delta</th><th>觸發狀態</th></tr></thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </section>
+
+  <section class="section grid grid2">
+    <div class="card"><h2>資料品質</h2><div id="dataQuality"></div></div>
+    <div class="card"><h2>資料來源</h2><div class="jsonbox" id="sourceBox"></div></div>
+  </section>
+
+  <div class="footer">GHP-10: index.html renders from <a href="data/latest.json">data/latest.json</a>. Research notes only, not personalized investment advice.</div>
+</main>
+<script>
+const fallbackData={
+  schemaVersion:"GHP-09.1",
+  latestDate:"2026-06-25",
+  latestReportId:"M7-Test-GHP-08",
+  sourceReports:{dashboard:"index.html",fullReport:"reports/2026/06/25-full.html",archive:"archive.html"},
+  summary:{headline:"沒有觸發降級或恐慌賣出條件；允許對 GOOGL / MSFT 做條件式分批觀察，但不追價。",oneLineConclusion:"M7 不是全面轉弱，而是市場正在要求 AI Capex 提供更明確的現金流回收證據。",recommendedAction:"不急動",directionality:"中性",killSwitchTriggered:false,nextActionMode:"條件式"},
+  riskLights:{aiCapex:{light:"yellow",label:"AI Capex",summary:"ROI 壓力測試中"},cloudGrowth:{light:"green",label:"Cloud Growth",summary:"仍有支撐"},semiVolatility:{light:"red",label:"Semi Volatility",summary:"高 beta 波動"}},
+  ranking:[
+    {rank:1,ticker:"GOOGL",company:"Alphabet",rating:"A",newCapitalStance:"可分批",riskLight:"green",triggerStatus:"未降級",weeklyDelta:null,monthlyDelta:null,deltaNote:"正式週/月資料尚未接入。"},
+    {rank:2,ticker:"MSFT",company:"Microsoft",rating:"A-",newCapitalStance:"等回檔",riskLight:"yellow",triggerStatus:"觀察",weeklyDelta:null,monthlyDelta:null,deltaNote:"估值壓縮與週/月變化待補。"},
+    {rank:3,ticker:"AMZN",company:"Amazon",rating:"B+",newCapitalStance:"少量",riskLight:"yellow",triggerStatus:"FCF 檢查",weeklyDelta:null,monthlyDelta:null,deltaNote:"等待每日資料流程寫入。"},
+    {rank:4,ticker:"META",company:"Meta Platforms",rating:"B",newCapitalStance:"暫停",riskLight:"yellow",triggerStatus:"Capex 壓力",weeklyDelta:null,monthlyDelta:null,deltaNote:"需補 Capex 與估值壓縮變化。"},
+    {rank:5,ticker:"NVDA",company:"Nvidia",rating:"B",newCapitalStance:"高風險",riskLight:"red",triggerStatus:"非防禦股",weeklyDelta:null,monthlyDelta:null,deltaNote:"需追蹤紅燈連續 3–5 天。"},
+    {rank:6,ticker:"AAPL",company:"Apple",rating:"C",newCapitalStance:"等待催化劑",riskLight:"yellow",triggerStatus:"等待產品證據",weeklyDelta:null,monthlyDelta:null,deltaNote:"需 AI 產品與換機週期證據。"},
+    {rank:7,ticker:"TSLA",company:"Tesla",rating:"C-",newCapitalStance:"不追價",riskLight:"red",triggerStatus:"高風險觀察",weeklyDelta:null,monthlyDelta:null,deltaNote:"需交車、毛利率、自駕或 Robotaxi 證據。"}
+  ],
+  eventWatch:[{date:"2026-06-29",ticker:"GOOGL",event:"Dow 納入事件觀察",rules:["若僅是 sell the news 且 Cloud / backlog thesis 未變，允許條件式分批。","若同時 Nasdaq / M7 系統性走弱，轉黃燈。","若有基本面負面新聞且跌幅大於同業，暫停加碼。"]}],
+  triggerRules:{downgrade:["Capex 上修","Cloud growth 放緩","FCF margin 下滑"],stopAdding:["M7 同向轉紅","QQQ / Nasdaq 破位"],panicSellBan:"單日新聞或 index event 不得單獨觸發賣出。"},
+  dataQuality:{marketDataRefreshed:false,status:"fallback_embedded",note:"JSON 載入失敗時使用內建備援資料。"}
+};
+const $=id=>document.getElementById(id);
+function setText(id,value){$(id).textContent=value??"-"}
+function dot(light){const span=document.createElement("span");span.className="dot "+(light||"blue");return span}
+function pill(light,text){const p=document.createElement("span");p.className="pill";p.appendChild(dot(light));p.appendChild(document.createTextNode(text));return p}
+function chg(icon,cls,title,desc){const box=document.createElement("div");box.className="chg";const s=document.createElement("span");s.className=cls;s.textContent=icon;const d=document.createElement("div");const b=document.createElement("b");b.textContent=title;const m=document.createElement("div");m.className="muted";m.textContent=desc;d.append(b,m);box.append(s,d);return box}
+function addList(container,items,icon,cls){items.forEach(x=>container.appendChild(chg(icon,cls,x,"觸發時才動作，不用每日主觀猜測。")))}
+function formatDelta(value,note){if(value===null||value===undefined||value==="")return note||"N/A";return String(value)}
+function render(data,loadedFromJson){
+  setText("reportLabel",`M7-Test-GHP-10｜Data Driven Dashboard｜${data.latestReportId||"latest"}`);
+  setText("subline",`${data.latestDate||"-"}｜${loadedFromJson?"已讀取 data/latest.json":"使用 fallback 資料"}｜日更不是叫你天天交易，而是確認今天是否需要做事。`);
+  setText("headline",`今日結論：${data.summary?.headline||data.summary?.oneLineConclusion||"-"}`);
+  setText("recommendedAction",data.summary?.recommendedAction);
+  setText("directionality",data.summary?.directionality);
+  setText("nextActionMode",data.summary?.nextActionMode);
+  setText("killSwitchText",data.summary?.killSwitchTriggered?"Kill Switch 已觸發":"Kill Switch 未觸發");
+  const full=data.sourceReports?.fullReport;if(full)$("fullReportLink").href=full;
+
+  const noAction=$("noActionReasons");noAction.textContent="";
+  noAction.appendChild(chg("✓","up","Kill Switch 未觸發",data.summary?.headline||"尚未出現強制動作訊號。"));
+  noAction.appendChild(chg("✓","up","同向性未轉紅",`目前同向性：${data.summary?.directionality||"-"}。`));
+  noAction.appendChild(chg("✓","up","條件式行為",`下一步：${data.summary?.nextActionMode||"等待觸發"}。`));
+
+  const delta=$("deltaNotes");delta.textContent="";
+  (data.ranking||[]).slice(0,5).forEach(r=>delta.appendChild(chg("●","flat",r.ticker,r.deltaNote||"Delta 尚未接入。")));
+
+  const trigger=$("triggerRules");trigger.textContent="";
+  addList(trigger,data.triggerRules?.downgrade||[],"!","down");
+  addList(trigger,data.triggerRules?.stopAdding||[],"!","down");
+  if(data.triggerRules?.panicSellBan)trigger.appendChild(chg("!","down","恐慌賣出禁止",data.triggerRules.panicSellBan));
+
+  const risks=$("riskLights");risks.textContent="";
+  Object.values(data.riskLights||{}).forEach(r=>risks.appendChild(chg("●",r.light==="green"?"up":r.light==="red"?"down":"flat",r.label,`${r.summary}｜${r.light}`)));
+
+  const events=$("eventWatch");events.textContent="";
+  (data.eventWatch||[]).forEach(e=>{
+    const title=`${e.date||""} ${e.ticker||""} ${e.event||""}`.trim();
+    events.appendChild(chg("●","flat",title,(e.rules||[]).join(" / ")));
+  });
+  if(!(data.eventWatch||[]).length)events.appendChild(chg("●","flat","暫無事件", "等待下一筆 eventWatch。"));
+
+  const body=$("rankingBody");body.textContent="";
+  (data.ranking||[]).forEach(r=>{
+    const tr=document.createElement("tr");
+    [["Rank",r.rank,"rank"],["Ticker",r.ticker,"ticker"],["評等",r.rating,""],["新資金",r.newCapitalStance,""],["週 Delta",formatDelta(r.weeklyDelta,r.deltaNote),""],["月 Delta",formatDelta(r.monthlyDelta,"N/A"),""],["觸發",r.triggerStatus,""]].forEach(([label,value,cls])=>{
+      const td=document.createElement("td");td.dataset.label=label;if(cls)td.className=cls;td.textContent=value??"-";tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
+
+  const dq=$("dataQuality");dq.textContent="";
+  const q=data.dataQuality||{};
+  dq.appendChild(chg(q.marketDataRefreshed?"✓":"!",q.marketDataRefreshed?"up":"flat",q.status||"data quality",q.note||"-"));
+  $("sourceBox").textContent=JSON.stringify({schemaVersion:data.schemaVersion,latestDate:data.latestDate,sourceReports:data.sourceReports,dataFile:"data/latest.json",loadedFromJson},null,2);
+}
+async function loadDashboard(){
+  try{
+    const res=await fetch("data/latest.json",{cache:"no-store"});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    render(await res.json(),true);
+  }catch(err){
+    fallbackData.dataQuality.note=`${fallbackData.dataQuality.note} Error: ${err.message}`;
+    render(fallbackData,false);
+  }
+}
+loadDashboard();
+</script>
+</body>
+</html>
