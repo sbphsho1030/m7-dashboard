@@ -1,12 +1,14 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T15:33:30+08:00",
+  "updatedAt": "2026-06-26T16:12:30+08:00",
   "date": "2026-06-26",
   "reportId": "M7-Daily-2026-06-26",
-  "purpose": "Trigger validation after rerunning the 2026-06-26 dashboard with market-data ingestion fallback rules.",
+  "purpose": "Trigger validation after rerunning the 2026-06-26 dashboard using GitHub prompt/template as the rule source.",
   "filesExpected": [
     "index.html",
+    "prompts/m7-daily-update.prompt.md",
+    "prompts/m7-full-report-template.md",
     "data/latest.json",
     "data/recent.json",
     "data/history-index.json",
@@ -28,6 +30,9 @@
     "Full report contains top and bottom links back to Dashboard",
     "Full report contains a history-report entry point outside the dashboard",
     "Full report source section uses real clickable links",
+    "Full report follows prompts/m7-full-report-template.md fixed ten-section structure",
+    "Full report section six contains seven ticker-specific analysis blocks",
+    "Full report section nine is 今日總排序與最終結論 and not task success criteria",
     "Reflexive Q&A is derived from the day's M7 conflict signals and separates AI supply-chain beneficiaries from AI Capex spenders"
   ]
 }
