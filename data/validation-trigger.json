@@ -1,10 +1,10 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T14:24:00+08:00",
+  "updatedAt": "2026-06-26T15:33:30+08:00",
   "date": "2026-06-26",
   "reportId": "M7-Daily-2026-06-26",
-  "purpose": "Trigger validation after updating the 2026-06-26 dashboard UX, full report navigation, source links, and reflexive-check section.",
+  "purpose": "Trigger validation after rerunning the 2026-06-26 dashboard with market-data ingestion fallback rules.",
   "filesExpected": [
     "index.html",
     "data/latest.json",
@@ -12,7 +12,15 @@
     "data/history-index.json",
     "data/history/2026-06.json",
     "data/history.json",
+    "data/market/2026-06-26.json",
     "reports/2026/06/26-full.html"
+  ],
+  "dataQualityExpected": "formal_partial_market_data",
+  "marketDataRulesExpected": [
+    "market-data ingestion was attempted before the daily update",
+    "partial market data degrades dataQuality instead of aborting the update",
+    "missing OHLCV fields remain null and are not fabricated",
+    "dashboard and full report reference the partial market-data status"
   ],
   "reflexiveChecksExpected": [
     "Dashboard only keeps the full-report entry point and no longer exposes Archive on the main hero",
