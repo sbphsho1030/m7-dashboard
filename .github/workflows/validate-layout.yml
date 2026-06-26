@@ -1,0 +1,33 @@
+name: M7 Layout Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-layout:
+    name: Validate Dashboard and Full Report layout
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Show Node.js version
+        run: node --version
+
+      - name: Run M7 layout validation gate
+        run: node scripts/validate-layout.js
