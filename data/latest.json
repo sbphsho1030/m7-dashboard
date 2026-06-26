@@ -1,7 +1,7 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T15:33:30+08:00",
+  "updatedAt": "2026-06-26T16:12:30+08:00",
   "latestDate": "2026-06-26",
   "latestReportId": "M7-Daily-2026-06-26",
   "sourceReports": {
@@ -11,8 +11,8 @@
     "marketData": "data/market/2026-06-26.json"
   },
   "summary": {
-    "headline": "0626 正式版重跑：美股 6/25 收盤分化，Nasdaq 與 M7 多數承壓；market-data ingestion 僅部分成功，因此暫停追價、保留 GOOGL / NVDA / MSFT 條件式觀察。",
-    "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在重新定價 AI Capex 回收期；本次日更已補 market-data ingestion 並依規則降為部分行情資料版，不假造缺失 OHLCV。",
+    "headline": "0626 prompt-template 正式重跑：美股 6/25 收盤分化，Micron 驗證 AI memory 需求，但 Apple / MSFT / AMZN 壓力顯示市場正在重新定價 AI Capex 回收期；暫停追價。",
+    "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在把 AI 供應鏈受益方、AI Capex 支出方、產品成本承壓方、遠期敘事估值方分開定價；本次日更依 repo prompt/template 產生，資料品質為 formal_partial_market_data，不假造缺失 OHLCV。",
     "recommendedAction": "暫停追價",
     "directionality": "科技股承壓、半導體分化",
     "killSwitchTriggered": false,
@@ -26,21 +26,21 @@
     "appleCostPressure": { "light": "red", "label": "Apple Cost Pressure", "summary": "Apple 漲價與記憶體成本疑慮引發 6/25 大跌" }
   },
   "ranking": [
-    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A-", "score": 76, "scoreBand": "可觀察，等條件", "scoreReason": "搜尋與雲端 / AI 變現路徑仍具品質；但 6/25 GOOGL 仍小跌，新增資金要等 Nasdaq / M7 壓力回穩。", "scoreBreakdown": { "fundamental": 31, "valuation": 16, "momentum": 8, "risk": -10, "event": 1, "quality": 30 }, "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "未降級但不追價", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 0, "deltaNote": "週排名基準不足；月排名基準不足" },
-    { "rank": 2, "ticker": "NVDA", "company": "Nvidia", "rating": "B+", "score": 74, "scoreBand": "可觀察，等條件", "scoreReason": "Micron 強勢驗證 AI memory / infrastructure demand，但 NVDA 當日仍下跌，表示供應鏈需求強不等於平台 / 高估值股可無條件追價。", "scoreBreakdown": { "fundamental": 33, "valuation": 9, "momentum": 17, "risk": -16, "event": 3, "quality": 28 }, "newCapitalStance": "小量觀察", "riskLight": "yellow", "triggerStatus": "高波動觀察", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 0, "deltaNote": "週排名基準不足；月排名基準不足" },
-    { "rank": 3, "ticker": "MSFT", "company": "Microsoft", "rating": "B+", "score": 70, "scoreBand": "可觀察，等條件", "scoreReason": "企業 AI / Azure thesis 仍完整，但 6 月重挫與 AI Capex 回收期疑慮使市場把 MSFT 從現金流防禦股重新定價為資本密集成長股。", "scoreBreakdown": { "fundamental": 32, "valuation": 14, "momentum": 6, "risk": -12, "event": 0, "quality": 30 }, "newCapitalStance": "等回穩", "riskLight": "yellow", "triggerStatus": "技術面承壓", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 0, "deltaNote": "週排名基準不足；月排名基準不足" },
-    { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 59, "scoreBand": "中性，不急動", "scoreReason": "廣告 AI 效率與產品現金流仍有支撐，但 AI 基建支出與監管議題讓估值彈性受壓，短線不急著加碼。", "scoreBreakdown": { "fundamental": 27, "valuation": 13, "momentum": 7, "risk": -13, "event": 0, "quality": 25 }, "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 0, "deltaNote": "週排名基準不足；月排名基準不足" },
-    { "rank": 5, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 56, "scoreBand": "中性，不急動", "scoreReason": "AWS 長線仍是 AI 基建變現場景，但 AMZN 當日跌幅偏大且技術面轉弱，FCF / Capex 回收仍是主要壓力。", "scoreBreakdown": { "fundamental": 28, "valuation": 12, "momentum": 3, "risk": -15, "event": 0, "quality": 28 }, "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "技術面檢查", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 2, "deltaNote": "週排名基準不足；月排名基準不足；紅燈連續 2 天" },
-    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 44, "scoreBand": "暫停新資金", "scoreReason": "6/25 因 MacBook / iPad 漲價與記憶體成本疑慮大跌，產品定價能力仍在但短線需求與 AI 產品證據不足。", "scoreBreakdown": { "fundamental": 23, "valuation": 10, "momentum": 2, "risk": -19, "event": -2, "quality": 30 }, "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "等待產品與需求證據", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 2, "deltaNote": "週排名基準不足；月排名基準不足；紅燈連續 2 天" },
-    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 39, "scoreBand": "暫停新資金", "scoreReason": "估值仍高度依賴自駕 / Robotaxi / 機器人等遠期敘事，在 M7 估值壓縮與科技股承壓時風險報酬最低。", "scoreBreakdown": { "fundamental": 16, "valuation": 7, "momentum": 7, "risk": -19, "event": 0, "quality": 28 }, "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "weeklyDelta": null, "monthlyDelta": null, "rankChangeWeek": null, "rankChangeMonth": null, "redStreakDays": 3, "deltaNote": "週排名基準不足；月排名基準不足；紅燈連續 3 天" }
+    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A-", "score": 76, "scoreBand": "可觀察，等條件", "scoreReason": "搜尋、YouTube、Cloud 與 AI 變現路徑仍相對均衡；但 6/25 大型科技承壓，新增資金必須等 Nasdaq / M7 風險回穩。", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "未降級但不追價", "redStreakDays": 0 },
+    { "rank": 2, "ticker": "NVDA", "company": "Nvidia", "rating": "B+", "score": 74, "scoreBand": "可觀察，等條件", "scoreReason": "Micron 強勢驗證 AI memory / infrastructure demand；但 NVDA 當日仍下跌，代表供應鏈需求強不等於高估值核心股可無條件追價。", "newCapitalStance": "小量觀察", "riskLight": "yellow", "triggerStatus": "高波動觀察", "redStreakDays": 0 },
+    { "rank": 3, "ticker": "MSFT", "company": "Microsoft", "rating": "B+", "score": 70, "scoreBand": "可觀察，等條件", "scoreReason": "Azure / Copilot / enterprise AI thesis 仍完整；但六月重挫與 AI Capex 回收期疑慮，使市場重新定價。", "newCapitalStance": "等回穩", "riskLight": "yellow", "triggerStatus": "技術面承壓", "redStreakDays": 0 },
+    { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 59, "scoreBand": "中性，不急動", "scoreReason": "廣告 AI 效率與產品現金流仍有支撐，但 AI 基建支出與監管議題讓估值彈性受壓。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力", "redStreakDays": 0 },
+    { "rank": 5, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 56, "scoreBand": "中性，不急動", "scoreReason": "AWS 長線仍是 AI 基建變現場景，但 AMZN 當日跌幅偏大且技術面轉弱，FCF / Capex 回收仍是主要壓力。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "技術面檢查", "redStreakDays": 2 },
+    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 44, "scoreBand": "暫停新資金", "scoreReason": "6/25 因 MacBook / iPad 漲價與記憶體成本疑慮大跌；短線需求、毛利率與 AI 產品證據不足。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "等待產品與需求證據", "redStreakDays": 2 },
+    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 39, "scoreBand": "暫停新資金", "scoreReason": "估值仍高度依賴自駕、Robotaxi、機器人等遠期敘事；在 M7 估值壓縮與科技股承壓時，風險報酬最低。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "redStreakDays": 3 }
   ],
   "analytics": {
-    "generatedAt": "2026-06-26T15:33:30+08:00",
+    "generatedAt": "2026-06-26T16:12:30+08:00",
     "baseline": { "weekTarget": "2026-06-19", "monthTarget": "2026-05-27", "weekRecord": null, "monthRecord": null },
     "redNames": ["AMZN", "AAPL", "TSLA"],
     "yellowNames": ["GOOGL", "NVDA", "MSFT", "META"],
     "maxRedStreak": 3,
-    "notes": ["正式版重跑已移除 pre-run 狀態", "market-data ingestion 已嘗試，但只取得部分收盤價 / 漲跌幅摘要，未取得七檔完整官方 OHLCV", "06/25 M7 弱於廣泛市場，屬估值 / Capex 壓力而非基本面全面破壞"]
+    "notes": ["正式版已改為 repo prompt/template 驅動", "market-data ingestion 已嘗試，但未取得七檔完整官方 OHLCV", "06/25 M7 弱於廣泛市場，屬估值 / Capex 壓力而非基本面全面破壞"]
   },
   "eventWatch": [
     { "date": "2026-06-25", "ticker": "M7", "event": "M7 六月承壓，市場關注 AI Capex ROI", "rules": ["若 M7 ETF 或多數成分續破關鍵均線，維持暫停追價。", "若 AI Capex 新聞轉為企業 FCF 壓力，降低 MSFT / AMZN / META 權重。", "若半導體強但 M7 本體弱，視為分化，不視為全面轉強。"] },
@@ -55,13 +55,8 @@
   "dataQuality": {
     "marketDataRefreshed": true,
     "status": "formal_partial_market_data",
-    "note": "已執行 market-data ingestion；本次只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
+    "note": "已依 repo prompt/template 執行 market-data ingestion；本次只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
     "marketDataFile": "data/market/2026-06-26.json",
-    "sources": [
-      "Reuters: Apple price hikes due to memory costs, stock fell sharply",
-      "MarketWatch: MSFT closed down 3.46% at 352.83 and June AI spending concerns",
-      "MarketWatch data: NVDA closed down 1.64% at 195.74; GOOGL declined 0.46%; AMZN and AAPL declined materially",
-      "IBD: Nasdaq fell about 0.5%; S&P near 50-day line; Micron surged on earnings"
-    ]
+    "sources": ["AP: Major US stock indexes on Thursday 2026-06-25", "Reuters: Wall St ends mixed as tech megacap declines outweigh chip outlook", "Reuters: Micron AI memory demand", "MarketWatch: Microsoft June rout and AI spending concern"]
   }
 }
