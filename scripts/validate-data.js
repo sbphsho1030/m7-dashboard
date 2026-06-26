@@ -66,12 +66,14 @@ function validateFullReport(latest) {
     '四、市場與新聞摘要',
     '五、個股分析',
     '六、前瞻性壓力測試',
-    '七、研究型投資者的反身性提問',
+    '七、反身性檢查：我是不是把所有 AI 股票混成同一個故事？',
     '八、今日總排序',
     '九、最終結論',
     '十、資料來源與限制'
   ];
   const requiredConcepts = ['GOOGL', 'NVDA', 'MSFT', 'META', 'AMZN', 'AAPL', 'TSLA', 'AI Capex', 'FCF', 'Micron'];
+  const requiredNavigation = ['回 Dashboard', '歷史報告'];
+  const requiredSourceDomains = ['reuters.com', 'apnews.com', 'marketwatch.com'];
 
   if (!html.includes(latest.latestDate)) errors.push(`full report ${fullReport} does not include latestDate ${latest.latestDate}.`);
   if (!html.includes(latest.latestReportId)) errors.push(`full report ${fullReport} does not include latestReportId ${latest.latestReportId}.`);
@@ -90,6 +92,15 @@ function validateFullReport(latest) {
   }
   for (const concept of requiredConcepts) {
     if (!html.includes(concept)) errors.push(`full report ${fullReport} missing required concept: ${concept}`);
+  }
+  for (const nav of requiredNavigation) {
+    if (!html.includes(nav)) errors.push(`full report ${fullReport} missing navigation text: ${nav}`);
+  }
+  for (const domain of requiredSourceDomains) {
+    if (!html.includes(domain)) errors.push(`full report ${fullReport} missing source link domain: ${domain}`);
+  }
+  if (!html.includes('target="_blank"') || !html.includes('rel="noopener"')) {
+    errors.push(`full report ${fullReport} source links should open safely with target="_blank" and rel="noopener".`);
   }
 
   if (html.length < 12000) errors.push(`full report ${fullReport} is too short to be a complete research brief.`);
