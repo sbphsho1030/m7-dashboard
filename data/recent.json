@@ -2,21 +2,21 @@
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
   "description": "Rolling recent cache for Dashboard delta and red-streak calculations. Keep about 90 days.",
-  "updatedAt": "2026-06-26T08:08:00+08:00",
+  "updatedAt": "2026-06-26T15:33:30+08:00",
   "retentionDays": 90,
   "records": [
     {
       "date": "2026-06-26",
       "reportId": "M7-Daily-2026-06-26",
-      "sourceReports": { "dashboard": "index.html", "fullReport": "reports/2026/06/26-full.html", "archive": "archive.html" },
-      "headline": "0626 正式版：美股 6/25 收盤分化，Nasdaq 與 M7 多數承壓；暫停追價，優先控管 AI Capex 與大型科技估值壓縮風險。",
-      "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在重新定價 AI Capex 回收期；新資金只保留 GOOGL / NVDA / MSFT 條件式觀察，不追 AAPL / AMZN / TSLA。",
+      "sourceReports": { "dashboard": "index.html", "fullReport": "reports/2026/06/26-full.html", "archive": "archive.html", "marketData": "data/market/2026-06-26.json" },
+      "headline": "0626 正式版重跑：美股 6/25 收盤分化，Nasdaq 與 M7 多數承壓；market-data ingestion 僅部分成功，因此暫停追價。",
+      "oneLineConclusion": "本次日更已補 market-data ingestion 並依規則降為部分行情資料版，不假造缺失 OHLCV。",
       "recommendedAction": "暫停追價",
       "marketRegime": {
-        "directionality": { "status": "科技股承壓、半導體分化", "label": "分化偏弱", "interpretation": "Dow / Russell 相對穩，Nasdaq 與 M7 多數承壓；此時重點是降低追價而非恐慌賣出。" },
+        "directionality": { "status": "科技股承壓、半導體分化", "label": "分化偏弱", "interpretation": "Dow / S&P 相對穩，Nasdaq 與 M7 多數承壓；此時重點是降低追價而非恐慌賣出。" },
         "killSwitch": { "triggered": false, "label": "未觸發", "reason": "目前是估值與 Capex 壓力，不是七檔基本面 thesis 同步破壞。" },
         "riskLights": [
-          { "key": "techMegaCapPressure", "light": "red", "label": "Tech Mega-cap Pressure", "summary": "Nasdaq 跌約 0.5%，大型科技多數拖累盤面" },
+          { "key": "techMegaCapPressure", "light": "red", "label": "Tech Mega-cap Pressure", "summary": "Nasdaq 收跌約 0.46%，大型科技多數拖累盤面" },
           { "key": "aiCapex", "light": "yellow", "label": "AI Capex", "summary": "市場重新檢查 AI 基建支出與現金流回收期" },
           { "key": "semiMomentum", "light": "green", "label": "Semi Momentum", "summary": "Micron 強勢帶動半導體情緒，但不代表 M7 全面轉強" }
         ]
@@ -31,14 +31,14 @@
         { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 39, "scoreBand": "暫停新資金", "scoreReason": "估值依賴遠期敘事，M7 壓縮時風險報酬最低。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "redStreakDays": 3 }
       ],
       "eventWatch": [
-        { "date": "2026-06-25", "ticker": "M7", "event": "M7 六月市值大幅回落，市場關注 AI Capex ROI", "rules": ["若多數成分續破關鍵均線，維持暫停追價。"] }
+        { "date": "2026-06-25", "ticker": "M7", "event": "M7 六月承壓，市場關注 AI Capex ROI", "rules": ["若多數成分續破關鍵均線，維持暫停追價。"] }
       ],
       "triggerRules": {
         "downgrade": ["Nasdaq 續弱且 M7 多數同步下跌", "AI Capex news 轉為 FCF / 負債壓力", "紅燈擴散至 4 檔以上"],
         "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 連續跌破關鍵均線", "紅燈個股增加到 4 檔以上"],
         "panicSellBan": "不得因單日大型科技下跌直接恐慌賣出；需確認 thesis 是否破壞。"
       },
-      "dataQuality": { "marketDataRefreshed": true, "status": "formal_web_refreshed_close_summary", "note": "已使用 2026-06-25 美股收盤公開新聞、主要指數收盤與逐檔跌幅摘要更新；本環境未取得完整官方逐筆 OHLCV。" }
+      "dataQuality": { "marketDataRefreshed": true, "status": "formal_partial_market_data", "note": "已執行 market-data ingestion；只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得完整 M7 OHLCV；不假造缺失欄位。", "marketDataFile": "data/market/2026-06-26.json" }
     },
     {
       "date": "2026-06-25",
