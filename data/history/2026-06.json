@@ -8,13 +8,58 @@
     {
       "date": "2026-06-26",
       "reportId": "M7-Daily-2026-06-26",
-      "sourceReports": { "dashboard": "index.html", "fullReport": "reports/2026/06/26-full.html", "archive": "archive.html", "marketData": "data/market/2026-06-26.json" },
-      "headline": "0626 prompt-template rerun complete; partial market data; pause chasing.",
+      "sourceReports": {
+        "dashboard": "index.html",
+        "fullReport": "reports/2026/06/26-full.html",
+        "archive": "archive.html",
+        "marketData": "data/market/2026-06-26.json"
+      },
+      "headline": "0626 prompt-template 正式重跑：美股 6/25 收盤分化，Micron 驗證 AI memory 需求，但 Apple / MSFT / AMZN 壓力顯示市場正在重新定價 AI Capex 回收期；暫停追價。",
+      "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在把 AI 供應鏈受益方、AI Capex 支出方、產品成本承壓方、遠期敘事估值方分開定價；本次日更依 repo prompt/template 產生，資料品質為 formal_partial_market_data，不假造缺失 OHLCV。",
       "recommendedAction": "暫停追價",
-      "topTicker": "GOOGL",
-      "topScore": 76,
-      "maxRedStreak": 3,
-      "dataQuality": { "marketDataRefreshed": true, "status": "formal_partial_market_data", "marketDataFile": "data/market/2026-06-26.json" }
+      "marketRegime": {
+        "directionality": {
+          "status": "科技股承壓、半導體分化",
+          "label": "科技股承壓、半導體分化",
+          "interpretation": "美股 6/25 收盤分化，AI 供應鏈與大型平台股分化。"
+        },
+        "killSwitch": {
+          "triggered": false,
+          "label": "未觸發",
+          "reason": "七檔基本面 thesis 未同步破壞，但新增資金暫停追價。"
+        },
+        "riskLights": [
+          { "key": "techMegaCapPressure", "light": "red", "label": "Tech Mega-cap Pressure", "summary": "大型科技多數承壓" },
+          { "key": "aiCapex", "light": "yellow", "label": "AI Capex", "summary": "市場重新檢查 AI Capex 與 FCF 回收期" },
+          { "key": "semiMomentum", "light": "green", "label": "Semi Momentum", "summary": "Micron 強勢但 M7 未全面轉強" },
+          { "key": "marketBreadth", "light": "yellow", "label": "Market Breadth", "summary": "Dow 小漲、S&P 近持平、Nasdaq 偏弱" },
+          { "key": "appleCostPressure", "light": "red", "label": "Apple Cost Pressure", "summary": "Apple 漲價與記憶體成本疑慮" }
+        ]
+      },
+      "m7Ranking": [
+        { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A-", "score": 76, "scoreBand": "可觀察，等條件", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "未降級但不追價", "redStreakDays": 0 },
+        { "rank": 2, "ticker": "NVDA", "company": "Nvidia", "rating": "B+", "score": 74, "scoreBand": "可觀察，等條件", "newCapitalStance": "小量觀察", "riskLight": "yellow", "triggerStatus": "高波動觀察", "redStreakDays": 0 },
+        { "rank": 3, "ticker": "MSFT", "company": "Microsoft", "rating": "B+", "score": 70, "scoreBand": "可觀察，等條件", "newCapitalStance": "等回穩", "riskLight": "yellow", "triggerStatus": "技術面承壓", "redStreakDays": 0 },
+        { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 59, "scoreBand": "中性，不急動", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力", "redStreakDays": 0 },
+        { "rank": 5, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 56, "scoreBand": "中性，不急動", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "技術面檢查", "redStreakDays": 2 },
+        { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 44, "scoreBand": "暫停新資金", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "等待產品與需求證據", "redStreakDays": 2 },
+        { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 39, "scoreBand": "暫停新資金", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "redStreakDays": 3 }
+      ],
+      "eventWatch": [
+        { "date": "2026-06-25", "ticker": "M7", "event": "M7 六月承壓，市場關注 AI Capex ROI", "rules": ["若多數成分續破關鍵均線，維持暫停追價。"] }
+      ],
+      "triggerRules": {
+        "downgrade": ["Nasdaq 續弱且 M7 多數同步下跌", "AI Capex news 轉為 FCF / 負債壓力", "AAPL / AMZN / TSLA 紅燈延續並擴散至 4 檔以上"],
+        "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 連續跌破關鍵均線", "紅燈個股增加到 4 檔以上"],
+        "panicSellBan": "不得因單日大型科技下跌直接恐慌賣出；需確認 thesis 是否破壞、是否觸發 kill switch。"
+      },
+      "nextDataTasks": [],
+      "dataQuality": {
+        "marketDataRefreshed": true,
+        "status": "formal_partial_market_data",
+        "note": "已依 repo prompt/template 執行 market-data ingestion；本次只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
+        "marketDataFile": "data/market/2026-06-26.json"
+      }
     }
   ]
 }
