@@ -4,10 +4,9 @@
 
 此專案的目標不是自動下單，也不是取代投資判斷，而是把每日 M7 觀察重點整理成可快速閱讀、可回查、可維護的 GitHub Pages Dashboard。
 
-GitHub Pages：
-
-```text
-https://sbphsho1030.github.io/m7-dashboard/
+```md
+GitHub Pages：  
+[開啟 M7 Dashboard](https://sbphsho1030.github.io/m7-dashboard/)
 ```
 
 ---
