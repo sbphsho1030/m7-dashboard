@@ -1,10 +1,10 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T16:22:00+08:00",
+  "updatedAt": "2026-06-26T17:10:00+08:00",
   "date": "2026-06-26",
   "reportId": "M7-Daily-2026-06-26",
-  "purpose": "Trigger strengthened validation after adding prompt/template checks, market-data consistency checks, and full-report completeness checks. This run is expected to catch any remaining partial-rerun inconsistency.",
+  "purpose": "Trigger validation after implementing separated validation modes, full-report renderer, and daily record sync script. Remaining failures should identify generated data that still needs to be rerendered or synced.",
   "filesExpected": [
     "index.html",
     "data/latest.json",
