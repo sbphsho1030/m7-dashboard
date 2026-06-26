@@ -1,11 +1,12 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T08:32:00+08:00",
+  "updatedAt": "2026-06-26T14:24:00+08:00",
   "date": "2026-06-26",
   "reportId": "M7-Daily-2026-06-26",
-  "purpose": "Trigger validation after completing the full 2026-06-26 M7 daily update with restored research brief depth and required full-report sections.",
+  "purpose": "Trigger validation after updating the 2026-06-26 dashboard UX, full report navigation, source links, and reflexive-check section.",
   "filesExpected": [
+    "index.html",
     "data/latest.json",
     "data/recent.json",
     "data/history-index.json",
@@ -14,10 +15,11 @@
     "reports/2026/06/26-full.html"
   ],
   "reflexiveChecksExpected": [
-    "Dashboard latest date and reportId match full report",
-    "Full report is formal and contains no pre-run terms",
-    "Full report contains all required research brief sections",
-    "Full report contains all seven M7 tickers",
-    "Full report contains AI Capex, FCF, Micron, pressure test, and reflexive Q&A"
+    "Dashboard only keeps the full-report entry point and no longer exposes Archive on the main hero",
+    "Dashboard full-report link uses cache-busting version parameters",
+    "Full report contains top and bottom links back to Dashboard",
+    "Full report contains a history-report entry point outside the dashboard",
+    "Full report source section uses real clickable links",
+    "Reflexive Q&A is derived from the day's M7 conflict signals and separates AI supply-chain beneficiaries from AI Capex spenders"
   ]
 }
