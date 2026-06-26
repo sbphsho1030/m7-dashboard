@@ -59,6 +59,19 @@ function validateFullReport(latest) {
   const html = fs.readFileSync(fullReport, 'utf8');
   const isFormal = String(latest?.dataQuality?.status || '').includes('formal') || String(latest?.summary?.headline || '').includes('正式');
   const forbiddenFormalTerms = ['pre-run', 'Pre-run', 'PRE-RUN', '等待正式版', '正式日更可覆蓋', '會覆蓋'];
+  const requiredSections = [
+    '一、今日總結',
+    '二、M7 主決策表',
+    '三、現金流與 AI Capex 檢查',
+    '四、市場與新聞摘要',
+    '五、個股分析',
+    '六、前瞻性壓力測試',
+    '七、研究型投資者的反身性提問',
+    '八、今日總排序',
+    '九、最終結論',
+    '十、資料來源與限制'
+  ];
+  const requiredConcepts = ['GOOGL', 'NVDA', 'MSFT', 'META', 'AMZN', 'AAPL', 'TSLA', 'AI Capex', 'FCF', 'Micron'];
 
   if (!html.includes(latest.latestDate)) errors.push(`full report ${fullReport} does not include latestDate ${latest.latestDate}.`);
   if (!html.includes(latest.latestReportId)) errors.push(`full report ${fullReport} does not include latestReportId ${latest.latestReportId}.`);
@@ -71,6 +84,15 @@ function validateFullReport(latest) {
     if (!html.includes(top.ticker)) errors.push(`full report ${fullReport} does not include topTicker ${top.ticker}.`);
     if (!html.includes(String(top.score))) errors.push(`full report ${fullReport} does not include topScore ${top.score}.`);
   }
+
+  for (const section of requiredSections) {
+    if (!html.includes(section)) errors.push(`full report ${fullReport} missing required section: ${section}`);
+  }
+  for (const concept of requiredConcepts) {
+    if (!html.includes(concept)) errors.push(`full report ${fullReport} missing required concept: ${concept}`);
+  }
+
+  if (html.length < 12000) errors.push(`full report ${fullReport} is too short to be a complete research brief.`);
 
   if (isFormal) {
     if (!html.includes('正式版')) errors.push(`formal full report ${fullReport} must include 正式版.`);
