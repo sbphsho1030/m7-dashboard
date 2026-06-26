@@ -1,119 +1,199 @@
-# M7 Daily Dashboard
+# M7 Dashboard
 
-這個 repository 用來發布 **Magnificent 7（M7）每日投資決策觀察報告** 的 GitHub Pages Dashboard。
+每日 Magnificent 7（M7）投資決策儀表板，提供 **Dashboard 首頁、完整分析報告、歷史 Archive 與每日資料更新流程**。
 
-網站：
+此專案的目標不是自動下單，也不是取代投資判斷，而是把每日 M7 觀察重點整理成可快速閱讀、可回查、可維護的 GitHub Pages Dashboard。
 
-- 最新 Dashboard：<https://sbphsho1030.github.io/m7-dashboard/>
-- 歷史 Archive：<https://sbphsho1030.github.io/m7-dashboard/archive.html>
-- GitHub Repo：<https://github.com/sbphsho1030/m7-dashboard>
-
-> 注意：本專案內容僅作研究觀察與決策輔助，不是個人化投資建議。
-
----
-
-## v1.2 完成定義
-
-M7 Dashboard v1 到 GHP-17 收斂，不再用無限 GHP 編號推進。v1.2 補上長期資料分層，避免 `history.json` 無限制變大。
-
-v1.2 資料分層：
-
-1. `data/latest.json`：只放最新快照，會每日覆蓋。
-2. `data/recent.json`：只保留最近約 90 天，用於 Dashboard Delta 與紅燈連續天數。
-3. `data/history-index.json`：Archive 用的輕量索引，只放日期、headline、link、topScore 等摘要。
-4. `data/history/YYYY-MM.json`：月份完整 daily record。
-5. `data/history.json`：legacy compatibility file，不再作為主要歷史資料庫，也不再無限制累積。
-
-後續只針對真實使用痛點維護，不追 GHP999。
-
----
-
-## Score 定義
-
-Score 是「行動參考分數」，不是自動買賣指令。
+GitHub Pages：
 
 ```text
-85–100：高優先觀察，可分批但不追價
-70–84：可觀察，等條件
-55–69：中性，不急動
-40–54：暫停新資金
-0–39：高風險，避免追價
-```
-
-每檔 ranking 必須包含：
-
-```json
-{
-  "score": 88,
-  "scoreBand": "高優先觀察",
-  "scoreReason": "Cloud / backlog thesis 較完整。"
-}
+https://sbphsho1030.github.io/m7-dashboard/
 ```
 
 ---
 
-## GHP 進度
+## 專案內容
 
-| 版本 | 狀態 | 重點 |
-|---|---:|---|
-| GHP-08 | Done | 行為控制 Dashboard：Delta、Kill Switch、不動作理由、同向性、事件規則 |
-| GHP-09 | Done | 新增 `data/latest.json`、`data/history.json`、`data/README.md` |
-| GHP-10 | Done | `index.html` 改為讀取 `data/latest.json` 的資料驅動首頁 |
-| GHP-11 | Done | 新增 `scripts/update-latest.js`、`scripts/validate-data.js`、共用資料檢查函式 |
-| GHP-12 | Done | 新增 `data/schema.json`、GitHub Actions data validation workflow |
-| GHP-13 | Done | 新增 `scripts/generate-draft.js` 與 notes input 範例 |
-| GHP-14 | Done | `archive.html` 改為讀取歷史資料自動產生列表 |
-| GHP-15 | Done | Dashboard 頂部移除 raw data 連結，整理成正式 UI |
-| GHP-16 | Done | 支援週/月排名 Delta；資料不足時顯示 N/A |
-| GHP-17 | Done | 支援紅燈連續天數與 v1 完成頁 |
-| v1.1 | Done | 補回 Action Score，並納入 validator / schema / Dashboard |
-| v1.2 | Done | 拆分 history：latest / recent / index / monthly，避免 history.json 無限長大 |
+| 項目          | 說明                        |
+| ----------- | ------------------------- |
+| Dashboard   | 快速查看今日 M7 投資觀察重點          |
+| Full Report | 閱讀每日完整研究型分析報告             |
+| Archive     | 回顧歷史每日紀錄                  |
+| Data Files  | 儲存最新資料、近期資料與歷史資料          |
+| Validation  | 驗證 Dashboard、資料檔與完整報告是否一致 |
 
 ---
 
-## 網站結構
+## 使用方式
+
+每日優先閱讀順序：
 
 ```text
-m7-dashboard/
-├── index.html
-├── archive.html
-├── README.md
-├── package.json
-├── data/
-│   ├── latest.json
-│   ├── recent.json
-│   ├── history-index.json
-│   ├── history.json
-│   ├── schema.json
-│   ├── README.md
-│   └── history/
-│       └── 2026-06.json
-├── inputs/
-│   └── 2026-06-26-notes.example.json
-├── scripts/
-│   ├── generate-draft.js
-│   ├── validate-data.js
-│   ├── update-latest.js
-│   └── lib/
-│       ├── m7-analytics.js
-│       └── m7-data.js
-├── .github/
-│   └── workflows/
-│       └── validate-data.yml
-└── reports/
-    └── 2026/
-        └── 06/
-            ├── 25.html
-            ├── 25-ghp06.html
-            ├── 25-ghp10.html
-            ├── 25-ghp11-12.html
-            ├── 25-ghp17.html
-            └── 25-full.html
+Dashboard
+↓
+確認今日動作 / Score / Kill Switch / 紅燈狀態
+↓
+若有降級、紅燈連續、Score 明顯變化或事件風險
+↓
+進入 Full Report 閱讀完整分析
+↓
+需要回查過去紀錄時進 Archive
 ```
+
+Dashboard 用來快速判斷「今天是否需要動作」。
+Full Report 用來理解「為什麼今天是這個結論」。
+Archive 用來回顧「過去每天的判斷與變化」。
 
 ---
 
-## 正式每日流程
+## Dashboard 主要資訊
+
+Dashboard 首頁會呈現：
+
+* 今日核心結論
+* 建議動作
+* Kill Switch 是否觸發
+* M7 排名
+* Action Score
+* 新資金狀態
+* 風險燈號
+* 週 / 月排名變化
+* 紅燈連續天數
+* 完整分析報告連結
+
+---
+
+## Action Score 定義
+
+Action Score 是每日行動參考分數，不是自動買賣指令。
+
+|  Score | 解讀            |
+| -----: | ------------- |
+| 85–100 | 高優先觀察，可分批但不追價 |
+|  70–84 | 可觀察，等條件       |
+|  55–69 | 中性，不急動        |
+|  40–54 | 暫停新資金         |
+|   0–39 | 高風險，避免追價      |
+
+Score 會綜合考慮：
+
+* 基本面品質
+* 估值位置
+* 技術與動能
+* AI Capex / FCF 壓力
+* 事件風險
+* 相對排序
+* 新資金可行性
+
+---
+
+## Full Report 規格
+
+Full Report 是完整研究型每日報告，不應只是 Dashboard 摘要頁。
+
+每份正式日報至少包含：
+
+1. 今日總結
+2. M7 主決策表
+3. 現金流與 AI Capex 檢查
+4. 市場與新聞摘要
+5. 七檔個股分析
+6. 前瞻性壓力測試
+7. 研究型投資者的反身性提問
+8. 今日總排序
+9. 最終結論
+10. 資料來源與限制
+
+Full Report 必須和 Dashboard 保持一致：
+
+* 日期一致
+* reportId 一致
+* 今日動作一致
+* topTicker / topScore 一致
+* 風險燈號一致
+* 不可殘留 pre-run 字樣
+* 不可縮水成簡短摘要頁
+
+---
+
+## 目前版本狀態
+
+目前已完成：
+
+* Dashboard 首頁
+* Full Report 每日完整報告
+* Archive 歷史回顧
+* Action Score
+* v1.2 資料分層
+* full report 與 Dashboard 一致性檢查
+* validation-trigger 驗證流程
+
+後續將依照實際使用需求，持續優化內容品質、更新穩定性與閱讀體驗。
+
+---
+
+## 版本更新紀錄
+
+### v1.1
+
+* 補回 Action Score
+* Dashboard 顯示行動參考分數
+* 補強 validator / schema / Dashboard 顯示一致性
+* 每檔 M7 必須包含 score、scoreBand、scoreReason
+* 讓每日更新資料更適合 Dashboard 使用
+
+### v1.2
+
+* 重整資料結構，避免歷史資料無限制累積
+* 將最新資料、近期資料、歷史索引與月資料分層保存
+* 改善 Archive 讀取方式
+* 改善 Dashboard 只讀必要資料的效率
+* 保留 legacy history.json 作為相容檔
+* 補強 full report 與 Dashboard 的一致性檢查
+* 補強正式報告不得殘留 pre-run 的驗證
+* 補強 full report 不可縮水的章節檢查
+
+---
+
+## 資料結構
+
+```text
+data/latest.json
+data/recent.json
+data/history-index.json
+data/history/YYYY-MM.json
+data/history.json
+reports/YYYY/MM/DD-full.html
+inputs/YYYY-MM-DD-notes.json
+```
+
+| 檔案                             | 用途                                   |
+| ------------------------------ | ------------------------------------ |
+| `data/latest.json`             | 最新每日快照                               |
+| `data/recent.json`             | 近期資料快取，用於 Dashboard Delta 與紅燈連續天數    |
+| `data/history-index.json`      | Archive 用輕量索引                        |
+| `data/history/YYYY-MM.json`    | 每月完整 daily record                    |
+| `data/history.json`            | legacy compatibility file，不作為主要歷史資料庫 |
+| `reports/YYYY/MM/DD-full.html` | 每日完整分析報告                             |
+| `inputs/YYYY-MM-DD-notes.json` | 每日 notes input                       |
+
+---
+
+## Dashboard 使用原則
+
+* Dashboard 首頁用來快速查看今日重點結論。
+* Full Report 用來閱讀完整每日研究內容。
+* Archive 用來回顧歷史每日紀錄。
+* 每日更新以最新正式版資料為準。
+* 若資料仍在整理或驗證中，正式版內容應覆蓋前一版內容。
+* Dashboard 與 Full Report 必須一致，但不能互相取代。
+* Full Report 是 Dashboard 的研究底稿，不是 Dashboard 的複製品。
+
+---
+
+## 更新流程
+
+每日正式更新流程：
 
 ```bash
 node scripts/generate-draft.js inputs/YYYY-MM-DD-notes.json
@@ -121,76 +201,117 @@ node scripts/update-latest.js drafts/YYYY-MM-DD-latest.json
 npm run validate
 ```
 
-範例：
+v1.2 更新時應維持以下順序：
 
-```bash
-node scripts/generate-draft.js inputs/2026-06-26-notes.example.json
-node scripts/update-latest.js drafts/2026-06-26-latest.json --dry-run
-npm run validate
+```text
+1. 更新 full report HTML
+2. 更新 data/latest.json
+3. 更新 data/recent.json
+4. 更新 data/history-index.json
+5. 更新 data/history/YYYY-MM.json
+6. 更新 compact legacy data/history.json
+7. 最後更新 data/validation-trigger.json
+8. 回讀 Dashboard / Full Report / Archive 自我檢查
 ```
-
-流程說明：
-
-1. `generate-draft.js` 將每日 notes 轉成 `drafts/YYYY-MM-DD-latest.json`。
-2. `update-latest.js` 驗證 draft，覆蓋 `data/latest.json`。
-3. `update-latest.js` 更新 `data/recent.json`、`data/history-index.json`、`data/history/YYYY-MM.json`。
-4. `update-latest.js` 會套用週/月 Delta 與紅燈連續天數計算。
-5. `validate-data.js` 檢查 latest/recent/index/monthly/legacy history 的結構與一致性。
-6. GitHub Actions 在 push / PR 時再次跑 `npm run validate`。
 
 ---
 
-## 驗證流程
+## 驗證項目
 
-```bash
-npm run validate
-```
+`npm run validate` 會檢查：
 
-檢查項目包含：
+* `data/latest.json`
+* `data/recent.json`
+* `data/history-index.json`
+* `data/history/YYYY-MM.json`
+* `data/history.json`
+* `latest.sourceReports.fullReport`
 
-- `latest.json` 是否有 7 檔 M7 排名。
-- Rank 是否唯一且為 1–7。
-- Ticker 是否為 AAPL / MSFT / GOOGL / AMZN / NVDA / META / TSLA。
-- 每檔是否有 `score`、`scoreBand`、`scoreReason`。
-- Kill Switch、Data Quality、Trigger Rules 是否存在。
-- `recent.json` 是否包含 latest 對應紀錄。
-- `history-index.json` 是否包含 latest 對應索引。
-- `data/history/YYYY-MM.json` 是否包含 latest 對應月份紀錄。
-- history 是否有重複 date + reportId。
+Full Report 反身性檢查包含：
 
----
-
-## Dashboard 行為原則
-
-Dashboard 只讀：
-
-```text
-latest.json + recent.json
-```
-
-Archive 只讀：
-
-```text
-history-index.json
-```
-
-月份完整紀錄在需要時才讀：
-
-```text
-data/history/YYYY-MM.json
-```
-
-這樣一年後不需要每次載入整包歷史資料，也避免單一 `history.json` 變成大型檔案。
+* full report 檔案必須存在
+* full report 必須包含 latestDate
+* full report 必須包含 latestReportId
+* full report 必須包含 recommendedAction
+* full report 必須包含 topTicker / topScore
+* 正式版不得包含 `pre-run`
+* 正式版不得包含 `等待正式版`
+* 正式版不得包含 `會覆蓋`
+* full report 必須包含十個研究報告章節
+* full report 必須包含七檔 M7 ticker
+* full report 必須包含 AI Capex、FCF、Micron 等核心概念
+* full report 不得短到像 Dashboard 摘要頁
 
 ---
 
-## 後續維護原則
+## 反身性檢查清單
 
-v1.2 後不再追新 GHP 編號。只有出現真實使用問題才修，例如：
+每次日更完成後必須自問：
 
-- 每日 notes 欄位不夠。
-- Score 權重需要調整。
-- Delta 計算邏輯需要改成價格 / PE / score。
-- Archive 顯示不清楚。
-- Dashboard UI 誤導一般使用者。
-- GitHub Actions 驗證結果失敗。
+```text
+Dashboard 顯示的是哪一天？
+latest.json 的 reportId 是什麼？
+Dashboard 的 fullReport link 指到哪個 HTML？
+該 HTML 是否為正式版？
+HTML 是否還有 pre-run / 等待正式版 / 會覆蓋？
+Full Report 是否包含完整十個章節？
+Full Report 是否包含七檔個股分析？
+Full Report 是否包含 AI Capex / FCF / 壓力測試 / 反身性問答？
+Archive 是否有同一筆日期與 reportId？
+recent / monthly / latest 是否一致？
+validation-trigger 是否最後才更新？
+GitHub Actions 是否通過或仍未回傳？
+```
+
+---
+
+## 維護方向
+
+後續維護將聚焦於：
+
+* 每日更新內容的穩定性
+* Dashboard 與 Full Report 的一致性
+* Full Report 的研究深度
+* 歷史資料的可讀性與可維護性
+* GitHub Pages 的顯示品質
+* 驗證流程與錯誤排查能力
+* 使用者實際閱讀流程的改善
+
+---
+
+## GitHub About 建議
+
+GitHub repo 右側 About 區塊需手動設定。
+
+建議 Description：
+
+```text
+Daily Magnificent 7 investment dashboard with dashboard view, full research brief, and historical archive.
+```
+
+建議 Website：
+
+```text
+https://sbphsho1030.github.io/m7-dashboard/
+```
+
+建議 Topics：
+
+```text
+m7
+magnificent-7
+stocks
+investing
+dashboard
+market-analysis
+github-pages
+finance
+research-brief
+```
+
+---
+
+## Disclaimer
+
+This project is for research notes and personal dashboard tracking only.
+It is not personalized investment advice, financial advice, or an automated trading system.
