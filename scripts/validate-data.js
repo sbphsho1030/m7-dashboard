@@ -45,6 +45,43 @@ function validateHistoryIndex(index, latest) {
   return errors;
 }
 
+function topScoreRecord(latest) {
+  const ranking = latest?.ranking || [];
+  return ranking.slice().sort((a, b) => (b.score ?? -1) - (a.score ?? -1))[0] || null;
+}
+
+function validateFullReport(latest) {
+  const errors = [];
+  const fullReport = latest?.sourceReports?.fullReport;
+  if (!fullReport) return ['latest.sourceReports.fullReport is required.'];
+  if (!fs.existsSync(fullReport)) return [`full report does not exist: ${fullReport}`];
+
+  const html = fs.readFileSync(fullReport, 'utf8');
+  const isFormal = String(latest?.dataQuality?.status || '').includes('formal') || String(latest?.summary?.headline || '').includes('正式');
+  const forbiddenFormalTerms = ['pre-run', 'Pre-run', 'PRE-RUN', '等待正式版', '正式日更可覆蓋', '會覆蓋'];
+
+  if (!html.includes(latest.latestDate)) errors.push(`full report ${fullReport} does not include latestDate ${latest.latestDate}.`);
+  if (!html.includes(latest.latestReportId)) errors.push(`full report ${fullReport} does not include latestReportId ${latest.latestReportId}.`);
+  if (latest.summary?.recommendedAction && !html.includes(latest.summary.recommendedAction)) {
+    errors.push(`full report ${fullReport} does not include recommendedAction ${latest.summary.recommendedAction}.`);
+  }
+
+  const top = topScoreRecord(latest);
+  if (top) {
+    if (!html.includes(top.ticker)) errors.push(`full report ${fullReport} does not include topTicker ${top.ticker}.`);
+    if (!html.includes(String(top.score))) errors.push(`full report ${fullReport} does not include topScore ${top.score}.`);
+  }
+
+  if (isFormal) {
+    if (!html.includes('正式版')) errors.push(`formal full report ${fullReport} must include 正式版.`);
+    for (const term of forbiddenFormalTerms) {
+      if (html.includes(term)) errors.push(`formal full report ${fullReport} still contains forbidden pre-run term: ${term}`);
+    }
+  }
+
+  return errors;
+}
+
 const ioErrors = [];
 const latest = readOrError(latestPath, ioErrors);
 const recent = readOrError(recentPath, ioErrors);
@@ -63,14 +100,16 @@ const recentErrors = validateHistory(recent, latest);
 const indexErrors = validateHistoryIndex(index, latest);
 const monthlyErrors = validateHistory(monthly, latest);
 const legacyErrors = legacyHistory ? validateHistory(legacyHistory, latest) : [];
+const fullReportErrors = validateFullReport(latest);
 
 printErrors('latest.json validation errors', latestErrors);
 printErrors('recent.json validation errors', recentErrors);
 printErrors('history-index.json validation errors', indexErrors);
 printErrors(`${monthlyPath} validation errors`, monthlyErrors);
 printErrors('legacy history.json validation errors', legacyErrors);
+printErrors('full report reflexive validation errors', fullReportErrors);
 
-if (latestErrors.length || recentErrors.length || indexErrors.length || monthlyErrors.length || legacyErrors.length) {
+if (latestErrors.length || recentErrors.length || indexErrors.length || monthlyErrors.length || legacyErrors.length || fullReportErrors.length) {
   console.error('\nM7 data validation failed.');
   process.exit(1);
 }
@@ -80,4 +119,5 @@ console.log(`latest: ${latest.latestDate} / ${latest.latestReportId}`);
 console.log(`recent records: ${recent.records.length}`);
 console.log(`history-index records: ${index.records.length}`);
 console.log(`${monthlyPath} records: ${monthly.records.length}`);
+console.log(`full report: ${latest.sourceReports.fullReport}`);
 if (legacyHistory) console.log(`legacy history records: ${legacyHistory.records.length}`);
