@@ -2,16 +2,16 @@
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
   "description": "Compact index for archive navigation. Does not contain full daily records.",
-  "updatedAt": "2026-06-26T07:18:00+08:00",
+  "updatedAt": "2026-06-26T08:00:20+08:00",
   "records": [
     {
       "date": "2026-06-26",
       "reportId": "M7-Daily-2026-06-26",
-      "headline": "0626 pre-run：美股收盤呈混合盤，Nasdaq 與大型科技承壓；先暫停追價，等待 08:00 正式版覆蓋。",
+      "headline": "0626 正式版：美股 6/25 收盤分化，Nasdaq 與 M7 多數承壓；暫停追價，優先控管 AI Capex 與大型科技估值壓縮風險。",
       "recommendedAction": "暫停追價",
       "topTicker": "GOOGL",
-      "topScore": 78,
-      "maxRedStreak": 2,
+      "topScore": 76,
+      "maxRedStreak": 3,
       "monthFile": "data/history/2026-06.json",
       "fullReport": "reports/2026/06/26-full.html"
     },
