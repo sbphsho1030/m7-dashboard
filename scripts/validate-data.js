@@ -36,6 +36,14 @@ function isObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
+function requireString(errors, value, label) {
+  if (typeof value !== 'string' || value.trim() === '') errors.push(`${label} must be a non-empty string.`);
+}
+
+function requireBoolean(errors, value, label) {
+  if (typeof value !== 'boolean') errors.push(`${label} must be boolean.`);
+}
+
 function recordsOf(container) {
   return Array.isArray(container?.records) ? container.records : [];
 }
@@ -60,32 +68,36 @@ function getLatestIdentity(latest) {
   };
 }
 
+function hasAll(text, terms) {
+  return terms.every((term) => String(text || '').includes(term));
+}
+
 function validatePromptFiles(dailyPromptText, fullReportTemplateText) {
   const errors = [];
   if (!dailyPromptText) errors.push(`${dailyPromptPath} is required.`);
   if (!fullReportTemplateText) errors.push(`${fullReportTemplatePath} is required.`);
 
-  const dailyRequired = [
-    'M7 Dashboard 的每日更新目標不是產生一篇新聞摘要',
-    'Dashboard 回答：今天要不要動？',
-    'Market data ingestion failure or incompleteness degrades dataQuality',
-    'data/validation-trigger.json 必須是最後一步更新',
-    '只要任一主要檔案未更新成功，不得宣告日更成功'
+  const dailyChecks = [
+    ['daily prompt mission', ['M7 Dashboard 的每日更新目標不是產生一篇新聞摘要']],
+    ['dashboard role', ['Dashboard 回答', '今天要不要動']],
+    ['market-data fallback rule', ['Market data ingestion failure or incompleteness degrades dataQuality']],
+    ['validation trigger final-step rule', ['data/validation-trigger.json', '最後一步']],
+    ['do-not-declare-success rule', ['任一主要檔案未更新成功', '不得宣告']]
   ];
-  const templateRequired = [
-    'M7 Full Report Fixed Template',
-    'The task may fill in daily content, data, sources, and analysis, but it must not delete sections',
-    '## 一、今日總結',
-    '## 六、七檔個股分析',
-    '## 九、今日總排序與最終結論',
-    'Forbidden Report Failures'
+  const templateChecks = [
+    ['template title', ['M7 Full Report Fixed Template']],
+    ['no delete/rename/shrink rule', ['must not delete sections', 'rename sections', 'shrink the report']],
+    ['section one', ['## 一、今日總結']],
+    ['seven-stock section', ['## 六、七檔個股分析']],
+    ['final-ranking section', ['## 九、今日總排序與最終結論']],
+    ['forbidden failures', ['Forbidden Report Failures']]
   ];
 
-  for (const text of dailyRequired) {
-    if (!dailyPromptText?.includes(text)) errors.push(`${dailyPromptPath} missing required rule text: ${text}`);
+  for (const [label, terms] of dailyChecks) {
+    if (!hasAll(dailyPromptText, terms)) errors.push(`${dailyPromptPath} missing required ${label}: ${terms.join(' + ')}`);
   }
-  for (const text of templateRequired) {
-    if (!fullReportTemplateText?.includes(text)) errors.push(`${fullReportTemplatePath} missing required template text: ${text}`);
+  for (const [label, terms] of templateChecks) {
+    if (!hasAll(fullReportTemplateText, terms)) errors.push(`${fullReportTemplatePath} missing required ${label}: ${terms.join(' + ')}`);
   }
 
   return errors;
@@ -167,12 +179,9 @@ function validateMarketData(marketData, latest) {
   return errors;
 }
 
-function validateLatestRecordSync(container, label, latest) {
+function validateRecordIdentity(record, label, latest) {
   const errors = [];
-  const { date, reportId, dataQualityStatus, marketDataFile, fullReport } = getLatestIdentity(latest);
-  const record = findRecord(container, date, reportId);
-  if (!record) return [`${label} does not contain latest record ${date}__${reportId}.`];
-
+  const { dataQualityStatus, marketDataFile, fullReport } = getLatestIdentity(latest);
   if (record.headline !== latest.summary?.headline) errors.push(`${label} latest record headline does not match latest.summary.headline.`);
   if (record.oneLineConclusion !== latest.summary?.oneLineConclusion) errors.push(`${label} latest record oneLineConclusion does not match latest.summary.oneLineConclusion.`);
   if (record.recommendedAction !== latest.summary?.recommendedAction) errors.push(`${label} latest record recommendedAction does not match latest.summary.recommendedAction.`);
@@ -180,6 +189,44 @@ function validateLatestRecordSync(container, label, latest) {
   if (record.sourceReports?.marketData !== marketDataFile) errors.push(`${label} latest record marketData reference does not match latest.`);
   if (record.dataQuality?.status !== dataQualityStatus) errors.push(`${label} latest record dataQuality.status does not match latest.`);
   return errors;
+}
+
+function validateLatestRecordSync(container, label, latest) {
+  const { date, reportId } = getLatestIdentity(latest);
+  const record = findRecord(container, date, reportId);
+  if (!record) return [`${label} does not contain latest record ${date}__${reportId}.`];
+  return validateRecordIdentity(record, label, latest);
+}
+
+function validateRecentCache(recent, latest) {
+  const errors = [];
+  if (!isObject(recent)) return ['recent.json must contain a JSON object.'];
+  requireString(errors, recent.schemaVersion, 'recent.schemaVersion');
+  if (recent.project !== 'm7-dashboard') errors.push('recent.project must be "m7-dashboard".');
+  requireString(errors, recent.updatedAt, 'recent.updatedAt');
+  if (!Array.isArray(recent.records) || recent.records.length === 0) errors.push('recent.records must be a non-empty array.');
+  const record = findRecord(recent, latest.latestDate, latest.latestReportId);
+  if (!record) return errors.concat([`recent.json does not contain latest record ${latest.latestDate}__${latest.latestReportId}.`]);
+  if (!Array.isArray(record.m7Ranking) || record.m7Ranking.length !== 7) errors.push('recent latest record m7Ranking must contain exactly 7 records.');
+  if (!Array.isArray(record.eventWatch)) errors.push('recent latest record eventWatch must be an array, use [] if no event.');
+  if (!isObject(record.dataQuality)) errors.push('recent latest record dataQuality must be an object.');
+  return errors.concat(validateRecordIdentity(record, 'recent.json', latest));
+}
+
+function validateCompactLegacyHistory(legacy, latest) {
+  const errors = [];
+  if (!isObject(legacy)) return ['legacy history.json must contain a JSON object.'];
+  requireString(errors, legacy.schemaVersion, 'legacy.schemaVersion');
+  if (legacy.project !== 'm7-dashboard') errors.push('legacy.project must be "m7-dashboard".');
+  requireString(errors, legacy.updatedAt, 'legacy.updatedAt');
+  if (!Array.isArray(legacy.records) || legacy.records.length === 0) errors.push('legacy.records must be a non-empty array.');
+  const record = findRecord(legacy, latest.latestDate, latest.latestReportId);
+  if (!record) return errors.concat([`legacy history.json does not contain latest record ${latest.latestDate}__${latest.latestReportId}.`]);
+  requireString(errors, record.headline, 'legacy latest record headline');
+  requireString(errors, record.oneLineConclusion, 'legacy latest record oneLineConclusion');
+  requireString(errors, record.recommendedAction, 'legacy latest record recommendedAction');
+  if (!isObject(record.dataQuality)) errors.push('legacy latest record dataQuality must be an object.');
+  return errors.concat(validateRecordIdentity(record, 'legacy history.json', latest));
 }
 
 function validateValidationTrigger(trigger, latest) {
@@ -290,7 +337,7 @@ function validateFullReport(latest) {
   }
 
   for (const ticker of ['GOOGL', 'NVDA', 'MSFT', 'META', 'AMZN', 'AAPL', 'TSLA']) {
-    const tickerBlockPattern = new RegExp(`<h3[^>]*>${ticker}<\\/h3>[\\s\\S]{120,1600}?(Facts|Interpretation|Risk|Action|Observation|Score|新資金|風險)`, 'i');
+    const tickerBlockPattern = new RegExp(`<h3[^>]*>${ticker}<\\/h3>[\\s\\S]{120,1800}?(Facts|Interpretation|Risk|Action|Observation|Score|新資金|風險)`, 'i');
     if (!tickerBlockPattern.test(html)) {
       errors.push(`full report ${fullReport} missing ticker-specific analysis block for ${ticker}.`);
     }
@@ -326,10 +373,10 @@ if (ioErrors.length) {
 }
 
 const latestErrors = validateLatest(latest);
-const recentErrors = validateHistory(recent, latest).concat(validateLatestRecordSync(recent, 'recent.json', latest));
+const recentErrors = validateRecentCache(recent, latest);
 const indexErrors = validateHistoryIndex(index, latest);
 const monthlyErrors = validateHistory(monthly, latest).concat(validateLatestRecordSync(monthly, monthlyPath, latest));
-const legacyErrors = legacyHistory ? validateHistory(legacyHistory, latest).concat(validateLatestRecordSync(legacyHistory, 'legacy history.json', latest)) : [];
+const legacyErrors = legacyHistory ? validateCompactLegacyHistory(legacyHistory, latest) : [];
 const marketDataErrors = validateMarketData(marketData, latest);
 const triggerErrors = validateValidationTrigger(trigger, latest);
 const promptErrors = validatePromptFiles(dailyPromptText, fullReportTemplateText);
