@@ -2,12 +2,12 @@
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
   "description": "Compact index for archive navigation. Does not contain full daily records.",
-  "updatedAt": "2026-06-26T15:33:30+08:00",
+  "updatedAt": "2026-06-26T16:12:30+08:00",
   "records": [
     {
       "date": "2026-06-26",
       "reportId": "M7-Daily-2026-06-26",
-      "headline": "0626 正式版重跑：美股 6/25 收盤分化，market-data ingestion 僅部分成功；暫停追價。",
+      "headline": "0626 prompt-template 正式重跑：美股 6/25 收盤分化，market-data ingestion 僅部分成功；暫停追價。",
       "recommendedAction": "暫停追價",
       "topTicker": "GOOGL",
       "topScore": 76,
