@@ -1,10 +1,10 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T08:00:20+08:00",
+  "updatedAt": "2026-06-26T08:09:00+08:00",
   "date": "2026-06-26",
   "reportId": "M7-Daily-2026-06-26",
-  "purpose": "Trigger validation after the formal 2026-06-26 v1.2 data update completed.",
+  "purpose": "Trigger validation after fixing recent and monthly history records for the formal 2026-06-26 v1.2 data update.",
   "filesExpected": [
     "data/latest.json",
     "data/recent.json",
