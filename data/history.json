@@ -7,13 +7,24 @@
     {
       "date": "2026-06-26",
       "reportId": "M7-Daily-2026-06-26",
-      "sourceReports": { "dashboard": "index.html", "fullReport": "reports/2026/06/26-full.html", "archive": "archive.html", "marketData": "data/market/2026-06-26.json" },
-      "headline": "0626 prompt-template rerun complete; partial market data; pause chasing.",
+      "sourceReports": {
+        "dashboard": "index.html",
+        "fullReport": "reports/2026/06/26-full.html",
+        "archive": "archive.html",
+        "marketData": "data/market/2026-06-26.json"
+      },
+      "headline": "0626 prompt-template 正式重跑：美股 6/25 收盤分化，Micron 驗證 AI memory 需求，但 Apple / MSFT / AMZN 壓力顯示市場正在重新定價 AI Capex 回收期；暫停追價。",
+      "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在把 AI 供應鏈受益方、AI Capex 支出方、產品成本承壓方、遠期敘事估值方分開定價；本次日更依 repo prompt/template 產生，資料品質為 formal_partial_market_data，不假造缺失 OHLCV。",
       "recommendedAction": "暫停追價",
       "topTicker": "GOOGL",
       "topScore": 76,
       "maxRedStreak": 3,
-      "dataQuality": { "marketDataRefreshed": true, "status": "formal_partial_market_data", "marketDataFile": "data/market/2026-06-26.json" }
+      "dataQuality": {
+        "marketDataRefreshed": true,
+        "status": "formal_partial_market_data",
+        "note": "已依 repo prompt/template 執行 market-data ingestion；本次只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
+        "marketDataFile": "data/market/2026-06-26.json"
+      }
     }
   ]
 }
