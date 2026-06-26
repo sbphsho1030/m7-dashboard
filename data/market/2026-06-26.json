@@ -3,27 +3,27 @@
   "project": "m7-dashboard",
   "date": "2026-06-26",
   "marketSession": "2026-06-25 US close",
-  "generatedAt": "2026-06-26T15:33:30+08:00",
+  "generatedAt": "2026-06-26T16:12:30+08:00",
   "status": "formal_partial_market_data",
   "ingestionResult": {
     "attempted": true,
     "completeOhlcv": false,
     "degraded": true,
-    "reason": "Only partial public close/percentage/volume snippets were available in this run; full official OHLCV for all M7 names was not available. Missing fields remain null and are not fabricated."
+    "reason": "Public sources provided index close summaries and partial M7 close/change snippets, but full official OHLCV for all M7 names and QQQ/SPY was not available in this run. Missing fields remain null and are not fabricated."
   },
   "indices": {
-    "DJIA": { "close": 51920.62, "changePercent": 0.14, "source": "MarketWatch data-news snippet" },
-    "SPX": { "close": 7357.49, "changePercent": -0.01, "source": "MarketWatch data-news snippet" },
-    "NASDAQ": { "close": 25358.60, "changePercent": -0.46, "source": "MarketWatch / IBD snippets" },
+    "DJIA": { "open": null, "high": null, "low": null, "close": 51920.62, "volume": null, "changePercent": 0.14, "source": "AP market close summary" },
+    "SPX": { "open": null, "high": null, "low": null, "close": 7357.49, "volume": null, "changePercent": -0.10, "source": "AP market close summary" },
+    "NASDAQ": { "open": null, "high": null, "low": null, "close": 25358.60, "volume": null, "changePercent": -0.46, "source": "AP and Reuters market close summaries" },
     "QQQ": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available in this run" },
     "SPY": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available in this run" }
   },
   "symbols": {
-    "AAPL": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": -6.12, "source": "MarketWatch / Barron's / Reuters snippets" },
-    "MSFT": { "open": null, "high": null, "low": null, "close": 352.83, "volume": null, "changePercent": -3.46, "source": "MarketWatch snippets" },
-    "NVDA": { "open": null, "high": null, "low": null, "close": 195.74, "volume": null, "changePercent": -1.64, "source": "MarketWatch TXN data-news snippet" },
-    "GOOGL": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": -0.46, "source": "MarketWatch CRM/ORCL data-news snippets" },
-    "AMZN": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": -3.10, "source": "MarketWatch Fox data-news snippet" },
+    "AAPL": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": -6.10, "source": "partial public snippets only" },
+    "MSFT": { "open": null, "high": null, "low": null, "close": 352.83, "volume": null, "changePercent": -3.46, "source": "partial public snippets only" },
+    "NVDA": { "open": null, "high": null, "low": null, "close": 195.74, "volume": null, "changePercent": -1.64, "source": "partial public snippets only" },
+    "GOOGL": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": -0.46, "source": "partial public snippets only" },
+    "AMZN": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": -3.10, "source": "partial public snippets only" },
     "META": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available in this run" },
     "TSLA": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available in this run" }
   },
