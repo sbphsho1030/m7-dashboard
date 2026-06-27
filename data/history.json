@@ -2,28 +2,28 @@
   "schemaVersion": "M7-v1.2-legacy",
   "project": "m7-dashboard",
   "description": "Legacy compatibility file. Full history is split into data/recent.json, data/history-index.json, and data/history/YYYY-MM.json.",
-  "updatedAt": "2026-06-26T16:12:30+08:00",
+  "updatedAt": "2026-06-27T08:50:00+08:00",
   "records": [
     {
-      "date": "2026-06-26",
-      "reportId": "M7-Daily-2026-06-26",
+      "date": "2026-06-27",
+      "reportId": "M7-Daily-2026-06-27",
       "sourceReports": {
         "dashboard": "index.html",
-        "fullReport": "reports/2026/06/26-full.html",
+        "fullReport": "reports/2026/06/27-full.html",
         "archive": "archive.html",
-        "marketData": "data/market/2026-06-26.json"
+        "marketData": "data/market/2026-06-27.json"
       },
-      "headline": "0626 prompt-template 正式重跑：美股 6/25 收盤分化，Micron 驗證 AI memory 需求，但 Apple / MSFT / AMZN 壓力顯示市場正在重新定價 AI Capex 回收期；暫停追價。",
-      "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在把 AI 供應鏈受益方、AI Capex 支出方、產品成本承壓方、遠期敘事估值方分開定價；本次日更依 repo prompt/template 產生，資料品質為 formal_partial_market_data，不假造缺失 OHLCV。",
+      "headline": "0627 正式日更：美股 6/26 收盤小跌，MSFT / AAPL 出現跌深反彈，但半導體急跌與 AI Capex ROI 疑慮未解除；M7 仍是分化盤，維持暫停追價。",
+      "oneLineConclusion": "單日反彈不能直接解除六月 M7 壓力；MSFT / AAPL 修復代表恐慌降溫，但 Nasdaq 週線下跌、SOX 急跌與 AI Capex / FCF 問題仍在，因此今日不恐慌賣出，也不追價加碼。",
       "recommendedAction": "暫停追價",
-      "topTicker": "GOOGL",
-      "topScore": 76,
-      "maxRedStreak": 3,
+      "topTicker": "MSFT",
+      "topScore": 74,
+      "maxRedStreak": 4,
       "dataQuality": {
         "marketDataRefreshed": true,
         "status": "formal_partial_market_data",
-        "note": "已依 repo prompt/template 執行 market-data ingestion；本次只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
-        "marketDataFile": "data/market/2026-06-26.json"
+        "note": "已依 repo prompt/template 執行 market-data ingestion；本次取得指數收盤摘要與部分 M7 quote snippets，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
+        "marketDataFile": "data/market/2026-06-27.json"
       }
     }
   ]
