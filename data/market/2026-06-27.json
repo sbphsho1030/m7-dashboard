@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "M7-market-v1.0",
+  "project": "m7-dashboard",
+  "date": "2026-06-27",
+  "marketSession": "2026-06-26 US close",
+  "generatedAt": "2026-06-27T08:50:00+08:00",
+  "status": "formal_partial_market_data",
+  "ingestionResult": {
+    "attempted": true,
+    "completeOhlcv": false,
+    "degraded": true,
+    "reason": "Public sources provided index close summaries and partial M7 quote snippets. Full official OHLCV for all M7 names and QQQ/SPY was not available in this run. Missing fields remain null and are not fabricated."
+  },
+  "indices": {
+    "DJIA": { "open": null, "high": null, "low": null, "close": 51876.11, "volume": null, "changePercent": -0.09, "source": "AP market close summary" },
+    "SPX": { "open": null, "high": null, "low": null, "close": 7354.02, "volume": null, "changePercent": -0.05, "source": "AP market close summary" },
+    "NASDAQ": { "open": null, "high": null, "low": null, "close": 25297.62, "volume": null, "changePercent": -0.24, "source": "AP and Reuters market close summaries" },
+    "QQQ": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available in this run" },
+    "SPY": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available in this run" }
+  },
+  "symbols": {
+    "AAPL": { "open": null, "high": null, "low": null, "close": 283.78, "volume": null, "changePercent": 3.14, "source": "MarketWatch public quote snippet" },
+    "MSFT": { "open": null, "high": null, "low": null, "close": 372.97, "volume": null, "changePercent": 5.71, "source": "MarketWatch public quote snippet" },
+    "NVDA": { "open": null, "high": null, "low": null, "close": null, "volume": null, "changePercent": null, "source": "not available as complete quote in this run" },
+    "GOOGL": { "open": null, "high": null, "low": null, "close": 337.39, "volume": null, "changePercent": -1.84, "source": "MarketWatch public quote snippet" },
+    "AMZN": { "open": null, "high": null, "low": null, "close": 232.69, "volume": null, "changePercent": 2.50, "source": "MarketWatch public quote snippet" },
+    "META": { "open": null, "high": null, "low": null, "close": 550.25, "volume": null, "changePercent": 1.36, "source": "MarketWatch public quote snippet" },
+    "TSLA": { "open": null, "high": null, "low": null, "close": 379.71, "volume": null, "changePercent": 1.22, "source": "MarketWatch public quote snippet" }
+  },
+  "qualityRule": "Market data ingestion failure or incompleteness degrades dataQuality; it must not abort the daily update and must not fabricate OHLCV."
+}
