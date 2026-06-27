@@ -1,62 +1,62 @@
 {
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
-  "updatedAt": "2026-06-26T16:12:30+08:00",
-  "latestDate": "2026-06-26",
-  "latestReportId": "M7-Daily-2026-06-26",
+  "updatedAt": "2026-06-27T08:50:00+08:00",
+  "latestDate": "2026-06-27",
+  "latestReportId": "M7-Daily-2026-06-27",
   "sourceReports": {
     "dashboard": "index.html",
-    "fullReport": "reports/2026/06/26-full.html",
+    "fullReport": "reports/2026/06/27-full.html",
     "archive": "archive.html",
-    "marketData": "data/market/2026-06-26.json"
+    "marketData": "data/market/2026-06-27.json"
   },
   "summary": {
-    "headline": "0626 prompt-template 正式重跑：美股 6/25 收盤分化，Micron 驗證 AI memory 需求，但 Apple / MSFT / AMZN 壓力顯示市場正在重新定價 AI Capex 回收期；暫停追價。",
-    "oneLineConclusion": "M7 thesis 未全面崩壞，但市場正在把 AI 供應鏈受益方、AI Capex 支出方、產品成本承壓方、遠期敘事估值方分開定價；本次日更依 repo prompt/template 產生，資料品質為 formal_partial_market_data，不假造缺失 OHLCV。",
+    "headline": "0627 正式日更：美股 6/26 收盤小跌，MSFT / AAPL 出現跌深反彈，但半導體急跌與 AI Capex ROI 疑慮未解除；M7 仍是分化盤，維持暫停追價。",
+    "oneLineConclusion": "單日反彈不能直接解除六月 M7 壓力；MSFT / AAPL 修復代表恐慌降溫，但 Nasdaq 週線下跌、SOX 急跌與 AI Capex / FCF 問題仍在，因此今日不恐慌賣出，也不追價加碼。",
     "recommendedAction": "暫停追價",
-    "directionality": "科技股承壓、半導體分化",
+    "directionality": "科技股分化、半導體承壓、部分 megacap 反彈",
     "killSwitchTriggered": false,
     "nextActionMode": "等待回穩確認"
   },
   "riskLights": {
-    "techMegaCapPressure": { "light": "red", "label": "Tech Mega-cap Pressure", "summary": "Nasdaq 6/25 收跌約 0.46% 至 25,358.60，大型科技多數拖累盤面" },
-    "aiCapex": { "light": "yellow", "label": "AI Capex", "summary": "市場重新檢查 AI 基建支出、記憶體成本與 FCF 回收期" },
-    "semiMomentum": { "light": "green", "label": "Semi Momentum", "summary": "Micron 強勢帶動半導體情緒，但 NVDA 當日仍下跌，代表不是 M7 全面轉強" },
-    "marketBreadth": { "light": "yellow", "label": "Market Breadth", "summary": "Dow 小漲、S&P 近持平、Nasdaq 偏弱，市場分化仍明顯" },
-    "appleCostPressure": { "light": "red", "label": "Apple Cost Pressure", "summary": "Apple 漲價與記憶體成本疑慮引發 6/25 大跌" }
+    "techMegaCapPressure": { "light": "yellow", "label": "Tech Mega-cap Pressure", "summary": "三大指數 6/26 小跌，Nasdaq 週線仍明顯承壓，科技股壓力未完全解除" },
+    "aiCapex": { "light": "yellow", "label": "AI Capex", "summary": "市場仍在檢查 AI 基建支出能否轉成 revenue、margin 與 FCF" },
+    "semiMomentum": { "light": "red", "label": "Semi Momentum", "summary": "SOX 急跌代表半導體與 AI 供應鏈壓力未解除，不能把單日反彈解讀成全面轉強" },
+    "marketBreadth": { "light": "yellow", "label": "Market Breadth", "summary": "S&P 500、Dow、Nasdaq 皆小跌，廣泛市場不是崩壞，但 risk appetite 仍偏保守" },
+    "appleCostPressure": { "light": "yellow", "label": "Apple Cost Pressure", "summary": "AAPL 反彈修復情緒，但產品漲價與記憶體成本疑慮尚未完全解除" }
   },
   "ranking": [
-    { "rank": 1, "ticker": "GOOGL", "company": "Alphabet", "rating": "A-", "score": 76, "scoreBand": "可觀察，等條件", "scoreReason": "搜尋、YouTube、Cloud 與 AI 變現路徑仍相對均衡；但 6/25 大型科技承壓，新增資金必須等 Nasdaq / M7 風險回穩。", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "未降級但不追價", "redStreakDays": 0 },
-    { "rank": 2, "ticker": "NVDA", "company": "Nvidia", "rating": "B+", "score": 74, "scoreBand": "可觀察，等條件", "scoreReason": "Micron 強勢驗證 AI memory / infrastructure demand；但 NVDA 當日仍下跌，代表供應鏈需求強不等於高估值核心股可無條件追價。", "newCapitalStance": "小量觀察", "riskLight": "yellow", "triggerStatus": "高波動觀察", "redStreakDays": 0 },
-    { "rank": 3, "ticker": "MSFT", "company": "Microsoft", "rating": "B+", "score": 70, "scoreBand": "可觀察，等條件", "scoreReason": "Azure / Copilot / enterprise AI thesis 仍完整；但六月重挫與 AI Capex 回收期疑慮，使市場重新定價。", "newCapitalStance": "等回穩", "riskLight": "yellow", "triggerStatus": "技術面承壓", "redStreakDays": 0 },
-    { "rank": 4, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 59, "scoreBand": "中性，不急動", "scoreReason": "廣告 AI 效率與產品現金流仍有支撐，但 AI 基建支出與監管議題讓估值彈性受壓。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "Capex 壓力", "redStreakDays": 0 },
-    { "rank": 5, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 56, "scoreBand": "中性，不急動", "scoreReason": "AWS 長線仍是 AI 基建變現場景，但 AMZN 當日跌幅偏大且技術面轉弱，FCF / Capex 回收仍是主要壓力。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "技術面檢查", "redStreakDays": 2 },
-    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C", "score": 44, "scoreBand": "暫停新資金", "scoreReason": "6/25 因 MacBook / iPad 漲價與記憶體成本疑慮大跌；短線需求、毛利率與 AI 產品證據不足。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "等待產品與需求證據", "redStreakDays": 2 },
-    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 39, "scoreBand": "暫停新資金", "scoreReason": "估值仍高度依賴自駕、Robotaxi、機器人等遠期敘事；在 M7 估值壓縮與科技股承壓時，風險報酬最低。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "redStreakDays": 3 }
+    { "rank": 1, "ticker": "MSFT", "company": "Microsoft", "rating": "A-", "score": 74, "scoreBand": "可觀察，等條件", "scoreReason": "MSFT 單日強彈修復短線技術壓力，Azure / Copilot / enterprise distribution 仍是 M7 中較完整的 AI 變現路徑；但 AI spending、FCF 回收期與週線壓力仍需確認。", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "反彈修復但不追價", "redStreakDays": 0 },
+    { "rank": 2, "ticker": "GOOGL", "company": "Alphabet", "rating": "B+", "score": 72, "scoreBand": "可觀察，等條件", "scoreReason": "GOOGL 當日下跌，但搜尋、YouTube、Cloud 與 AI 產品化路徑仍相對均衡；排序維持前段，但需要等待 Nasdaq 與 M7 風險回穩。", "newCapitalStance": "等確認", "riskLight": "yellow", "triggerStatus": "基本面觀察但技術面承壓", "redStreakDays": 0 },
+    { "rank": 3, "ticker": "META", "company": "Meta Platforms", "rating": "B-", "score": 60, "scoreBand": "中性，不急動", "scoreReason": "META 仍有廣告現金流與 AI 推薦效率支撐，但 AI 基建支出、監管與估值彈性仍限制新增資金優先順序。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "中性等待", "redStreakDays": 0 },
+    { "rank": 4, "ticker": "NVDA", "company": "Nvidia", "rating": "B-", "score": 58, "scoreBand": "中性，不急動", "scoreReason": "AI 需求長線仍在，但 SOX 急跌顯示半導體高 beta 風險升高；Micron 訊號不能直接外推成 NVDA 可無條件追價。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "半導體壓力檢查", "redStreakDays": 1 },
+    { "rank": 5, "ticker": "AMZN", "company": "Amazon", "rating": "B-", "score": 55, "scoreBand": "中性，不急動", "scoreReason": "AWS 長線仍是 AI 基建變現場景，但 FCF / Capex 回收與技術面壓力尚未解除；反彈前需要更多證據。", "newCapitalStance": "暫停", "riskLight": "red", "triggerStatus": "FCF / Capex 壓力", "redStreakDays": 3 },
+    { "rank": 6, "ticker": "AAPL", "company": "Apple", "rating": "C+", "score": 52, "scoreBand": "暫停新資金", "scoreReason": "AAPL 單日反彈代表恐慌降溫，但產品漲價、記憶體成本與 AI 產品證據不足仍未解除；只能從紅燈降為觀察，不能直接升為新增資金優先。", "newCapitalStance": "暫停", "riskLight": "yellow", "triggerStatus": "反彈但需求證據不足", "redStreakDays": 0 },
+    { "rank": 7, "ticker": "TSLA", "company": "Tesla", "rating": "C-", "score": 38, "scoreBand": "高風險，避免追價", "scoreReason": "TSLA 仍高度依賴 Robotaxi、自駕與機器人等遠期敘事；在科技估值壓縮與風險偏好下降時，風險報酬仍最低。", "newCapitalStance": "不追價", "riskLight": "red", "triggerStatus": "高風險觀察", "redStreakDays": 4 }
   ],
   "analytics": {
-    "generatedAt": "2026-06-26T16:12:30+08:00",
-    "baseline": { "weekTarget": "2026-06-19", "monthTarget": "2026-05-27", "weekRecord": null, "monthRecord": null },
-    "redNames": ["AMZN", "AAPL", "TSLA"],
-    "yellowNames": ["GOOGL", "NVDA", "MSFT", "META"],
-    "maxRedStreak": 3,
-    "notes": ["正式版已改為 repo prompt/template 驅動", "market-data ingestion 已嘗試，但未取得七檔完整官方 OHLCV", "06/25 M7 弱於廣泛市場，屬估值 / Capex 壓力而非基本面全面破壞"]
+    "generatedAt": "2026-06-27T08:50:00+08:00",
+    "baseline": { "weekTarget": "2026-06-20", "monthTarget": "2026-05-28", "weekRecord": null, "monthRecord": null },
+    "redNames": ["NVDA", "AMZN", "TSLA"],
+    "yellowNames": ["MSFT", "GOOGL", "META", "AAPL"],
+    "maxRedStreak": 4,
+    "notes": ["正式版依 repo prompt/template 產生", "market-data ingestion 已嘗試，但未取得七檔完整官方 OHLCV", "MSFT / AAPL 單日反彈不等於 AI Capex 與半導體壓力解除"]
   },
   "eventWatch": [
-    { "date": "2026-06-25", "ticker": "M7", "event": "M7 六月承壓，市場關注 AI Capex ROI", "rules": ["若 M7 ETF 或多數成分續破關鍵均線，維持暫停追價。", "若 AI Capex 新聞轉為企業 FCF 壓力，降低 MSFT / AMZN / META 權重。", "若半導體強但 M7 本體弱，視為分化，不視為全面轉強。"] },
-    { "date": "2026-06-25", "ticker": "AAPL", "event": "MacBook / iPad 漲價與記憶體成本疑慮引發股價大跌", "rules": ["AAPL 需等待需求與毛利率證據再解除紅燈。", "若 iPhone 也出現漲價或需求壓力，維持暫停新資金。"] },
-    { "date": "2026-06-25", "ticker": "MSFT", "event": "Microsoft 六月重挫，市場聚焦 AI 資本支出回收期", "rules": ["MSFT 仍可觀察，但新增資金需等待技術面回穩與 FCF 壓力下降。"] }
+    { "date": "2026-06-26", "ticker": "M7", "event": "三大指數小跌，Nasdaq 週線明顯承壓，AI 與半導體仍是主要壓力", "rules": ["若 Nasdaq / QQQ 續弱且紅燈擴散到 4 檔以上，維持暫停追價並降低新增資金優先。", "若 SOX 持續急跌，NVDA 不因長線 AI thesis 而提前追價。", "若 MSFT 反彈無法延續，重新檢查 AI spending 與 FCF 壓力。"] },
+    { "date": "2026-06-26", "ticker": "MSFT", "event": "MSFT 單日強彈修復部分技術壓力", "rules": ["MSFT 可回到優先觀察，但新增資金仍需等待回穩確認與 FCF 壓力下降。"] },
+    { "date": "2026-06-26", "ticker": "AAPL", "event": "AAPL 反彈但產品成本疑慮仍在", "rules": ["AAPL 需要需求、毛利率與 AI 產品證據，才可解除暫停新資金。"] }
   ],
   "triggerRules": {
-    "downgrade": ["Nasdaq 續弱且 M7 多數同步下跌", "AI Capex news 轉為 FCF / 負債壓力", "AAPL / AMZN / TSLA 紅燈延續並擴散至 4 檔以上"],
-    "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 連續跌破關鍵均線", "紅燈個股增加到 4 檔以上"],
-    "panicSellBan": "不得因單日大型科技下跌直接恐慌賣出；需確認 thesis 是否破壞、是否觸發 kill switch。"
+    "downgrade": ["Nasdaq / QQQ 續弱且 M7 多數同步下跌", "SOX 持續下跌並拖累 NVDA / AI supply chain", "AI Capex news 轉為 FCF / 負債壓力", "紅燈個股增加到 4 檔以上"],
+    "stopAdding": ["M7 同向轉紅", "QQQ / Nasdaq 連續跌破關鍵均線", "NVDA / MSFT / AMZN 同時被 AI Capex 或半導體壓力拖累"],
+    "panicSellBan": "不得因單日科技股波動直接恐慌賣出；需確認 thesis 是否破壞、是否觸發 kill switch。"
   },
   "dataQuality": {
     "marketDataRefreshed": true,
     "status": "formal_partial_market_data",
-    "note": "已依 repo prompt/template 執行 market-data ingestion；本次只取得部分公開收盤價、指數收盤與逐檔跌幅摘要，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
-    "marketDataFile": "data/market/2026-06-26.json",
-    "sources": ["AP: Major US stock indexes on Thursday 2026-06-25", "Reuters: Wall St ends mixed as tech megacap declines outweigh chip outlook", "Reuters: Micron AI memory demand", "MarketWatch: Microsoft June rout and AI spending concern"]
+    "note": "已依 repo prompt/template 執行 market-data ingestion；本次取得指數收盤摘要與部分 M7 quote snippets，未取得 M7 全部完整官方 OHLCV。依規則降級為 formal_partial_market_data，不假造缺失欄位。",
+    "marketDataFile": "data/market/2026-06-27.json",
+    "sources": ["AP: How major US stock indexes fared Friday 2026-06-26", "Reuters: World stocks edge lower as tech selloff drags markets", "MarketWatch: U.S. stocks end lower Friday with S&P 500 booking weekly loss as tech struggles"]
   }
 }
