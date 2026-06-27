@@ -2,8 +2,20 @@
   "schemaVersion": "M7-v1.2",
   "project": "m7-dashboard",
   "description": "Compact index for archive navigation. Does not contain full daily records.",
-  "updatedAt": "2026-06-26T16:12:30+08:00",
+  "updatedAt": "2026-06-27T08:50:00+08:00",
   "records": [
+    {
+      "date": "2026-06-27",
+      "reportId": "M7-Daily-2026-06-27",
+      "headline": "0627 正式日更：美股 6/26 收盤小跌，MSFT / AAPL 出現跌深反彈，但半導體急跌與 AI Capex ROI 疑慮未解除；M7 仍是分化盤，維持暫停追價。",
+      "recommendedAction": "暫停追價",
+      "topTicker": "MSFT",
+      "topScore": 74,
+      "maxRedStreak": 4,
+      "dataQualityStatus": "formal_partial_market_data",
+      "monthFile": "data/history/2026-06.json",
+      "fullReport": "reports/2026/06/27-full.html"
+    },
     {
       "date": "2026-06-26",
       "reportId": "M7-Daily-2026-06-26",
