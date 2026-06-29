@@ -97,6 +97,12 @@ Required fields:
 - `summary`
 - `top3`: exactly three Top3 objects
 
+Dashboard filtering:
+
+- Dashboard may show at most three Top3 items.
+- Raw daily observations may exceed three items, but only Green signal items may become Top3 candidates.
+- Yellow items may be retained in an observation pool outside Dashboard; Red items must not enter Dashboard.
+
 Top3 object fields:
 
 - `topic`
@@ -120,6 +126,47 @@ Top3 object fields:
 - `whySelected`
 - `whatChanged`
 
+`evidenceProfile` supplemental fields for new data:
+
+- `sourceType`: source category, such as company filing, earnings call, news, analyst note, supply-chain check, policy update, or user-provided note.
+- `evidenceStrength`: qualitative strength, such as low, medium, high, or mixed.
+- `freshness`: how recent the evidence is relative to the market date.
+- `contradictionRisk`: whether known evidence conflicts with the selected interpretation.
+
+Do not rename existing `evidenceProfile` fields. Existing sample JSON that lacks the supplemental fields remains compatible; new manual data should include them when available.
+
+## Signal Filter Contract
+
+Green:
+
+- May enter Top3 candidates.
+- Requires a clear topic, relevant companies/theme, specific thesisImpact, actionable watchSignals, and enough evidence to avoid one-day noise.
+
+Yellow:
+
+- May enter an observation pool.
+- Should not enter Dashboard Top3 by default.
+- Used for early, weak, ambiguous, or insufficiently repeated signals.
+
+Red:
+
+- Must not enter Dashboard.
+- Used for unsupported claims, pure short-term price noise, duplicate low-value headlines, irrelevant company mentions, or items without usable watchSignals.
+
+Scoring inputs:
+
+- source quality and sourceType
+- sourceItemCount
+- recurrence and persistence
+- freshness
+- contradictionRisk
+- theme and company relevance
+- thesisImpact clarity
+- evidenceStrength
+- watchSignals specificity
+
+This filter is intended to prevent daily seven-stock noise from polluting the Dashboard. A company mention or price move alone is not enough to enter Top3.
+
 ## full-report.json
 
 Purpose: the website display Full Report payload. It is a permanent readable daily report. It may be displayed by the site, but future rollups must not read it.
@@ -133,6 +180,32 @@ Required fields:
 - `summary`
 - `sections`: array of `{ "heading": "...", "body": "..." }`
 - `notForReadback`: must be `true`
+
+Section rules:
+
+- Sections are dynamic and should be generated only when the day's Top3 or important extension topics need narrative explanation.
+- A Full Report may be short when there is little to add.
+- Do not create empty or filler sections to preserve a fixed format.
+- Full Report is permanently retained for display, but it must not be used for future rollup or readback.
+
+## What Changed Contract
+
+What Changed may compare only:
+
+- today's `docs/data/daily/YYYY-MM-DD/dashboard.json` Top3
+- previous `docs/context/active/previous-daily.json` Top3
+
+It must not read Full Report and must not infer freely from long-form historical content.
+
+Supported change types:
+
+- new topic: present today, absent from previous Top3.
+- continuing topic: same or closely related topic/theme/company exposure continues.
+- downgraded topic: previous Top3 remains relevant but falls out of today's Top3, or drops from Green to Yellow.
+- disappeared topic: previous Top3 no longer has sufficient evidence or watchSignals.
+- thesisImpact changed: the topic's thesisImpact clearly changes.
+- actionBias changed: the topic's actionBias clearly changes.
+- evidenceProfile changed: source count, source type, evidence strength, freshness, contradiction risk, recurrence, or whatChanged changes.
 
 ## context/active/previous-daily.json
 

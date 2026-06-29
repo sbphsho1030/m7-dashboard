@@ -42,6 +42,11 @@ Required reminders:
 - Use `dataStatus: "manual"` for a real manually supplied update, or `sample` for test data.
 - Include exactly three Top3 items.
 - Every Top3 item must include `evidenceProfile`.
+- Filter raw observations before selecting Top3:
+  - Green items may become Top3 candidates.
+  - Yellow items may remain in the observation pool, but should not enter Dashboard Top3 by default.
+  - Red items must not enter Dashboard.
+- Use persistence, thesisImpact, evidenceProfile, evidence strength, freshness, contradiction risk, and concrete watchSignals to prevent daily seven-stock noise from entering Dashboard.
 - Do not include investment advice.
 
 ## 3. Add full-report.json
@@ -54,6 +59,28 @@ Required reminders:
 - Set `notForReadback: true`.
 - Keep the report as a permanent display artifact.
 - Do not use the Full Report as future rollup memory.
+- Generate sections dynamically only for the day's Top3 or important extension topics.
+- Keep it short when there is little to add.
+- Do not create empty or filler sections to preserve a fixed format.
+
+## 3a. Add What Changed
+
+What Changed must be anchored only to structured Top3 JSON:
+
+- Compare today's `docs/data/daily/YYYY-MM-DD/dashboard.json` Top3.
+- Compare against `docs/context/active/previous-daily.json`.
+- Do not read Full Report.
+- Do not infer from long-form history.
+
+Use these change categories when applicable:
+
+- new topic
+- continuing topic
+- downgraded topic
+- disappeared topic
+- thesisImpact changed
+- actionBias changed
+- evidenceProfile changed
 
 ## 4. Update latest.json
 

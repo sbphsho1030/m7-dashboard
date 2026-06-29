@@ -51,11 +51,17 @@ The user should provide:
 1. Every sample file must say `dataStatus: "sample"`; real manual files should say `dataStatus: "manual"`.
 2. Every Top3 item must include `topic`, `summary`, `companies`, `theme`, `type`, `persistence`, `thesisImpact`, `actionBias`, `direction`, `horizon`, `watchSignals`, `confidence`, and `evidenceProfile`.
 3. Every `evidenceProfile` must include `sourceItemCount`, `recurrence`, `whySelected`, and `whatChanged`.
-4. Full Report must set `notForReadback: true`.
-5. All fetch paths must be site-root relative and must not start with `/`.
-6. Do not hard-code the repo name into data paths.
-7. If Dashboard Top3 changes, keep `docs/data/daily/YYYY-MM-DD/dashboard.json`, `docs/context/active/previous-daily.json`, and `docs/context/staging/current-week.json` synchronized.
-8. Full Report is permanent display content only and must not be used for rollup readback.
+4. New or manually supplied `evidenceProfile` should also include `sourceType`, `evidenceStrength`, `freshness`, and `contradictionRisk` when available. Do not rename existing fields to add these.
+5. Dashboard must contain at most three Top3 items. Raw observations may exceed three, but only Green items can become Top3 candidates.
+6. Yellow items belong in the observation pool by default, and Red items must not enter Dashboard.
+7. Full Report must set `notForReadback: true`.
+8. Full Report sections must be dynamic; do not create empty or filler sections just to preserve a fixed format.
+9. What Changed must compare only today's `dashboard.json` Top3 with `docs/context/active/previous-daily.json`.
+10. Do not read Full Report for What Changed, rollup, or readback.
+11. All fetch paths must be site-root relative and must not start with `/`.
+12. Do not hard-code the repo name into data paths.
+13. If Dashboard Top3 changes, keep `docs/data/daily/YYYY-MM-DD/dashboard.json`, `docs/context/active/previous-daily.json`, and `docs/context/staging/current-week.json` synchronized.
+14. Full Report is permanent display content only and must not be used for rollup readback.
 
 ## Final Response
 
