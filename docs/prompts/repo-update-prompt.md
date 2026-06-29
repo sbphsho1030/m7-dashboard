@@ -62,6 +62,7 @@ The user should provide:
 12. Do not hard-code the repo name into data paths.
 13. If Dashboard Top3 changes, keep `docs/data/daily/YYYY-MM-DD/dashboard.json`, `docs/context/active/previous-daily.json`, and `docs/context/staging/current-week.json` synchronized.
 14. Full Report is permanent display content only and must not be used for rollup readback.
+15. Run `node tools/validate-m7-data.js` after updating files and fix any errors before staging or committing.
 
 ## Final Response
 
@@ -71,3 +72,4 @@ Report:
 2. Files modified.
 3. How to test locally.
 4. Which files are sample or manual data.
+5. Validator output.

@@ -170,6 +170,16 @@ Confirm:
 - Full Report renders from `full-report.json`.
 - Full Report button is disabled when `fullReportJson` is missing.
 
+## 9. Validate JSON
+
+After every manual daily update, run the local validator from the repository root:
+
+```bash
+node tools/validate-m7-data.js
+```
+
+Fix any reported errors before staging or committing. Review warnings, especially warnings about legacy display mirrors, but remember that `docs/context/` remains the rollup/readback source of truth.
+
 ## 錯誤資料回復 / Rollback
 
 Before each daily update, check the git state so the current staged and unstaged changes are clear. Keep the rollback focused on data files only unless the user explicitly asks to change the website framework.
