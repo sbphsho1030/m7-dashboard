@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "m7-rolling-context-v1.3",
+  "dataStatus": "sample",
+  "previousDaily": {
+    "path": "data/previous-daily.json",
+    "marketDate": "2026-06-27"
+  },
+  "currentWeek": {
+    "path": "data/current-week.json",
+    "weekId": "2026-W26",
+    "status": "collecting"
+  },
+  "latestWeekly": null,
+  "latestMonthly": null,
+  "latestQuarterly": null,
+  "latestHalfYear": null,
+  "latestYearly": null,
+  "lastProcessedMarketDate": "2026-06-27",
+  "nextRollupTriggers": {
+    "weekly": {
+      "status": "pending",
+      "afterMarketDate": "2026-07-03"
+    },
+    "monthly": {
+      "status": "pending",
+      "afterMonth": "2026-06"
+    },
+    "quarterly": {
+      "status": "pending",
+      "afterQuarter": "2026-Q2"
+    },
+    "halfYear": {
+      "status": "pending",
+      "afterHalfYear": "2026-H1"
+    },
+    "yearly": {
+      "status": "pending",
+      "afterYear": "2026"
+    }
+  }
+}

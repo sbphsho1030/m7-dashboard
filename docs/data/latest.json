@@ -1,0 +1,9 @@
+{
+  "date": "2026-06-27",
+  "title": "M7 Sample Dashboard - 2026-06-27",
+  "dashboardJson": "data/daily/2026-06-27/dashboard.json",
+  "fullReportJson": "data/daily/2026-06-27/full-report.json",
+  "dataStatus": "sample",
+  "schemaVersion": "m7-latest-v1.3",
+  "notes": "Sample data only. Not a real daily market update and not investment advice."
+}
