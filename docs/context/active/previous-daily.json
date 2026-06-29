@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "m7-top3-v1.3",
+  "marketDate": "2026-06-27",
+  "dataStatus": "sample",
+  "top3": [
+    {
+      "topic": "AI infrastructure demand",
+      "summary": "Sample item showing how recurring AI infrastructure demand could be captured in the daily Top3 schema.",
+      "companies": [
+        "NVDA",
+        "MSFT",
+        "AMZN"
+      ],
+      "theme": "AI Infrastructure",
+      "type": "demand",
+      "persistence": "recurring",
+      "thesisImpact": "Supports monitoring of sustained accelerator and cloud capex demand.",
+      "actionBias": "watch",
+      "direction": "positive",
+      "horizon": "medium",
+      "watchSignals": [
+        "Cloud capex commentary",
+        "Accelerator backlog",
+        "Data center power constraints"
+      ],
+      "confidence": "medium",
+      "evidenceProfile": {
+        "sourceItemCount": 3,
+        "recurrence": "Appears in multiple sample notes for the week.",
+        "whySelected": "It is the clearest sample theme for demonstrating Top3 persistence.",
+        "whatChanged": "Sample demand framing moved from broad AI optimism to infrastructure capacity."
+      }
+    },
+    {
+      "topic": "Device refresh cycle",
+      "summary": "Sample item for tracking a possible end-device replacement cycle without making a market call.",
+      "companies": [
+        "AAPL",
+        "QCOM",
+        "TSM"
+      ],
+      "theme": "Devices",
+      "type": "cycle",
+      "persistence": "emerging",
+      "thesisImpact": "Could affect downstream component demand if confirmed by future data.",
+      "actionBias": "monitor",
+      "direction": "neutral",
+      "horizon": "short",
+      "watchSignals": [
+        "Sell-through checks",
+        "Inventory commentary",
+        "Supplier lead times"
+      ],
+      "confidence": "low",
+      "evidenceProfile": {
+        "sourceItemCount": 2,
+        "recurrence": "Early sample signal with limited repetition.",
+        "whySelected": "Included to demonstrate a lower-confidence Top3 entry.",
+        "whatChanged": "Moved from background noise to a named watch item."
+      }
+    },
+    {
+      "topic": "Policy and supply chain signals",
+      "summary": "Sample item for policy and supply chain developments that need recurrence before promotion.",
+      "companies": [
+        "TSM",
+        "ASML",
+        "NVDA"
+      ],
+      "theme": "Supply Chain",
+      "type": "risk",
+      "persistence": "watchlist",
+      "thesisImpact": "May affect availability, margins, or regional exposure if confirmed.",
+      "actionBias": "watch",
+      "direction": "mixed",
+      "horizon": "medium",
+      "watchSignals": [
+        "Export control updates",
+        "Foundry capacity comments",
+        "Equipment shipment timing"
+      ],
+      "confidence": "low",
+      "evidenceProfile": {
+        "sourceItemCount": 1,
+        "recurrence": "Single sample signal.",
+        "whySelected": "Shows how a risk item can enter Top3 while staying clearly provisional.",
+        "whatChanged": "No confirmed change; retained as a sample watch signal."
+      }
+    }
+  ]
+}

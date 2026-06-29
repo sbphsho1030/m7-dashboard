@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "m7-weekly-staging-v1.3",
+  "weekId": "2026-W26",
+  "status": "collecting",
+  "dataStatus": "sample",
+  "dailyTop3": [
+    {
+      "marketDate": "2026-06-27",
+      "sourceDashboard": "data/daily/2026-06-27/dashboard.json",
+      "items": [
+        {
+          "topic": "AI infrastructure demand",
+          "summary": "Sample item showing how recurring AI infrastructure demand could be captured in weekly staging.",
+          "companies": [
+            "NVDA",
+            "MSFT",
+            "AMZN"
+          ],
+          "theme": "AI Infrastructure",
+          "type": "demand",
+          "persistence": "recurring",
+          "thesisImpact": "Supports monitoring of sustained accelerator and cloud capex demand.",
+          "actionBias": "watch",
+          "direction": "positive",
+          "horizon": "medium",
+          "watchSignals": [
+            "Cloud capex commentary",
+            "Accelerator backlog",
+            "Data center power constraints"
+          ],
+          "confidence": "medium",
+          "evidenceProfile": {
+            "sourceItemCount": 3,
+            "recurrence": "Appears in multiple sample notes for the week.",
+            "whySelected": "It is the clearest sample theme for demonstrating Top3 persistence.",
+            "whatChanged": "Sample demand framing moved from broad AI optimism to infrastructure capacity."
+          }
+        }
+      ]
+    }
+  ]
+}

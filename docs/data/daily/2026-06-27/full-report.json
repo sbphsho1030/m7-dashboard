@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "m7-full-report-v1.3",
+  "dataStatus": "sample",
+  "date": "2026-06-27",
+  "title": "M7 Sample Full Report - 2026-06-27",
+  "summary": "Sample full report JSON used to test the manual daily update flow. Full Report is permanently retained but is not used for future rollup readback.",
+  "sections": [
+    {
+      "heading": "Executive Summary",
+      "body": "Sample report covering AI infrastructure, device refresh, and supply chain watch items. This is not real market data and not investment advice."
+    },
+    {
+      "heading": "Top3 Detail",
+      "body": "The daily Top3 belongs in dashboard.json, previous-daily.json, and current-week.json. The full report can provide readable detail, but future rollups should not read it."
+    },
+    {
+      "heading": "Process Note",
+      "body": "A manual daily update should add dated JSON files, update latest.json, update calendar-manifest.json, and refresh context files without changing the main website framework."
+    }
+  ],
+  "notForReadback": true
+}

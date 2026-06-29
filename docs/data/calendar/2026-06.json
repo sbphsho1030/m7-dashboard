@@ -1,0 +1,12 @@
+{
+  "month": "2026-06",
+  "items": [
+    {
+      "date": "2026-06-27",
+      "title": "M7 Sample Dashboard - 2026-06-27",
+      "dashboardJson": "data/daily/2026-06-27/dashboard.json",
+      "fullReportJson": "data/daily/2026-06-27/full-report.json",
+      "dataStatus": "sample"
+    }
+  ]
+}

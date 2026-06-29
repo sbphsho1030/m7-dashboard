@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M7 Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">M7 Dashboard v1.3</p>
+      <h1>市場觀察儀表板</h1>
+    </div>
+    <p id="status" class="status" role="status">載入中...</p>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="資料日曆">
+      <div class="panel-header">
+        <h2>Archive</h2>
+        <select id="monthSelect" aria-label="選擇月份"></select>
+      </div>
+      <div id="calendar" class="calendar" aria-live="polite"></div>
+    </aside>
+
+    <section class="content-area">
+      <div class="toolbar">
+        <div>
+          <p id="selectedDate" class="date-label">--</p>
+          <h2 id="dashboardTitle">Dashboard</h2>
+        </div>
+        <div class="view-switch" role="group" aria-label="切換內容">
+          <button id="dashboardBtn" class="active" type="button">Dashboard</button>
+          <button id="fullReportBtn" type="button">Full Report</button>
+        </div>
+      </div>
+
+      <article id="contentFrame" class="content-frame" aria-live="polite"></article>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
